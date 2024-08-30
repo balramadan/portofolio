@@ -40,7 +40,7 @@
         </svg>
         <img
           id="profileImage"
-          w="80 sm:90 2xl:120"
+          w="85 sm:90 2xl:120"
           class="object-cover absolute inset-0 mb-0 mx-auto mt-auto z-0"
           src="/polo-shirt-profile-crop.png"
           alt=""

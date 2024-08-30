@@ -1,6 +1,6 @@
 <template lang="">
   <div id="second" class="relative grid lg:grid-cols-2 justify-center items-center lg:items-start lg:gap-5 bg-[#333] z-2 h-screen px-5 sm:px-30 py-5">
-    <div class="-mt-15 lg:mt-30">
+    <div class="-mt-25 sm:-mt-15 lg:mt-30">
       <h2 class="text-light" text="base lg:2xl center lg:left">About Me</h2>
       <p text="white/80 sm lg:base center lg:left">
         <span font="bold" text="bright">Hello! I'm Iqbal Ramadan</span> and I'm
