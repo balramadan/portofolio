@@ -6,7 +6,7 @@
     >
       <h2
         id="csText"
-        class="m-0 text-light text-center text-xl sm:text-6xl font-rubik"
+        class="m-0 text-light text-center text-2xl sm:text-6xl font-rubik"
       >
         Coming Soon
       </h2>
