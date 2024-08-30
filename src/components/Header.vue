@@ -123,7 +123,7 @@
         </router-link>
       </div>
       <div flex justify-end items-center gap-x="1.5 sm:5" w-full text="light">
-        <a href="#" target="_blank" duration-200 ease-linear>
+        <a href="https://instagram.com/balramadan" target="_blank" duration-200 ease-linear>
           <span class="sr-only">Instagram</span>
           <span
             i-carbon:logo-instagram
@@ -137,7 +137,7 @@
           ></span>
         </a>
         <a
-          href="#"
+          href="https://linkedin.com/in/balramadan"
           target="_blank"
           duration-200
           ease-linear
@@ -156,7 +156,7 @@
           ></span>
         </a>
         <a
-          href="#"
+          href="https://github.com/balramadan"
           target="_blank"
           duration-200
           ease-linear
@@ -175,7 +175,7 @@
           ></span>
         </a>
         <a
-          href="#"
+          href="https://gitlab.com/balramadan"
           target="_blank"
           duration-200
           ease-linear

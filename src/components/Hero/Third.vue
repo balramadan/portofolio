@@ -11,14 +11,14 @@
     >
       <h2 class="text-light text-center sm:text-left">Skills</h2>
       <div class="flex flex-row flex-wrap justify-center sm:justify-start">
-        <p
-          class="text-light text-sm text-center border border-solid border-light m-0 mb-3 mr-3 px-3 py-1 rounded-full cursor-pointer transition-all duration-300 ease-linear"
+        <div
+          class="text-light text-sm text-center border border-solid border-light m-0 mb-3 mr-3 px-3 py-1 rounded-full cursor-pointer transition-all duration-300 ease-linear flex flex-row items-center gap-1"
           hover="text-bright border-bright"
           v-for="skill in skills"
           :key="skill"
         >
-          {{ skill }}
-        </p>
+          <div :class="skill.icon"></div>{{ skill.nama }}
+      </div>
       </div>
     </div>
     <!-- Main Content -->
@@ -94,18 +94,45 @@ import { onBeforeMount, ref } from "vue";
 import supabase from "@/utils/supabase";
 
 const skills = ref([
-  "Javascript",
-  "HTML",
-  "CSS",
-  "SQL",
-  "PHP",
-  "Node",
-  "Express",
-  "Vite",
-  "Vue",
-  "Nuxt",
-  "MongoDB",
-  "Supabase",
+  {
+    nama: "Javascript",
+    icon: 'i-devicon:javascript w-1em h-1em',
+  },
+  {
+    nama: "HTML",
+    icon: 'i-devicon:html5 w-1em h-1em',
+  },
+  {
+    nama: "CSS",
+    icon: 'i-devicon:css3 w-1em h-1em',
+  },
+  {
+    nama: "MySQL",
+    icon: 'i-devicon:mysql w-1em h-1em',
+  },
+  {
+    nama: "PHP",
+    icon: 'i-devicon:php w-1em h-1em',
+  },
+  {
+    nama: "Node",
+    icon: 'i-devicon:nodejs w-1em h-1em',
+  },
+  {
+    nama: "Express",
+    icon: 'i-devicon:express w-1em h-1em text-light',
+  },
+  { nama: "Vite", icon: 'i-devicon:vitejs w-1em h-1em' },
+  { nama: "Vue", icon: 'i-devicon:vuejs w-1em h-1em' },
+  { nama: "Nuxt", icon: 'i-devicon:nuxtjs w-1em h-1em' },
+  {
+    nama: "MongoDB",
+    icon: 'i-devicon:mongodb w-1em h-1em',
+  },
+  {
+    nama: "Supabase",
+    icon: 'i-devicon:supabase w-1em h-1em',
+  },
 ]);
 const projects = ref([]);
 

@@ -19,11 +19,18 @@
         :key="item"
         @mouseenter="hoverPost(index)"
         @mouseleave="hoverPost(index)"
+        @click="toPost"
         class="block px-5 py-5 border transition-all duration-300 linear"
         hover="cursor-pointer"
       >
         <div class="flex">
-          <img :src="`https://rnjqyqiohdhnlcidizdw.supabase.co/storage/v1/object/public/post/${item.image}`" class="mx-auto mb-5 rounded object-cover" h="50" w="70 xl:80" alt="" />
+          <img
+            :src="`https://rnjqyqiohdhnlcidizdw.supabase.co/storage/v1/object/public/post/${item.image}`"
+            class="mx-auto mb-5 rounded object-cover"
+            h="50"
+            w="70 lg:50 xl:80"
+            alt=""
+          />
         </div>
         <div class="flex">
           <p
@@ -96,6 +103,7 @@
 import { ref, onBeforeMount, onMounted } from "vue";
 import { postStore } from "@/stores/post";
 import supabase from "@/utils/supabase";
+import router from "@/router";
 
 function hoverPost(index) {
   const cardPost = document.querySelectorAll("#cardPost");
@@ -105,6 +113,10 @@ function hoverPost(index) {
   cardPost[index].classList.toggle("border-light");
   titlePost[index].classList.toggle("text-light");
   titlePost[index].classList.toggle("text-bright");
+}
+
+function toPost() {
+  router.push("/comingsoon");
 }
 
 const posts = ref([]);

@@ -12,15 +12,16 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
-    presetIcons(),
-    presetMini(),
-    presetWebFonts(),
-    {
+    presetIcons({
       collections: {
+        devicon: () =>
+          import("@iconify-json/devicon/icons.json").then((i) => i.default),
         carbon: () =>
           import("@iconify-json/carbon/icons.json").then((i) => i.default),
       },
-    },
+    }),
+    presetMini(),
+    presetWebFonts(),
   ],
   theme: {
     colors: {
