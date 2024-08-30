@@ -12,7 +12,7 @@
         </div>
         <div class="text-6xl font-semibold text-white">
           <p class="m-0" id="textHero">
-            I'm <span text="[#F97300]">Iqbal</span>,<br />Fullstack Developer
+            I'm <span text="[#F97300]">Iqbal</span>,<br />Frontend Developer
           </p>
         </div>
       </div>
