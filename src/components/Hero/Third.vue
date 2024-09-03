@@ -95,10 +95,6 @@ import supabase from "@/utils/supabase";
 
 const skills = ref([
   {
-    nama: "Javascript",
-    icon: 'i-devicon:javascript w-1em h-1em',
-  },
-  {
     nama: "HTML",
     icon: 'i-devicon:html5 w-1em h-1em',
   },
@@ -107,8 +103,16 @@ const skills = ref([
     icon: 'i-devicon:css3 w-1em h-1em',
   },
   {
+    nama: "Javascript",
+    icon: 'i-devicon:javascript w-1em h-1em',
+  },
+  {
     nama: "MySQL",
     icon: 'i-devicon:mysql w-1em h-1em',
+  },
+  {
+    nama: 'PostgreSQL',
+    icon: 'i-devicon:postgresql w-1em h-1em'
   },
   {
     nama: "PHP",
@@ -134,6 +138,7 @@ const skills = ref([
     icon: 'i-devicon:supabase w-1em h-1em',
   },
 ]);
+
 const projects = ref([]);
 
 // Function to fetch projects from Supabase

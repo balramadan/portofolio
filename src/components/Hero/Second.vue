@@ -4,7 +4,7 @@
       <h2 class="text-light" text="base lg:2xl center lg:left">About Me</h2>
       <p text="white/80 sm lg:base center lg:left">
         <span font="bold" text="bright">Hello! I'm Iqbal Ramadan</span> and I'm
-        an enthusiastic fullstack developer.
+        an enthusiastic Front End Developer.
         <span font="bold" text="bright"
           ><br class="hidden xl:block" />I am a fourth year student at Bina Sarana Informatika University in
           Information Technology.</span
