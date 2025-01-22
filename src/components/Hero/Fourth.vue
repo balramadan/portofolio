@@ -19,7 +19,7 @@
         :key="item"
         @mouseenter="hoverPost(index)"
         @mouseleave="hoverPost(index)"
-        @click="toPost"
+        @click="toPost(item.permalink)"
         class="block px-5 py-5 border transition-all duration-300 linear"
         hover="cursor-pointer"
       >
@@ -115,8 +115,8 @@ function hoverPost(index) {
   titlePost[index].classList.toggle("text-bright");
 }
 
-function toPost() {
-  router.push("/comingsoon");
+function toPost(link) {
+  location.href = `https://inspire.iqbalramadan.me/post/${link}`
 }
 
 const posts = ref([]);
