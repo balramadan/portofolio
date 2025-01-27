@@ -7,7 +7,7 @@
     <div
       class=""
       lg="sticky top-30 inline-block float-left mt-30 w-2/5 h-25 mb-35"
-      xl="mb-30"
+      xl="mb-35"
     >
       <h2 class="text-light text-center sm:text-left">Skills</h2>
       <div class="flex flex-row flex-wrap justify-center sm:justify-start">
@@ -17,8 +17,9 @@
           v-for="skill in skills"
           :key="skill"
         >
-          <div :class="skill.icon"></div>{{ skill.nama }}
-      </div>
+          <div :class="skill.icon"></div>
+          {{ skill.nama }}
+        </div>
       </div>
     </div>
     <!-- Main Content -->
@@ -96,46 +97,56 @@ import supabase from "@/utils/supabase";
 const skills = ref([
   {
     nama: "HTML",
-    icon: 'i-devicon:html5 w-1em h-1em',
+    icon: "i-devicon:html5 w-1em h-1em",
   },
   {
     nama: "CSS",
-    icon: 'i-devicon:css3 w-1em h-1em',
+    icon: "i-devicon:css3 w-1em h-1em",
+  },
+  {
+    nama: "TailwindCSS",
+    icon: "i-devicon:tailwindcss w-1em h-1em",
   },
   {
     nama: "Javascript",
-    icon: 'i-devicon:javascript w-1em h-1em',
+    icon: "i-devicon:javascript w-1em h-1em",
   },
   {
-    nama: "MySQL",
-    icon: 'i-devicon:mysql w-1em h-1em',
-  },
-  {
-    nama: 'PostgreSQL',
-    icon: 'i-devicon:postgresql w-1em h-1em'
+    nama: "Typescript",
+    icon: "i-devicon:typescript w-1em h-1em",
   },
   {
     nama: "PHP",
-    icon: 'i-devicon:php w-1em h-1em',
+    icon: "i-devicon:php w-1em h-1em",
   },
   {
     nama: "Node",
-    icon: 'i-devicon:nodejs w-1em h-1em',
+    icon: "i-devicon:nodejs w-1em h-1em",
   },
   {
     nama: "Express",
-    icon: 'i-devicon:express w-1em h-1em text-light',
+    icon: "i-devicon:express w-1em h-1em text-light",
   },
-  { nama: "Vite", icon: 'i-devicon:vitejs w-1em h-1em' },
-  { nama: "Vue", icon: 'i-devicon:vuejs w-1em h-1em' },
-  { nama: "Nuxt", icon: 'i-devicon:nuxtjs w-1em h-1em' },
+  { nama: "Vite", icon: "i-devicon:vitejs w-1em h-1em" },
+  { nama: "Vue", icon: "i-devicon:vuejs w-1em h-1em" },
+  { nama: "React", icon: "i-devicon:react w-1em h-1em" },
+  { nama: "Nuxt", icon: "i-devicon:nuxtjs w-1em h-1em" },
+  { nama: "Next", icon: "i-devicon:nextjs w-1em h-1em" },
+  {
+    nama: "MySQL",
+    icon: "i-devicon:mysql w-1em h-1em",
+  },
+  {
+    nama: "PostgreSQL",
+    icon: "i-devicon:postgresql w-1em h-1em",
+  },
   {
     nama: "MongoDB",
-    icon: 'i-devicon:mongodb w-1em h-1em',
+    icon: "i-devicon:mongodb w-1em h-1em",
   },
   {
     nama: "Supabase",
-    icon: 'i-devicon:supabase w-1em h-1em',
+    icon: "i-devicon:supabase w-1em h-1em",
   },
 ]);
 
