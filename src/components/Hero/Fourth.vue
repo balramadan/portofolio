@@ -8,6 +8,7 @@
         m="t-5 lg:t-30"
         p="x-5 y-2"
         hover="bg-bright text-light"
+        @click="seeAll"
       >
         See All
       </button>
@@ -104,6 +105,10 @@ import { ref, onBeforeMount, onMounted } from "vue";
 import { postStore } from "@/stores/post";
 import supabase from "@/utils/supabase";
 import router from "@/router";
+
+function seeAll() {
+  location.href = "https://inspire.iqbalramadan.me"
+}
 
 function hoverPost(index) {
   const cardPost = document.querySelectorAll("#cardPost");
