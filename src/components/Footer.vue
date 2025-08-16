@@ -8,9 +8,7 @@
           Let's Connect there
         </h3>
         <a
-          @mouseenter="hoverLinkHire"
-          @mouseleave="hoverLinkHire"
-          class="bg-light px-8 py-3 text-sm lg:text-base font-bold rounded-full cursor-pointer transition-all duration-300 ease-in-out flex flex-row gap-1 items-center text-primary"
+          class="bg-light px-8 py-3 text-sm lg:text-base font-bold rounded-full cursor-pointer transition-all duration-300 ease-in-out flex flex-row gap-1 items-center text-primary group"
           hover="bg-bright text-light"
           href="mailto:hello@iqbalramadan.me"
           ><p class="m-0">Hire me</p>
@@ -18,6 +16,7 @@
             id="arrowLink"
             xmlns="http://www.w3.org/2000/svg"
             class="size-4 transition-all duration-300 ease-in-out text-primary"
+            group-hover="text-white size-5"
             viewBox="0 0 24 24"
           >
             <path
@@ -30,7 +29,7 @@
             /></svg
         ></a>
       </div>
-      <hr class="my-5" />
+      <hr class="my-5 text-white" />
       <div class="flex flex-col lg:flex-row justify-between items-center gap-2">
         <div class="">
           <p class="m-0 text-14px text-center lg:text-left text-light">
@@ -38,9 +37,13 @@
           </p>
         </div>
         <div class="flex flex-row text-light items-center text-14px">
-          <a href="" class="text-light" hover="text-bright underline">User Terms & Conditions</a>
+          <a href="" class="text-light" hover="text-bright underline"
+            >User Terms & Conditions</a
+          >
           |
-          <a href="" class="text-light" hover="text-bright underline">Privacy Policy</a>
+          <a href="" class="text-light" hover="text-bright underline"
+            >Privacy Policy</a
+          >
         </div>
       </div>
     </div>

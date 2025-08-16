@@ -1,22 +1,38 @@
 <template lang="">
   <div id="first" class="bg-primary h-screen z-0">
     <div
-      class="relative pt-20 lg:pt-30 m-0 px-5 lg:px-30 flex flex-col justify-between items-center text-center h-screen"
+      class="relative pt-25 lg:pt-40 m-0 px-5 sm:px-10 lg:px-30 flex flex-col text-start h-screen"
     >
       <div class="">
-        <div
-          id="hello"
-          class="text-base text-white mx-auto px-5 py-2 border border-light rounded"
-        >
-          Hello
-        </div>
-        <div class="text-6xl font-semibold text-white">
-          <p class="m-0" id="textHero">
-            I'm <span text="[#F97300]">Iqbal</span>,<br />Frontend Developer
+        <div id="hello" class="text-base text-white py-2">Hi, my name is</div>
+        <div class="text-4xl lg:text-7xl font-semibold">
+          <p class="m-0 font-inter" text="[#F97300]" id="textHero">
+            Iqbal Ramadan.
+          </p>
+          <p class="m-0 font-inter mt-2.5 opacity-60" text="[#F97300]">
+            I build things for the web.
           </p>
         </div>
+        <div class="">
+          <p
+            class="text-white opacity-60 mt-5 text-wrap mr-0 lg:mr-100 xl:mr-150"
+          >
+            I’m a software engineer specializing in building (and occasionally
+            designing) exceptional digital experiences. Currently, I am
+            currently focusing on studying cloud computing for better
+            development.
+          </p>
+          <a href="#third" class="scroll-smooth">
+            <div
+              class="mt-5 py-3 px-5 w-52 text-[#F97300] border border-[#F97300] opacity-60 rounded cursor-pointer transition-all duration-500 ease-in-out"
+              hover="shadow mt-4 bg-[#C97300] bg-opacity-10 opacity-100"
+            >
+              Check what I've done
+            </div>
+          </a>
+        </div>
       </div>
-      <div class="flex flex-col items-center bottom-0 pb-0 z-0">
+      <!-- <div class="flex flex-col items-center bottom-0 pb-0 z-0">
         <svg
           id="circleHero"
           size="350px lg:500px"
@@ -63,16 +79,16 @@
             d="m6 13l6 6l6-6M6 5l6 6l6-6"
           />
         </svg>
-      </div>
+      </div> -->
     </div>
     <div
-      class="fixed hidden sm:flex flex-row items-center gap-2 bottom-30 -right-15 z-99 rotate-90"
+      class="fixed hidden sm:flex flex-row items-center gap-2 bottom-30 -right-18 z-99 rotate-90"
     >
       <a
         href="mailto:hello@iqbalramadan.me"
-        class="text-light"
+        class="text-light text-sm font-mono"
         hover="text-bright"
-        >hello@iqbalramadan.me</a
+        >hello@iqbalramadan.my.id</a
       >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -90,47 +106,47 @@
   </div>
 </template>
 <script setup>
-import gsap from "gsap";
-import { onMounted } from "vue";
+// import gsap from "gsap";
+// import { onMounted } from "vue";
 
-function scrollTo() {
-  window.scrollTo({
-    top: window.innerHeight,
-    behavior: "smooth",
-  });
-}
+// function scrollTo() {
+//   window.scrollTo({
+//     top: window.innerHeight,
+//     behavior: "smooth",
+//   });
+// }
 
-onMounted(() => {
-  gsap.from("#hello", {
-    duration: 1,
-    y: -200,
-    ease: "expo.out",
-  });
-  gsap.from("#textHero", {
-    duration: 2,
-    delay: 0.8,
-    y: -500,
-    ease: "expo.out",
-  });
-  gsap.from("#profileImage", {
-    duration: 2,
-    delay: 1.2,
-    y: 200,
-    scale: 0,
-    ease: "expo.out",
-  });
-  gsap.from("#circleHero", {
-    duration: 2,
-    delay: 1.3,
-    scale: 0,
-    ease: "circ.out",
-  });
-  gsap.from("#arrowDown", {
-    duration: 2,
-    y: -20,
-    repeat: -1,
-    yoyo: true,
-  });
-});
+// onMounted(() => {
+//   gsap.from("#hello", {
+//     duration: 1,
+//     y: -200,
+//     ease: "expo.out",
+//   });
+//   gsap.from("#textHero", {
+//     duration: 2,
+//     delay: 0.8,
+//     y: -500,
+//     ease: "expo.out",
+//   });
+//   gsap.from("#profileImage", {
+//     duration: 2,
+//     delay: 1.2,
+//     y: 200,
+//     scale: 0,
+//     ease: "expo.out",
+//   });
+//   gsap.from("#circleHero", {
+//     duration: 2,
+//     delay: 1.3,
+//     scale: 0,
+//     ease: "circ.out",
+//   });
+//   gsap.from("#arrowDown", {
+//     duration: 2,
+//     y: -20,
+//     repeat: -1,
+//     yoyo: true,
+//   });
+// });
 </script>
 <style lang=""></style>

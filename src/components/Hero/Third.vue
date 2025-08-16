@@ -9,8 +9,8 @@
       lg="sticky top-30 inline-block float-left mt-30 w-2/5 h-25 mb-35"
       xl="mb-35"
     >
-      <h2 class="text-light text-center sm:text-left">Skills</h2>
-      <div class="flex flex-row flex-wrap justify-center sm:justify-start">
+      <h2 class="text-light text-center sm:text-left">Tech Stack</h2>
+      <div class="mt-5 flex flex-row flex-wrap justify-center sm:justify-start">
         <div
           class="text-light text-sm text-center border border-solid border-light m-0 mb-3 mr-3 px-3 py-1 rounded-full cursor-pointer transition-all duration-300 ease-linear flex flex-row items-center gap-1"
           hover="text-bright border-bright"
@@ -31,12 +31,10 @@
         Some Things I’ve Built
       </h2>
       <div
-        class="mb-5 w-full h-auto flex flex-col sm:flex-row justify-center items-center sm:justify-start sm:items-start gap-3 px-5 py-5 transition ease-linear duration-300"
+        class="my-5 w-full h-auto flex flex-col sm:flex-row justify-center items-center sm:justify-start sm:items-start gap-3 px-5 py-5 transition ease-linear duration-300 group"
         hover="cursor-pointer bg-secondary/40 backdrop-blur-lg rounded border border-solid border-light/40"
         v-for="(item, index) in projects"
         @click="toGithub(item.project_github)"
-        @mouseenter="hoverProject(index)"
-        @mouseleave="hoverProject(index)"
         :key="index"
       >
         <img
@@ -51,6 +49,7 @@
           <div class="flex flex-row gap-2 items-center">
             <h3
               class="projectName m-0 transition ease-linear duration-300 text-light"
+              group-hover="text-bright tracking-0.2"
               text="4"
             >
               {{ item.project_name }}
@@ -59,6 +58,7 @@
               id="arrowUpRight"
               xmlns="http://www.w3.org/2000/svg"
               class="size-3 transition-all duration-300 ease-in-out text-light"
+              group-hover="size-5"
               viewBox="0 0 24 24"
             >
               <path
@@ -74,7 +74,7 @@
           <p id="projectDesc" class="text-light/40" text="3.5">
             {{ item.project_desc }}
           </p>
-          <ul class="flex flex-row flex-wrap gap-2 m-0 p-0">
+          <ul class="flex flex-row flex-wrap gap-2 m-0 p-0 mt-1.5">
             <li
               class="m-0 bg-light/10 rounded-full px-3 py-1 text-light"
               text="3"
@@ -168,21 +168,6 @@ async function fetchProjects() {
   }
 }
 
-// Function to hover over project
-function hoverProject(index) {
-  const projectImg = document.querySelectorAll("#imageProject");
-  const projectName = document.querySelectorAll(".projectName");
-  const arrowUpRight = document.querySelectorAll("#arrowUpRight");
-  const projectDesc = document.querySelectorAll("#projectDesc");
-  projectName[index].classList.toggle("text-light");
-  projectName[index].classList.toggle("text-bright");
-  projectImg[index].classList.toggle("brightness-100");
-  projectImg[index].classList.toggle("brightness-70");
-  arrowUpRight[index].classList.toggle("size-3");
-  arrowUpRight[index].classList.toggle("size-5");
-  projectDesc[index].classList.toggle("text-light/40");
-  projectDesc[index].classList.toggle("text-light/80");
-}
 // Function to open Github link
 function toGithub(link) {
   window.open(link, "_blank");

@@ -114,12 +114,12 @@
           </li>
         </ul>
       </div>
-      <div class="flex items-center flex-1">
+      <div class="flex items-center flex-1 w-full">
         <router-link
           to="/"
           class="text-gray-8 dark-text-gray-2 flex items-center gap-x-0.5"
         >
-          <img src="/logo.webp" alt="Iqbal" class="h-10" />
+          <img src="/logo.webp" alt="Iqbal" class="max-w-none h-10 w-10" />
         </router-link>
       </div>
       <div flex justify-end items-center gap-x="1.5 sm:5" w-full text="light">
@@ -146,6 +146,7 @@
           <span class="sr-only">Linkedin</span>
           <span
             i-carbon-logo-linkedin
+            size-2
             flex
             p3
             sm-p3.5

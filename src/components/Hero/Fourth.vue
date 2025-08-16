@@ -18,25 +18,25 @@
         id="cardPost"
         v-for="(item, index) in posts"
         :key="item"
-        @mouseenter="hoverPost(index)"
-        @mouseleave="hoverPost(index)"
         @click="toPost(item.permalink)"
-        class="block px-5 py-5 border transition-all duration-300 linear"
-        hover="cursor-pointer"
+        class="block px-5 py-5 border border-light/20 transition-all duration-300 linear group"
+        hover="cursor-pointer bg-light/10 border-solid border-light/100"
       >
-        <div class="flex">
+        <div class="flex overflow-hidden">
           <img
             :src="`https://rnjqyqiohdhnlcidizdw.supabase.co/storage/v1/object/public/post/${item.image}`"
-            class="mx-auto mb-5 rounded object-cover"
+            class="mx-auto rounded object-cover transition-transform duration-300 ease-in-out"
+            group-hover="scale-110"
             h="50"
             w="70 lg:50 xl:80"
             alt=""
           />
         </div>
-        <div class="flex">
+        <div class="flex mt-5">
           <p
-            class="text-center text-light text-sm font-semibold bg-light/20 rounded-full px-3 py-1 m-0 mx-auto"
+            class="text-center text-light text-sm font-semibold bg-light/20 rounded-full px-3 py-1 m-0 mx-auto transition-all duration-300 linear"
             sm="mx-0 mr-auto"
+            group-hover="bg-bright/10"
           >
             {{ item.tag }}
           </p>
@@ -92,6 +92,7 @@
           <h2
             id="titlePost"
             class="font-rubik text-light text-center sm:text-left transition-all duration-300 linear"
+            group-hover="text-bright"
           >
             {{ item.title }}
           </h2>
@@ -110,15 +111,15 @@ function seeAll() {
   location.href = "https://inspire.iqbalramadan.me"
 }
 
-function hoverPost(index) {
-  const cardPost = document.querySelectorAll("#cardPost");
-  const titlePost = document.querySelectorAll("#titlePost");
-  cardPost[index].classList.toggle("bg-light/10");
-  cardPost[index].classList.toggle("border-solid");
-  cardPost[index].classList.toggle("border-light");
-  titlePost[index].classList.toggle("text-light");
-  titlePost[index].classList.toggle("text-bright");
-}
+// function hoverPost(index) {
+//   const cardPost = document.querySelectorAll("#cardPost");
+//   const titlePost = document.querySelectorAll("#titlePost");
+//   cardPost[index].classList.toggle("bg-light/10");
+//   cardPost[index].classList.toggle("border-solid");
+//   cardPost[index].classList.toggle("border-light");
+//   titlePost[index].classList.toggle("text-light");
+//   titlePost[index].classList.toggle("text-bright");
+// }
 
 function toPost(link) {
   location.href = `https://inspire.iqbalramadan.me/post/${link}`

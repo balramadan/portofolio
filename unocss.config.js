@@ -1,6 +1,6 @@
 import {
   defineConfig,
-  presetUno,
+  presetWind4,
   presetAttributify,
   presetIcons,
   presetMini,
@@ -10,18 +10,17 @@ import {
 
 export default defineConfig({
   presets: [
-    presetUno(),
+    presetWind4(),
     presetAttributify(),
-    presetIcons({
-      collections: {
-        devicon: () =>
-          import("@iconify-json/devicon/icons.json").then((i) => i.default),
-        carbon: () =>
-          import("@iconify-json/carbon/icons.json").then((i) => i.default),
-      },
-    }),
+    presetIcons(),
     presetMini(),
-    presetWebFonts(),
+    presetWebFonts({
+      provider: "google",
+      fonts: {
+        inter: "Inter",
+        lato: "Lato"
+      }
+    }),
   ],
   theme: {
     colors: {
