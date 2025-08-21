@@ -1,7 +1,7 @@
 <template lang="">
   <div
     id="second"
-    class="relative grid lg:grid-cols-2 xl:grid-cols-5 justify-center items-center lg:items-start lg:gap-5 bg-[#333] z-2 xl:h-screen px-5 sm:px-30 py-5"
+    class="relative grid lg:grid-cols-2 xl:grid-cols-5 justify-center items-center lg:items-start lg:gap-5 bg-[#333] z-2 xl:h-screen px-5 sm:px-30 py-10"
   >
     <div class="mt-5 lg:mt-40 xl:col-span-3">
       <h2 class="text-light" text="base lg:2xl center lg:left">About Me</h2>

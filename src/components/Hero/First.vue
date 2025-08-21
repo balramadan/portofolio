@@ -1,7 +1,7 @@
 <template lang="">
-  <div id="first" class="bg-primary h-screen z-0">
+  <div id="first" class="bg-primary h-full sm:h-screen z-0">
     <div
-      class="relative pt-25 lg:pt-40 m-0 px-5 sm:px-10 lg:px-30 flex flex-col text-start h-screen"
+      class="relative pt-25 pb-10 sm:pb-0 lg:pt-40 m-0 px-5 sm:px-10 lg:px-30 flex flex-col text-start sm:h-screen"
     >
       <div class="">
         <div id="hello" class="text-base text-white py-2">Hi, my name is</div>
