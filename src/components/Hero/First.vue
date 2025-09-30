@@ -18,9 +18,8 @@
             class="text-white opacity-60 mt-5 text-wrap mr-0 lg:mr-100 xl:mr-150"
           >
             I’m a software engineer specializing in building (and occasionally
-            designing) exceptional digital experiences. Currently, I am
-            currently focusing on studying cloud computing for better
-            development.
+            designing) exceptional digital experiences. Currently, I am focusing
+            on studying mobile development to expand my knowledge.
           </p>
           <a href="#third" class="scroll-smooth">
             <div

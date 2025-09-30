@@ -1,11 +1,10 @@
 <template>
   <div id="fourth" class="h-full bg-primary px-5 sm:px-30 py-5">
-    <hr />
+    <hr class="mb-5" />
     <div class="flex flex-row justify-between items-center">
-      <h2 class="text-light my-auto" m="t-5 lg:t-30">From my blog post</h2>
+      <h2 class="text-light my-auto" m="">From my blog post</h2>
       <button
-        class="bg-light text-primary font-semibold border-none my-auto rounded-full cursor-pointer transition-all duration-300 ease-in-out"
-        m="t-5 lg:t-30"
+        class="text-xs sm:text-sm lg:text-base bg-light text-primary font-semibold border-none my-auto rounded-full cursor-pointer transition-all duration-300 ease-in-out"
         p="x-5 y-2"
         hover="bg-bright text-light"
         @click="seeAll"
@@ -28,7 +27,7 @@
             class="mx-auto rounded object-cover transition-transform duration-300 ease-in-out"
             group-hover="scale-110"
             h="50"
-            w="70 lg:50 xl:80"
+            w="full lg:50 xl:80"
             alt=""
           />
         </div>

@@ -1,9 +1,11 @@
 <template lang="">
-  <div class="">
+  <div class="font-inter">
     <Header />
     <First />
     <Second />
-    <Third />
+    <TechStack />
+    <Project />
+    <Certification />
     <Fourth />
     <Footer />
   </div>
@@ -15,7 +17,10 @@ import { navStore } from "@/stores/nav";
 import Header from "@/components/Header.vue";
 import First from "@/components/Hero/First.vue";
 import Second from "@/components/Hero/Second.vue";
+import TechStack from "@/components/Hero/TechStack.vue"
 import Third from "@/components/Hero/Third.vue";
+import Project from "@/components/Hero/Project.vue"
+import Certification from "@/components/Hero/Certification.vue";
 import Fourth from "@/components/Hero/Fourth.vue";
 import Footer from "@/components/Footer.vue";
 

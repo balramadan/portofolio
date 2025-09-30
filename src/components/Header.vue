@@ -77,7 +77,7 @@
         lg-top-0
         left-0
         mt="5 lg:0"
-        bg="white dark:gray-950 lg:transparent dark:lg:transparent"
+        bg="primary/80 dark:gray-950 lg:transparent dark:lg:transparent"
         border-b="~ gray-2 dark:gray-8 lg:0"
         ease-linear
         duration-300
@@ -92,21 +92,22 @@
           lg:flex-row
           lg:items-center
           py="4 lg:0"
-          gap="y-6 lg:x-8"
-          text="gray-7 dark:gray-3"
+          gap="y-6"
+          group
+          text="white lg:primary dark:gray-3"
         >
-          <li v-for="navItem in navItems" :key="navItem.id">
+          <li v-for="navItem in navItems" :key="navItem.id" class="">
             <a
               v-if="navItem.isActive"
               :href="navItem.href"
-              class="relative py3 transition-all duration-300 ease-linear lg:after-hidden after-absolute after-content-empty after-bg-primary after-w-full after-left-0 after-bottom-0 after-h-px after-rd-md after-duration-300 after-ease-linear lg:bg-light lg:rounded-full lg:px-5 text-primary"
+              class="relative py-2.5 transition-all duration-300 ease-linear lg:after-hidden after-absolute after-content-empty after-bg-white after-w-full after-left-0 after-bottom-0 after-h-px after-rd-md after-duration-300 after-ease-linear lg:bg-light lg:rounded-full lg:px-6 lg:mx-1"
             >
               {{ navItem.text }}
             </a>
             <a
               v-else
               :href="navItem.href"
-              class="relative py3 transition-all duration-300 ease-linear lg:after-hidden after-absolute after-content-empty after-bg-primary after-w-full after-left-0 after-bottom-0 after-h-px after-rd-md after-duration-300 after-ease-linear after-scale-x-0 hover-after-scale-x-100 text-primary lg:text-light"
+              class="relative py-2.5 transition-all duration-300 ease-linear lg:after-hidden after-absolute after-content-empty after-bg-white after-w-full after-left-0 after-bottom-0 after-h-px after-rd-md after-duration-300 after-ease-linear after-scale-x-0 hover-after-scale-x-100 lg:text-light lg:mx-6 lg:hover:mx-1"
               hover="lg:bg-light/40 lg:px-5 lg:rounded-full"
             >
               {{ navItem.text }}
@@ -215,6 +216,29 @@ function closeNavBar() {
   navIsOpen.value = false;
   document.body.classList.add("overflow-y-auto");
 }
+
+const sosialMedia = ref([
+  {
+    name: "Instagram",
+    url: "https://instagram.com/balramadan",
+    icon: "i-carbon:logo-instagram",
+  },
+  {
+    name: "Linkedin",
+    url: "https://linkedin.com/in/balramadan",
+    icon: "i-carbon:logo-linkedin",
+  },
+  {
+    name: "Github",
+    url: "https://github.com/balramadan",
+    icon: "i-carbon:logo-github",
+  },
+  {
+    name: "Gitlab",
+    url: "https://gitlab.com/balramadan",
+    icon: "i-carbon:logo-gitlab",
+  },
+]);
 
 // function navLink(id) {
 //   const element = ref[id];

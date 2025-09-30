@@ -10,10 +10,23 @@ const router = createRouter({
       component: () => import("@/views/LandingPage.vue"),
     },
     {
-      name: "coming soon",
+      name: "comingsoon",
       path: "/comingsoon",
       component: () => import("@/views/ComingSoon.vue"),
+      meta: {
+        title: "Coming Soon",
+      },
     },
+    {
+      name: "addproject",
+      path: "/_addproject",
+      component: () => import("@/views/AddProject.vue"),
+    },
+    {
+      name: "addcertification",
+      path: "/_addcertification",
+      component: () => import("@/views/AddCertification.vue")
+    }
   ],
 });
 
@@ -21,7 +34,11 @@ router.afterEach((to, from) => {
   // Menggunakan `nextTick` untuk memastikan bahwa ini dipanggil
   // setelah `beforeRouteEnter` dan `beforeRouteUpdate` hooks
   nextTick(() => {
-    document.title = to.meta.title || "Iqbal Ramadan";
+    if (to.meta?.title) {
+      document.title = `${to.meta.title} | Iqbal Ramadan`
+    } else {
+      document.title = "Iqbal Ramadan"
+    }
   });
 });
 

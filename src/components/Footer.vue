@@ -36,14 +36,26 @@
             Copyright &copy; {{ year }} Iqbal Ramadan. All Rights Reserved.
           </p>
         </div>
-        <div class="flex flex-row text-light items-center text-14px">
-          <a href="" class="text-light" hover="text-bright underline"
-            >User Terms & Conditions</a
+        <div class="flex flex-row gap-2 text-light items-center text-14px">
+          <a
+            v-for="item in sosialMedia"
+            :href="item.url"
+            target="_blank"
+            class="flex gap-2 items-center group"
           >
-          |
-          <a href="" class="text-light" hover="text-bright underline"
-            >Privacy Policy</a
-          >
+            <p duration-300 ease-linear group-hover="text-bright">Donate me</p>
+            <span class="sr-only">{{ item.name }}</span>
+            <div
+              :class="item.icon"
+              flex
+              p3
+              sm-p3.5
+              duration-300
+              ease-linear
+              bg="light dark:gray-2"
+              group-hover="bg-bright text-light"
+            ></div>
+          </a>
         </div>
       </div>
     </div>
@@ -52,17 +64,18 @@
 <script setup>
 import { ref } from "vue";
 
-let year = ref(years());
+const sosialMedia = ref([
+  {
+    name: "Instagram",
+    url: "https://iqbalramadan.link/pay",
+    icon: "i-iconoir:donate",
+  },
+]);
 
+let year = ref(years());
 function years() {
   const date = new Date();
   return date.getFullYear();
-}
-
-function hoverLinkHire() {
-  const arrowLink = document.querySelectorAll("#arrowLink")[0];
-  arrowLink.classList.toggle("text-primary");
-  arrowLink.classList.toggle("text-light");
 }
 </script>
 <style lang=""></style>
