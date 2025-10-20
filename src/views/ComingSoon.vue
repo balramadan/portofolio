@@ -4,10 +4,7 @@
     <div
       class="bg-primary h-screen px-5 sm:px-30 py-20 sm:py-30 flex flex-col justify-center items-center"
     >
-      <h2
-        id="csText"
-        class="m-0 text-light text-center text-2xl sm:text-6xl font-rubik"
-      >
+      <h2 id="csText" class="m-0 text-light text-center text-2xl sm:text-6xl">
         Coming Soon
       </h2>
       <p id="dcText" class="text-light text-center text-sm sm:text-base">

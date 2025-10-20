@@ -1,9 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-
 * {
   box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
 }
 
 body,
@@ -20,10 +16,6 @@ ul li {
 router-link,
 a {
   text-decoration: none;
-}
-
-.font-rubik {
-  font-family: "Rubik", sans-serif;
 }
 
 /* Chrome, Safari and Opera */

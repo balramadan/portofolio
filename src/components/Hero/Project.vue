@@ -68,7 +68,7 @@
     </div>
     <div class="flex justify-center mt-5">
       <router-link
-        to="/"
+        to="/projects#top"
         class="text-center text-xs sm:text-sm bg-light text-primary font-semibold border-none rounded-full cursor-pointer transition-all duration-300 ease-in-out"
         p="x-5 y-2"
         hover="bg-bright text-light"

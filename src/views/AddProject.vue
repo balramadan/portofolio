@@ -131,6 +131,13 @@ async function postProject() {
       created_at: projectCreatedAt.value,
     },
   ]);
+
+  if (!data) {
+    console.error("Error inserting data", error);
+    return;
+  }
+
+  console.log("Berhasil");
 }
 </script>
 <style lang=""></style>

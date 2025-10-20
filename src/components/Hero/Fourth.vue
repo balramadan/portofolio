@@ -90,7 +90,7 @@
         <div class="">
           <h2
             id="titlePost"
-            class="font-rubik text-light text-center sm:text-left transition-all duration-300 linear"
+            class="text-light text-center sm:text-left transition-all duration-300 linear"
             group-hover="text-bright"
           >
             {{ item.title }}
@@ -107,7 +107,7 @@ import supabase from "@/utils/supabase";
 import router from "@/router";
 
 function seeAll() {
-  location.href = "https://inspire.iqbalramadan.me"
+  location.href = "https://inspire.iqbalramadan.me";
 }
 
 // function hoverPost(index) {
@@ -121,7 +121,7 @@ function seeAll() {
 // }
 
 function toPost(link) {
-  location.href = `https://inspire.iqbalramadan.me/post/${link}`
+  location.href = `https://inspire.iqbalramadan.me/post/${link}`;
 }
 
 const posts = ref([]);

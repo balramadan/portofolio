@@ -10,7 +10,7 @@
         <a
           class="bg-light px-8 py-3 text-sm lg:text-base font-bold rounded-full cursor-pointer transition-all duration-300 ease-in-out flex flex-row gap-1 items-center text-primary group"
           hover="bg-bright text-light"
-          href="mailto:hello@iqbalramadan.me"
+          href="mailto:hello@iqbalramadan.my.id"
           ><p class="m-0">Hire me</p>
           <svg
             id="arrowLink"
@@ -33,7 +33,7 @@
       <div class="flex flex-col lg:flex-row justify-between items-center gap-2">
         <div class="">
           <p class="m-0 text-14px text-center lg:text-left text-light">
-            Copyright &copy; {{ year }} Iqbal Ramadan. All Rights Reserved.
+            Copyright &copy; {{ year }} Iqbal Ramadan
           </p>
         </div>
         <div class="flex flex-row gap-2 text-light items-center text-14px">
@@ -43,7 +43,7 @@
             target="_blank"
             class="flex gap-2 items-center group"
           >
-            <p duration-300 ease-linear group-hover="text-bright">Donate me</p>
+            <p duration-300 ease-linear group-hover="text-bright">Donate</p>
             <span class="sr-only">{{ item.name }}</span>
             <div
               :class="item.icon"

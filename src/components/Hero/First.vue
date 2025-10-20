@@ -84,7 +84,7 @@
       class="fixed hidden sm:flex flex-row items-center gap-2 bottom-30 -right-18 z-99 rotate-90"
     >
       <a
-        href="mailto:hello@iqbalramadan.me"
+        href="mailto:hello@iqbalramadan.my.id"
         class="text-light text-sm font-mono"
         hover="text-bright"
         >hello@iqbalramadan.my.id</a

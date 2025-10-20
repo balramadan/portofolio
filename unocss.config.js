@@ -18,8 +18,8 @@ export default defineConfig({
       provider: "google",
       fonts: {
         inter: "Inter",
-        lato: "Lato"
-      }
+        lato: "Lato",
+      },
     }),
   ],
   theme: {

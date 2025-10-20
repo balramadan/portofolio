@@ -18,6 +18,14 @@ const router = createRouter({
       },
     },
     {
+      name: "projects",
+      path: "/projects",
+      component: () => import("@/views/Projects.vue"),
+      meta: {
+        title: "Projects",
+      },
+    },
+    {
       name: "addproject",
       path: "/_addproject",
       component: () => import("@/views/AddProject.vue"),
@@ -25,9 +33,20 @@ const router = createRouter({
     {
       name: "addcertification",
       path: "/_addcertification",
-      component: () => import("@/views/AddCertification.vue")
-    }
+      component: () => import("@/views/AddCertification.vue"),
+    },
   ],
+
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: "smooth",
+      };
+
+      return { top: 0 };
+    }
+  },
 });
 
 router.afterEach((to, from) => {
@@ -35,9 +54,9 @@ router.afterEach((to, from) => {
   // setelah `beforeRouteEnter` dan `beforeRouteUpdate` hooks
   nextTick(() => {
     if (to.meta?.title) {
-      document.title = `${to.meta.title} | Iqbal Ramadan`
+      document.title = `${to.meta.title} | Iqbal Ramadan`;
     } else {
-      document.title = "Iqbal Ramadan"
+      document.title = "Iqbal Ramadan";
     }
   });
 });
