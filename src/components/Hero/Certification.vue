@@ -71,7 +71,7 @@ async function fetchCertifications() {
         .sort((a, b) => {
           return new Date(b.created_at) - new Date(a.created_at);
         })
-        .slice(0, 4);
+        .slice(0, 6);
     }
   } catch (error) {
     console.error(error);
