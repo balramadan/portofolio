@@ -31,7 +31,7 @@
     <!-- Certifications Grid -->
     <div
       v-else
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8 max-w-7xl mx-auto"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 max-w-7xl mx-auto"
     >
       <div
         v-for="(item, index) in certifications"

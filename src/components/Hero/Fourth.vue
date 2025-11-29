@@ -1,7 +1,7 @@
 <template>
   <div
     id="fourth"
-    class="bg-primary py-20 px-5 sm:px-10 lg:px-20 overflow-hidden"
+    class="bg-primary py-20 px-5 sm:px-10 lg:px-30 overflow-hidden"
   >
     <!-- Section Header -->
     <div
@@ -23,7 +23,7 @@
 
     <!-- Blog Grid -->
     <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-5 max-w-7xl mx-auto"
     >
       <div
         v-for="(item, index) in posts"
