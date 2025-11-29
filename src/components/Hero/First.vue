@@ -1,151 +1,209 @@
-<template lang="">
-  <div id="first" class="bg-primary h-full sm:h-screen z-0">
+<template>
+  <div
+    id="first"
+    class="relative bg-primary min-h-[calc(100vh-5rem)] md:min-h-screen flex items-center justify-center overflow-hidden z-0"
+  >
+    <!-- Background Elements -->
     <div
-      class="relative pt-25 pb-10 sm:pb-0 lg:pt-40 m-0 px-5 sm:px-10 lg:px-30 flex flex-col text-start sm:h-screen"
+      class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0"
     >
-      <div class="">
-        <div id="hello" class="text-base text-white py-2">Hi, my name is</div>
-        <div class="text-4xl lg:text-7xl font-semibold">
-          <p class="m-0 font-inter" text="[#F97300]" id="textHero">
-            Iqbal Ramadan.
-          </p>
-          <p class="m-0 font-inter mt-2.5 opacity-60" text="[#F97300]">
-            I build things for the web.
-          </p>
-        </div>
-        <div class="">
-          <p
-            class="text-white opacity-60 mt-5 text-wrap mr-0 lg:mr-100 xl:mr-150"
+      <div
+        class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-bright/10 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow"
+      ></div>
+      <div
+        class="absolute top-[20%] -right-[10%] w-[40%] h-[40%] bg-grass/10 blur-[100px] rounded-full mix-blend-screen"
+      ></div>
+    </div>
+
+    <!-- Main Content -->
+    <div
+      class="container mx-auto px-5 sm:px-12 lg:px-0 relative z-0 flex flex-col lg:flex-row items-center lg:items-start justify-center h-full"
+    >
+      <div
+        class="flex flex-col items-start justify-center w-full lg:w-3/4 xl:w-2/3 pt-20 lg:pt-10"
+      >
+        <!-- Intro -->
+        <div
+          id="hero-intro"
+          class="flex items-center gap-3 mb-6 overflow-hidden"
+        >
+          <div class="h-[1px] w-12 bg-bright"></div>
+          <span class="text-bright font-mono text-lg tracking-wide"
+            >Hi, my name is</span
           >
-            I’m a software engineer specializing in building (and occasionally
-            designing) exceptional digital experiences. Currently, I am focusing
-            on studying mobile development to expand my knowledge.
-          </p>
-          <a href="#third" class="scroll-smooth">
+        </div>
+
+        <!-- Name -->
+        <div class="overflow-hidden mb-2">
+          <h1
+            id="hero-name"
+            class="text-5xl sm:text-7xl lg:text-8xl font-bold text-light font-inter tracking-tight leading-tight"
+          >
+            Iqbal Ramadan.
+          </h1>
+        </div>
+
+        <!-- Tagline -->
+        <div class="mb-10">
+          <h2
+            id="hero-tagline"
+            class="text-4xl sm:text-6xl lg:text-7xl font-bold text-secondary font-inter tracking-tight"
+          >
+            I build things for the web.
+          </h2>
+        </div>
+
+        <!-- Description -->
+        <p
+          id="hero-desc"
+          class="text-light/70 text-lg sm:text-xl max-w-2xl leading-relaxed mb-12 font-lato"
+        >
+          I’m a software engineer specializing in building (and occasionally
+          designing) exceptional digital experiences. Currently, I am focusing
+          on studying mobile development to expand my knowledge.
+        </p>
+
+        <!-- CTA Button -->
+        <div id="hero-cta" class="opacity-0 translate-y-4">
+          <a
+            href="#third"
+            class="group relative inline-flex items-center justify-center px-8 py-4 font-mono text-bright border border-bright rounded hover:bg-bright/10 transition-all duration-300"
+          >
+            <span>Check what I've done</span>
             <div
-              class="mt-5 py-3 px-5 w-52 text-[#F97300] border border-[#F97300] opacity-60 rounded cursor-pointer transition-all duration-500 ease-in-out"
-              hover="shadow mt-4 bg-[#C97300] bg-opacity-10 opacity-100"
-            >
-              Check what I've done
-            </div>
+              class="absolute inset-0 border border-bright rounded scale-105 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500"
+            ></div>
           </a>
         </div>
       </div>
-      <!-- <div class="flex flex-col items-center bottom-0 pb-0 z-0">
-        <svg
-          id="circleHero"
-          size="350px lg:500px"
-          class="mt-10 stroke-[#F97300] opacity-50 z-0"
-          fill="#F97300"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          stroke=""
-        >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-          <g
-            id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></g>
-          <g id="SVGRepo_iconCarrier">
-            <path
-              d="M22,12c0,4.971-4.477,9-10,9S2,16.971,2,12,6.477,3,12,3,22,7.029,22,12Z"
-            ></path>
-          </g>
-        </svg>
-        <img
-          id="profileImage"
-          w="85 sm:90 2xl:120"
-          class="object-cover absolute inset-0 mb-0 mx-auto mt-auto z-0"
-          src="/polo-shirt-profile-crop.png"
-          alt=""
-        />
-        <svg
-          id="arrowDown"
-          class="absolute inset-0 mb-0 mx-auto mt-auto cursor-pointer z-0"
-          xmlns="http://www.w3.org/2000/svg"
-          width="4em"
-          height="4em"
-          viewBox="0 0 24 24"
-          @click="scrollTo"
-        >
-          <path
-            fill="none"
-            stroke="#F97300"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
-            d="m6 13l6 6l6-6M6 5l6 6l6-6"
-          />
-        </svg>
-      </div> -->
     </div>
+
+    <!-- Scroll Indicator -->
     <div
-      class="fixed hidden sm:flex flex-row items-center gap-2 bottom-30 -right-18 z-99 rotate-90"
+      id="scroll-indicator"
+      class="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0"
+    >
+      <span class="text-xs font-mono text-light/50 tracking-widest uppercase"
+        >Scroll</span
+      >
+      <div
+        class="w-[1px] h-12 bg-gradient-to-b from-bright to-transparent"
+      ></div>
+    </div>
+
+    <!-- Social Links (Fixed Side) -->
+    <!-- <div
+      class="fixed hidden lg:flex flex-col items-center gap-6 bottom-0 left-12 z-100 after:content-[''] after:w-[1px] after:h-24 after:bg-light/40 after:mt-6"
     >
       <a
         href="mailto:hello@iqbalramadan.my.id"
-        class="text-light text-sm font-mono"
-        hover="text-bright"
-        >hello@iqbalramadan.my.id</a
+        class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
       >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="1em"
-        height="1em"
-        viewBox="0 0 24 24"
+        <div class="i-carbon-email text-2xl"></div>
+      </a>
+      <a
+        href="https://github.com/iqbalramadan"
+        target="_blank"
+        class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
       >
-        <path
-          class="fill-light"
-          fill=""
-          d="M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20zm8-7l8-5V6l-8 5l-8-5v2z"
-        />
-      </svg>
+        <div class="i-carbon-logo-github text-2xl"></div>
+      </a>
+      <a
+        href="https://linkedin.com/in/iqbalramadan"
+        target="_blank"
+        class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
+      >
+        <div class="i-carbon-logo-linkedin text-2xl"></div>
+      </a>
+    </div> -->
+
+    <!-- Email (Fixed Side) -->
+    <div
+      class="fixed hidden lg:flex flex-col items-center gap-6 bottom-0 right-12 z-100 after:content-[''] after:w-[1px] after:h-24 after:bg-light/40 after:mt-6"
+    >
+      <a
+        href="mailto:hello@iqbalramadan.my.id"
+        class="writing-vertical-rl text-light/60 font-mono text-sm tracking-widest hover:text-bright hover:-translate-y-1 transition-all duration-300"
+      >
+        hello@iqbalramadan.my.id
+      </a>
     </div>
   </div>
 </template>
+
 <script setup>
-// import gsap from "gsap";
-// import { onMounted } from "vue";
+import { onMounted } from "vue";
+import gsap from "gsap";
 
-// function scrollTo() {
-//   window.scrollTo({
-//     top: window.innerHeight,
-//     behavior: "smooth",
-//   });
-// }
+onMounted(() => {
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-// onMounted(() => {
-//   gsap.from("#hello", {
-//     duration: 1,
-//     y: -200,
-//     ease: "expo.out",
-//   });
-//   gsap.from("#textHero", {
-//     duration: 2,
-//     delay: 0.8,
-//     y: -500,
-//     ease: "expo.out",
-//   });
-//   gsap.from("#profileImage", {
-//     duration: 2,
-//     delay: 1.2,
-//     y: 200,
-//     scale: 0,
-//     ease: "expo.out",
-//   });
-//   gsap.from("#circleHero", {
-//     duration: 2,
-//     delay: 1.3,
-//     scale: 0,
-//     ease: "circ.out",
-//   });
-//   gsap.from("#arrowDown", {
-//     duration: 2,
-//     y: -20,
-//     repeat: -1,
-//     yoyo: true,
-//   });
-// });
+  tl.from("#hero-intro", {
+    y: 20,
+    opacity: 0,
+    duration: 0.8,
+    delay: 0.5,
+  })
+    .from(
+      "#hero-name",
+      {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+      },
+      "-=0.6"
+    )
+    .from(
+      "#hero-tagline",
+      {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+      },
+      "-=0.8"
+    )
+    .from(
+      "#hero-desc",
+      {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+      },
+      "-=0.8"
+    )
+    .to(
+      "#hero-cta",
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+      },
+      "-=0.6"
+    )
+    .to("#scroll-indicator", {
+      opacity: 1,
+      duration: 1,
+      delay: 0.5,
+    });
+});
 </script>
-<style lang=""></style>
+
+<style scoped>
+.writing-vertical-rl {
+  writing-mode: vertical-rl;
+}
+
+.animate-pulse-slow {
+  animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+</style>

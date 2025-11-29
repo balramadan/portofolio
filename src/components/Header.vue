@@ -1,249 +1,208 @@
 <template>
+  <!-- Mobile Menu Overlay -->
   <div
-    @click="closeNavBar()"
-    aria-hidden="true"
-    class="sticky bg-gray-8/40 inset-0 z-999"
-    :class="navIsOpen ? 'flex lg-hidden' : 'hidden'"
+    @click="closeNavBar"
+    class="fixed inset-0 bg-primary/80 backdrop-blur-sm z-[998] transition-opacity duration-300 lg:hidden"
+    :class="
+      navIsOpen
+        ? 'opacity-100 visible'
+        : 'opacity-0 invisible pointer-events-none'
+    "
   ></div>
+
+  <!-- Header -->
   <header
-    fixed
-    left-0
-    right-0
-    top-0
-    lg:mx-30
-    lg:mt-5
-    lg:rounded-full
-    flex
-    items-center
-    h20
-    bg="primary lg:white/25 dark:gray-950"
-    border-b="~ white/50 lg:white/20 dark:gray-7"
-    z99
-    shadow-sm
-    lg:backdrop-blur-sm
+    class="fixed top-0 left-0 right-0 z-[999] transition-all duration-300"
+    :class="[isScrolled ? 'py-4' : 'py-6', 'px-5 sm:px-10 lg:px-20']"
   >
     <nav
-      relative
-      max-w-screen
-      px-5
-      w-full
-      px="5 sm:10 md:12 lg:5"
-      flex
-      gap-x-5
-      justify-between
-      items-center
+      class="mx-auto max-w-7xl flex items-center justify-between p-2 rounded-full transition-all duration-300 border border-white/5"
+      :class="[
+        isScrolled || navIsOpen
+          ? 'bg-primary/80 backdrop-blur-sm shadow-lg shadow-black/5'
+          : 'bg-transparent border-transparent',
+      ]"
     >
-      <div aria-hidden="true" class="w-full flex items-center lg-hidden">
-        <button
-          @click="toggleNavBar()"
-          aria-label="toggle navbar"
-          outline-none
-          border-none
-          bg-transparent
-          relative
-          py3
-          pr3
-          cursor-pointer
-        >
-          <div
-            aria-hidden="true"
-            h0.5
-            w6
-            rd
-            transition
-            duration-300
-            bg="light"
-            :class="navIsOpen ? 'rotate-45 translate-y-1.5' : ''"
-          ></div>
-          <div
-            aria-hidden="true"
-            mt2
-            h0.5
-            w6
-            rd
-            transition
-            duration-300
-            bg="light"
-            :class="navIsOpen ? '-rotate-45 -translate-y-1.5' : ''"
-          ></div>
-        </button>
-      </div>
-      <div
-        absolute
-        lg-relative
-        lg-flex
-        w-full
-        top-full
-        lg-top-0
-        left-0
-        mt="5 lg:0"
-        bg="primary/80 dark:gray-950 lg:transparent dark:lg:transparent"
-        border-b="~ gray-2 dark:gray-8 lg:0"
-        ease-linear
-        duration-300
-        :class="
-          navIsOpen ? 'visible op100' : 'invisible op0 lg-visible lg-op-100'
-        "
-      >
-        <ul
-          px="5 sm:10 md:12 lg:0"
-          flex
-          flex-col
-          lg:flex-row
-          lg:items-center
-          py="4 lg:0"
-          gap="y-6"
-          group
-          text="white lg:primary dark:gray-3"
-        >
-          <li v-for="navItem in navItems" :key="navItem.id" class="">
-            <a
-              v-if="navItem.isActive"
-              :href="navItem.href"
-              class="relative py-2.5 transition-all duration-300 ease-linear lg:after-hidden after-absolute after-content-empty after-bg-white after-w-full after-left-0 after-bottom-0 after-h-px after-rd-md after-duration-300 after-ease-linear lg:bg-light lg:rounded-full lg:px-6 lg:mx-1"
-            >
-              {{ navItem.text }}
-            </a>
-            <a
-              v-else
-              :href="navItem.href"
-              class="relative py-2.5 transition-all duration-300 ease-linear lg:after-hidden after-absolute after-content-empty after-bg-white after-w-full after-left-0 after-bottom-0 after-h-px after-rd-md after-duration-300 after-ease-linear after-scale-x-0 hover-after-scale-x-100 lg:text-light lg:mx-6 lg:hover:mx-1"
-              hover="lg:bg-light/40 lg:px-5 lg:rounded-full"
-            >
-              {{ navItem.text }}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="flex items-center flex-1 w-full">
+      <!-- Logo -->
+      <div class="flex items-center pl-4">
         <router-link
           to="/"
-          class="text-gray-8 dark-text-gray-2 flex items-center gap-x-0.5"
+          class="flex items-center gap-2 group"
+          @click="closeNavBar"
         >
-          <img src="/logo.webp" alt="Iqbal" class="max-w-none h-10 w-10" />
+          <div
+            class="relative w-10 h-10 rounded-full overflow-hidden border border-white/10 group-hover:border-bright/50 transition-colors duration-300"
+          >
+            <img
+              src="/logo.webp"
+              alt="Iqbal"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <span
+            class="font-bold text-light font-inter tracking-tight group-hover:text-bright transition-colors duration-300"
+            >Iqbal Ramadan</span
+          >
         </router-link>
       </div>
-      <div flex justify-end items-center gap-x="1.5 sm:5" w-full text="light">
-        <a href="https://instagram.com/balramadan" target="_blank" duration-200 ease-linear>
-          <span class="sr-only">Instagram</span>
-          <span
-            i-carbon:logo-instagram
-            flex
-            p3
-            sm-p3.5
-            duration-300
-            ease-linear
-            bg="light dark:gray-2"
-            hover=" bg-[#F97300] text-light"
-          ></span>
-        </a>
+
+      <!-- Desktop Navigation -->
+      <div
+        class="hidden lg:flex items-center gap-1 bg-white/5 rounded-full p-1 border border-white/5"
+      >
         <a
-          href="https://linkedin.com/in/balramadan"
-          target="_blank"
-          duration-200
-          ease-linear
-          hover="text-gray-8 dark:text-gray-2"
+          v-for="item in navItems"
+          :key="item.id"
+          :href="item.href"
+          class="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 relative group"
+          :class="
+            item.isActive
+              ? 'text-primary bg-light'
+              : 'text-light/70 hover:text-light hover:bg-white/10'
+          "
         >
-          <span class="sr-only">Linkedin</span>
-          <span
-            i-carbon-logo-linkedin
-            size-2
-            flex
-            p3
-            sm-p3.5
-            duration-300
-            ease-linear
-            bg="light dark:gray-2"
-            hover="bg-[#F97300] text-light"
-          ></span>
-        </a>
-        <a
-          href="https://github.com/balramadan"
-          target="_blank"
-          duration-200
-          ease-linear
-          hover="text-gray-8 dark:text-gray-2"
-        >
-          <span class="sr-only">Github</span>
-          <span
-            i-carbon-logo-github
-            flex
-            p3
-            sm-p3.5
-            duration-300
-            ease-linear
-            bg="light dark:gray-2"
-            hover="bg-[#F97300] text-light"
-          ></span>
-        </a>
-        <a
-          href="https://gitlab.com/balramadan"
-          target="_blank"
-          duration-200
-          ease-linear
-          hover="text-gray-8 dark:text-gray-2"
-        >
-          <span class="sr-only">gitlab</span>
-          <span
-            i-carbon-logo-gitlab
-            flex
-            p3
-            sm-p3.5
-            duration-300
-            ease-linear
-            bg="light dark:gray-2"
-            hover=" bg-[#F97300] text-light"
-          ></span>
+          {{ item.text }}
         </a>
       </div>
+
+      <!-- Social Icons (Desktop) -->
+      <div class="hidden lg:flex items-center gap-2 pr-2">
+        <a
+          v-for="social in sosialMedia"
+          :key="social.name"
+          :href="social.url"
+          target="_blank"
+          class="p-2.5 rounded-full text-light/70 hover:text-white hover:bg-bright hover:shadow-lg hover:shadow-bright/20 transition-all duration-300"
+          :aria-label="social.name"
+        >
+          <div :class="social.icon" class="text-lg"></div>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        @click="toggleNavBar"
+        class="lg:hidden p-2 text-light hover:text-bright transition-colors relative z-[1000]"
+        aria-label="Toggle Menu"
+      >
+        <div class="w-6 h-5 flex flex-col justify-between relative">
+          <span
+            class="w-full h-0.5 bg-current rounded-full transition-all duration-300 origin-center"
+            :class="navIsOpen ? 'rotate-45 translate-y-2' : ''"
+          ></span>
+          <span
+            class="w-full h-0.5 bg-current rounded-full transition-all duration-300"
+            :class="navIsOpen ? 'opacity-0' : ''"
+          ></span>
+          <span
+            class="w-full h-0.5 bg-current rounded-full transition-all duration-300 origin-center"
+            :class="navIsOpen ? '-rotate-45 -translate-y-2.5' : ''"
+          ></span>
+        </div>
+      </button>
     </nav>
+
+    <!-- Mobile Menu Dropdown -->
+    <div
+      class="absolute top-full left-5 right-5 mt-2 p-4 rounded-2xl bg-primary/90 backdrop-blur-xl border border-white/10 shadow-2xl transform transition-all duration-300 origin-top lg:hidden"
+      :class="
+        navIsOpen
+          ? 'opacity-100 scale-y-100 translate-y-0'
+          : 'opacity-0 scale-y-95 -translate-y-4 pointer-events-none'
+      "
+    >
+      <ul class="flex flex-col gap-2">
+        <li v-for="item in navItems" :key="item.id">
+          <a
+            :href="item.href"
+            class="block px-4 py-3 rounded-xl text-center font-medium transition-all duration-300"
+            :class="
+              item.isActive
+                ? 'bg-bright text-white shadow-lg shadow-bright/20'
+                : 'text-light/80 hover:bg-white/5 hover:text-light'
+            "
+            @click="closeNavBar"
+          >
+            {{ item.text }}
+          </a>
+        </li>
+      </ul>
+
+      <div class="h-[1px] w-full bg-white/10 my-4"></div>
+
+      <div class="flex justify-center gap-4">
+        <a
+          v-for="social in sosialMedia"
+          :key="social.name"
+          :href="social.url"
+          target="_blank"
+          class="p-3 rounded-full bg-white/5 text-light hover:bg-bright hover:text-white transition-all duration-300"
+        >
+          <div :class="social.icon" class="text-xl"></div>
+        </a>
+      </div>
+    </div>
   </header>
 </template>
+
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { navStore } from "@/stores/nav";
 
 const navIsOpen = ref(false);
-
+const isScrolled = ref(false);
 const navItems = navStore().navItems;
 
-function toggleNavBar() {
-  navIsOpen.value = !navIsOpen.value;
-  document.body.classList.toggle("overflow-y-auto");
-}
-
-function closeNavBar() {
-  navIsOpen.value = false;
-  document.body.classList.add("overflow-y-auto");
-}
-
-const sosialMedia = ref([
+const sosialMedia = [
   {
     name: "Instagram",
     url: "https://instagram.com/balramadan",
-    icon: "i-carbon:logo-instagram",
+    icon: "i-carbon-logo-instagram",
   },
   {
     name: "Linkedin",
     url: "https://linkedin.com/in/balramadan",
-    icon: "i-carbon:logo-linkedin",
+    icon: "i-carbon-logo-linkedin",
   },
   {
     name: "Github",
     url: "https://github.com/balramadan",
-    icon: "i-carbon:logo-github",
+    icon: "i-carbon-logo-github",
   },
   {
     name: "Gitlab",
     url: "https://gitlab.com/balramadan",
-    icon: "i-carbon:logo-gitlab",
+    icon: "i-carbon-logo-gitlab",
   },
-]);
+];
 
-// function navLink(id) {
-//   const element = ref[id];
-//   const top = element.offsetTop;
-//   window.scrollTo(0, top);
-// }
+function toggleNavBar() {
+  navIsOpen.value = !navIsOpen.value;
+  if (navIsOpen.value) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+}
+
+function closeNavBar() {
+  navIsOpen.value = false;
+  document.body.style.overflow = "";
+}
+
+function handleScroll() {
+  isScrolled.value = window.scrollY > 50;
+}
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>
-<style lang=""></style>
+
+<style scoped>
+/* Add any specific styles if needed, but Tailwind/UnoCSS should cover most */
+</style>

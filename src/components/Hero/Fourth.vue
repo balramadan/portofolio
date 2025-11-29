@@ -1,144 +1,198 @@
 <template>
-  <div id="fourth" class="h-full bg-primary px-5 sm:px-30 py-5">
-    <hr class="mb-5" />
-    <div class="flex flex-row justify-between items-center">
-      <h2 class="text-light my-auto" m="">From my blog post</h2>
-      <button
-        class="text-xs sm:text-sm lg:text-base bg-light text-primary font-semibold border-none my-auto rounded-full cursor-pointer transition-all duration-300 ease-in-out"
-        p="x-5 y-2"
-        hover="bg-bright text-light"
-        @click="seeAll"
+  <div
+    id="fourth"
+    class="bg-primary py-20 px-5 sm:px-10 lg:px-20 overflow-hidden"
+  >
+    <!-- Section Header -->
+    <div
+      id="blog-header"
+      class="flex flex-col items-center mb-16 opacity-0 translate-y-10"
+    >
+      <h2
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-light font-inter mb-4 tracking-tight text-center"
       >
-        See All
-      </button>
-    </div>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 py-5">
+        Latest Articles
+      </h2>
       <div
-        id="cardPost"
+        class="h-1 w-20 bg-gradient-to-r from-bright to-grass rounded-full"
+      ></div>
+      <p class="text-light/60 mt-4 text-center max-w-2xl font-lato">
+        Thoughts, tutorials, and insights on web development.
+      </p>
+    </div>
+
+    <!-- Blog Grid -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto"
+    >
+      <div
         v-for="(item, index) in posts"
-        :key="item"
+        :key="item.id || index"
         @click="toPost(item.permalink)"
-        class="block px-5 py-5 border border-light/20 transition-all duration-300 linear group"
-        hover="cursor-pointer bg-light/10 border-solid border-light/100"
+        class="blog-card group relative bg-secondary/20 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-2xl hover:shadow-bright/10 hover:border-bright/30 transition-all duration-300 cursor-pointer opacity-0 translate-y-10"
       >
-        <div class="flex overflow-hidden">
+        <!-- Thumbnail -->
+        <div class="relative h-56 overflow-hidden bg-secondary/30">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent z-10"
+          ></div>
           <img
-            :src="`https://rnjqyqiohdhnlcidizdw.supabase.co/storage/v1/object/public/post/${item.image}`"
-            class="mx-auto rounded object-cover transition-transform duration-300 ease-in-out"
-            group-hover="scale-110"
-            h="50"
-            w="full lg:50 xl:80"
-            alt=""
+            :src="`https://rnjqyqiohdhnlcidizdw.supabase.co/storage/v1/object/public/post/${item.image}?width=600&format=webp`"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            :alt="item.title"
+            loading="lazy"
+            width="600"
+            height="400"
           />
-        </div>
-        <div class="flex mt-5">
-          <p
-            class="text-center text-light text-sm font-semibold bg-light/20 rounded-full px-3 py-1 m-0 mx-auto transition-all duration-300 linear"
-            sm="mx-0 mr-auto"
-            group-hover="bg-bright/10"
-          >
-            {{ item.tag }}
-          </p>
-        </div>
-        <div
-          class="flex flex-row gap-4 justify-center items-center text-sm"
-          sm="justify-left"
-        >
-          <div class="text-light flex flex-row items-center gap-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1.2em"
-              height="1.2em"
-              viewBox="0 0 24 24"
+          <!-- Tag Badge -->
+          <div class="absolute top-4 left-4 z-20">
+            <span
+              class="px-3 py-1 text-xs font-mono font-medium text-bright bg-black/50 backdrop-blur-md border border-bright/20 rounded-full"
             >
-              <path
-                fill="currentColor"
-                d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"
-              />
-            </svg>
-            <p class="my-3">{{ item.author }}</p>
-          </div>
-          <div class="text-light flex flex-row items-center gap-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1.2em"
-              height="1.2em"
-              viewBox="0 0 24 24"
-            >
-              <g fill="none">
-                <path
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  d="M2 12c0-3.771 0-5.657 1.172-6.828S6.229 4 10 4h4c3.771 0 5.657 0 6.828 1.172S22 8.229 22 12v2c0 3.771 0 5.657-1.172 6.828S17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172S2 17.771 2 14z"
-                />
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-width="1.5"
-                  d="M7 4V2.5M17 4V2.5M2.5 9h19"
-                  opacity="0.5"
-                />
-                <path
-                  fill="currentColor"
-                  d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"
-                />
-              </g>
-            </svg>
-            <p class="my-3">{{ item.created_at }}</p>
+              {{ item.tag }}
+            </span>
           </div>
         </div>
-        <div class="">
-          <h2
-            id="titlePost"
-            class="text-light text-center sm:text-left transition-all duration-300 linear"
-            group-hover="text-bright"
+
+        <!-- Content -->
+        <div class="p-6 relative z-20 -mt-12">
+          <div
+            class="bg-primary/80 backdrop-blur-md border border-white/5 rounded-xl p-5 shadow-lg"
           >
-            {{ item.title }}
-          </h2>
+            <!-- Metadata -->
+            <div
+              class="flex items-center gap-4 text-xs text-light/50 font-mono mb-3"
+            >
+              <div class="flex items-center gap-1.5">
+                <span class="i-carbon-calendar"></span>
+                <span>{{
+                  new Date(item.created_at).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })
+                }}</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="i-carbon-user"></span>
+                <span>{{ item.author }}</span>
+              </div>
+            </div>
+
+            <!-- Title -->
+            <h3
+              class="text-lg font-bold text-light font-inter mb-3 group-hover:text-bright transition-colors line-clamp-2"
+            >
+              {{ item.title }}
+            </h3>
+
+            <!-- Read More -->
+            <div
+              class="flex items-center gap-2 text-sm text-bright font-medium mt-4 group/link"
+            >
+              <span>Read Article</span>
+              <span
+                class="i-carbon-arrow-right transition-transform duration-300 group-hover/link:translate-x-1"
+              ></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- See All Button -->
+    <div
+      id="blog-cta"
+      class="flex justify-center mt-16 opacity-0 translate-y-8"
+    >
+      <button
+        @click="seeAll"
+        class="group relative inline-flex items-center justify-center px-8 py-3 font-mono text-bright border border-bright rounded hover:bg-bright/10 transition-all duration-300"
+      >
+        <span>Visit Blog</span>
+        <div
+          class="i-carbon-arrow-up-right ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
+        ></div>
+      </button>
+    </div>
   </div>
 </template>
+
 <script setup>
-import { ref, onBeforeMount, onMounted } from "vue";
+import { ref, onBeforeMount, nextTick } from "vue";
 import { postStore } from "@/stores/post";
 import supabase from "@/utils/supabase";
-import router from "@/router";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-function seeAll() {
-  location.href = "https://inspire.iqbalramadan.me";
-}
-
-// function hoverPost(index) {
-//   const cardPost = document.querySelectorAll("#cardPost");
-//   const titlePost = document.querySelectorAll("#titlePost");
-//   cardPost[index].classList.toggle("bg-light/10");
-//   cardPost[index].classList.toggle("border-solid");
-//   cardPost[index].classList.toggle("border-light");
-//   titlePost[index].classList.toggle("text-light");
-//   titlePost[index].classList.toggle("text-bright");
-// }
-
-function toPost(link) {
-  location.href = `https://inspire.iqbalramadan.me/post/${link}`;
-}
+gsap.registerPlugin(ScrollTrigger);
 
 const posts = ref([]);
 const post = postStore();
 
+function seeAll() {
+  window.open("https://inspire.iqbalramadan.me", "_blank");
+}
+
+function toPost(link) {
+  window.open(`https://inspire.iqbalramadan.me/post/${link}`, "_blank");
+}
+
+function initAnimations() {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#blog",
+      start: "top 80%",
+    },
+  });
+
+  tl.to("#blog-header", {
+    y: 0,
+    opacity: 1,
+    duration: 0.8,
+    ease: "power3.out",
+  })
+    .to(
+      ".blog-card",
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+      },
+      "-=0.4"
+    )
+    .to(
+      "#blog-cta",
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: "power3.out",
+      },
+      "-=0.2"
+    );
+}
+
 onBeforeMount(async () => {
   try {
     let { data: postan, error } = await supabase.from("post").select("*");
-    if (error) {
-      throw new Error(error.message);
-    }
+    if (error) throw new Error(error.message);
+
     postan.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     posts.value = postan.slice(0, 3);
     post.setPosts(postan);
+
+    nextTick(() => {
+      initAnimations();
+    });
   } catch (e) {
-    throw new Error(e.message);
+    console.error(e.message);
   }
 });
 </script>
-<style lang=""></style>
+
+<style scoped>
+/* Scoped styles if needed */
+</style>

@@ -1,85 +1,126 @@
 <template>
-  <div class="bg-primary px-5 sm:px-30 py-10 h-full">
-    <h2 class="text-center text-light font-bold">Some Things I’ve Built</h2>
-    <div v-if="isLoading" class="mt-5">
-      <span>Loading...</span>
-    </div>
-    <div v-else class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-5">
+  <div
+    id="third"
+    class="bg-primary py-20 px-5 sm:px-10 lg:px-30 overflow-hidden z-0"
+  >
+    <!-- Background Elements -->
+    <div
+      class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0"
+    >
       <div
-        class="w-full h-auto flex flex-col sm:flex-row justify-center items-center sm:justify-start sm:items-start gap-3 px-5 py-5 transition ease-linear duration-300 group"
-        hover="cursor-pointer bg-secondary/40 backdrop-blur-lg rounded border border-solid border-light/40"
-        v-for="(item, index) in projects"
-        @click="toGithub(item.project_github)"
-        :key="index"
+        class="absolute top-[20%] -left-[10%] w-[50%] h-[50%] bg-bright/5 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow"
+      ></div>
+      <div
+        class="absolute bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-grass/5 blur-[100px] rounded-full mix-blend-screen"
+      ></div>
+    </div>
+
+    <div class="container mx-auto relative z-10">
+      <!-- Section Header -->
+      <div
+        id="projects-header"
+        class="flex flex-col items-center mb-16 opacity-0 translate-y-8"
       >
-        <img
-          :src="`https://rnjqyqiohdhnlcidizdw.supabase.co/storage/v1/object/public/project/${item.project_img}`"
-          id="imageProject"
-          w="full sm:2/5"
-          h="38 sm:25 lg:30"
-          class="object-cover rounded-lg brightness-70 transition ease-linear duration-300"
-          alt=""
-        />
-        <div class="" w="sm:3/5">
-          <div class="flex flex-row gap-2 items-center">
-            <h3
-              class="projectName m-0 transition ease-linear duration-300 text-light"
-              group-hover="text-bright tracking-0.2"
-              text="4"
-            >
-              {{ item.project_name }}
-            </h3>
-            <svg
-              id="arrowUpRight"
-              xmlns="http://www.w3.org/2000/svg"
-              class="size-3 transition-all duration-300 ease-in-out text-light"
-              group-hover="size-5"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                d="M6 18L18 6m0 0H9m9 0v9"
-              />
-            </svg>
+        <h2 class="text-3xl sm:text-4xl font-bold text-light font-inter mb-4">
+          Some Things I’ve Built
+        </h2>
+        <div
+          class="h-1 w-20 bg-gradient-to-r from-bright to-transparent rounded-full"
+        ></div>
+      </div>
+
+      <!-- Loading State -->
+      <div v-if="isLoading" class="flex justify-center items-center h-64">
+        <div
+          class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-bright"
+        ></div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div v-else class="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10">
+        <div
+          v-for="(item, index) in projects"
+          :key="index"
+          class="project-card group relative bg-secondary/20 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-bright/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-bright/10 opacity-0 translate-y-8"
+          @click="toGithub(item.project_github)"
+        >
+          <!-- Thumbnail -->
+          <div class="relative h-56 overflow-hidden bg-secondary/30">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent z-10"
+            ></div>
+            <img
+              :src="`https://rnjqyqiohdhnlcidizdw.supabase.co/storage/v1/object/public/project/${item.project_img}?width=600&format=webp`"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              :alt="item.project_name"
+              loading="lazy"
+              width="600"
+              height="400"
+            />
           </div>
-          <p id="projectDesc" class="text-light/40" text="3.5">
-            {{
-              item.project_desc.split(" ").length > 20
-                ? item.project_desc.split(" ").slice(0, 20).join(" ") + "..."
-                : item.project_desc
-            }}
-          </p>
-          <ul class="flex flex-row flex-wrap gap-2 m-0 p-0 mt-1.5">
-            <li
-              class="m-0 bg-light/10 rounded-full px-3 py-1 text-light"
-              text="3"
-              v-for="tech in item.project_tech"
-              :key="tech"
+
+          <!-- Content -->
+          <div
+            class="p-6 sm:p-8 relative z-20 bg-gradient-to-t from-primary via-primary/95 to-transparent -mt-20 pt-24"
+          >
+            <div class="flex justify-between items-start mb-3">
+              <h3
+                class="text-2xl font-bold text-light font-inter group-hover:text-bright transition-colors duration-300"
+              >
+                {{ item.project_name }}
+              </h3>
+              <div
+                class="p-2 rounded-full bg-white/5 text-light group-hover:bg-bright group-hover:text-white transition-all duration-300"
+              >
+                <div class="i-carbon-arrow-up-right text-lg"></div>
+              </div>
+            </div>
+
+            <p
+              class="text-light/70 mt-5 mb-6 font-lato leading-relaxed line-clamp-3"
             >
-              {{ tech }}
-            </li>
-          </ul>
+              {{ item.project_desc }}
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              <span
+                v-for="tech in item.project_tech"
+                :key="tech"
+                class="px-3 py-1 text-xs font-mono text-bright bg-bright/10 rounded-full border border-bright/20"
+              >
+                {{ tech }}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="flex justify-center mt-5">
-      <router-link
-        to="/projects#top"
-        class="text-center text-xs sm:text-sm bg-light text-primary font-semibold border-none rounded-full cursor-pointer transition-all duration-300 ease-in-out"
-        p="x-5 y-2"
-        hover="bg-bright text-light"
-        >See All</router-link
+
+      <!-- See All Button -->
+      <div
+        id="projects-cta"
+        class="flex justify-center mt-16 opacity-0 translate-y-8"
       >
+        <router-link
+          to="/projects#top"
+          class="group relative inline-flex items-center justify-center px-8 py-3 font-mono text-bright border border-bright rounded hover:bg-bright/10 transition-all duration-300"
+        >
+          <span>View Full Project Archive</span>
+          <div
+            class="i-carbon-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"
+          ></div>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
+
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, nextTick } from "vue";
 import supabase from "@/utils/supabase";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const isLoading = ref(false);
 const projects = ref([]);
@@ -103,22 +144,79 @@ async function fetchProjects() {
         .sort((a, b) => {
           return new Date(b.created_at) - new Date(a.created_at);
         })
-        .slice(0, 6);
+        .slice(0, 4); // Limit to 4 for the preview section
     }
   } catch (error) {
     console.error(error);
   } finally {
     isLoading.value = false;
+    // Wait for DOM update then animate
+    nextTick(() => {
+      animateProjects();
+    });
   }
 }
 
 // Function to open Github link
 function toGithub(link) {
-  window.open(link, "_blank");
+  if (link) window.open(link, "_blank");
+}
+
+function animateProjects() {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#projects",
+      start: "top 70%",
+      toggleActions: "play none none reverse",
+    },
+  });
+
+  tl.to("#projects-header", {
+    y: 0,
+    opacity: 1,
+    duration: 0.8,
+    ease: "power3.out",
+  })
+    .to(
+      ".project-card",
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out",
+      },
+      "-=0.4"
+    )
+    .to(
+      "#projects-cta",
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out",
+      },
+      "-=0.4"
+    );
 }
 
 onMounted(async () => {
   await fetchProjects();
 });
 </script>
-<style></style>
+
+<style scoped>
+.animate-pulse-slow {
+  animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+</style>
