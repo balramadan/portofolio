@@ -7,9 +7,10 @@ import router from "@/router";
 import "virtual:uno.css";
 
 const app = createApp(App);
+const head = createHead();
 
 app.use(createPinia());
-app.use(createHead());
+app.use(head);
 app.use(router);
 
 app.mount("#app");
