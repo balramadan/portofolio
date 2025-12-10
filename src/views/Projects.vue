@@ -157,6 +157,7 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref, nextTick } from "vue";
+import { useHead, useSeoMeta } from "@unhead/vue";
 import DetailLayout from "@/layouts/DetailLayout.vue";
 import supabase from "@/utils/supabase";
 import gsap from "gsap";
@@ -261,6 +262,38 @@ onMounted(async () => {
   if (trigger.value) {
     observer.observe(trigger.value);
   }
+});
+
+useHead({
+  link: [
+    {
+      rel: "icon",
+      href: "/favicon.ico",
+    },
+    {
+      rel: "shortcut icon",
+      href: "/favicon.ico",
+    },
+    {
+      rel: "icon",
+      href: "/logo.svg",
+    },
+  ],
+});
+
+useSeoMeta({
+  title: "Iqbal Ramadan - Junior Fullstack Developer",
+  description: "Portofolio Junior Fullstack Developer",
+  keywords: "Iqbal Ramadan, Junior Fullstack Developer, Iqbal Ramadan UBSI",
+  author: "Iqbal Ramadan",
+  viewport: "width=device-width, initial-scale=1.0",
+  ogTitle: "Iqbal Ramadan - Junior Fullstack Developer",
+  ogDescription: "Portofolio Junior Fullstack Developer",
+  ogSiteName: "Iqbal Ramadan",
+  ogType: "website",
+  ogUrl: "https://iqbalramadan.my.id",
+  ogImage: "https://iqbalramadan.my.id/logo.svg",
+  ogLocale: "id_ID",
 });
 
 onUnmounted(() => {
