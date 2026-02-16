@@ -4,6 +4,7 @@
       <First />
       <Second />
       <TechStack />
+      <Experience />
       <Project />
       <Certification />
       <Fourth />
@@ -18,7 +19,7 @@ import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import First from "@/components/Hero/First.vue";
 import Second from "@/components/Hero/Second.vue";
 import TechStack from "@/components/Hero/TechStack.vue";
-import Third from "@/components/Hero/Third.vue";
+import Experience from "@/components/Hero/Experience.vue";
 import Project from "@/components/Hero/Project.vue";
 import Certification from "@/components/Hero/Certification.vue";
 import Fourth from "@/components/Hero/Fourth.vue";
@@ -35,10 +36,10 @@ useHead({
     },
     {
       rel: "icon",
-      href: "/logo.svg"
+      href: "/logo.svg",
     },
   ],
-})
+});
 
 useSeoMeta({
   title: "Iqbal Ramadan - Junior Fullstack Developer",
@@ -53,7 +54,7 @@ useSeoMeta({
   ogUrl: "https://iqbalramadan.my.id",
   ogImage: "https://iqbalramadan.my.id/logo.svg",
   ogLocale: "id_ID",
-})
+});
 
 onMounted(() => {
   window.addEventListener("scroll", () => {
@@ -63,8 +64,12 @@ onMounted(() => {
       document.getElementsByTagName("html")[0].scrollTop;
 
     if (scrollPosition >= document.getElementById("fourth").offsetTop) {
-      navStore().setActive(4);
+      navStore().setActive(5);
     } else if (scrollPosition >= document.getElementById("third").offsetTop) {
+      navStore().setActive(4);
+    } else if (
+      scrollPosition >= document.getElementById("experience").offsetTop
+    ) {
       navStore().setActive(3);
     } else if (scrollPosition >= document.getElementById("second").offsetTop) {
       navStore().setActive(2);

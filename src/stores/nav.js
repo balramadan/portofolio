@@ -17,12 +17,18 @@ export const navStore = defineStore("nav", {
       },
       {
         id: 3,
+        text: "Experience",
+        isActive: false,
+        href: "/#experience",
+      },
+      {
+        id: 4,
         text: "Portofolio",
         isActive: false,
         href: "/#third",
       },
       {
-        id: 4,
+        id: 5,
         text: "Blog",
         isActive: false,
         href: "/#fourth",
