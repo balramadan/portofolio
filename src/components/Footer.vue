@@ -62,7 +62,7 @@
               <li v-for="item in navItems" :key="item.id">
                 <a
                   :href="item.href"
-                  class="text-light/70 hover:text-bright transition-colors duration-300 font-lato"
+                  class="text-light/90 hover:text-bright transition-colors duration-300 font-lato"
                 >
                   {{ item.text }}
                 </a>

@@ -58,7 +58,7 @@
           :class="
             item.isActive
               ? 'text-primary bg-light'
-              : 'text-light/70 hover:text-light hover:bg-white/10'
+              : 'text-light/90 hover:text-light hover:bg-white/10'
           "
         >
           {{ item.text }}

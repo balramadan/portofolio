@@ -7,6 +7,9 @@
     <title>Iqbal Ramadan</title>
     <link rel="preconnect" href="https://rnjqyqiohdhnlcidizdw.supabase.co" />
     <link rel="dns-prefetch" href="https://rnjqyqiohdhnlcidizdw.supabase.co" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
     <!-- Canonical Tag -->
     <link rel="canonical" href="https://www.iqbalramadan.my.id/" />
@@ -15,18 +18,21 @@
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-VVFQS6FS7G"
-    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+      // Load GTM later to not block initial render
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-VVFQS6FS7G";
+        document.head.appendChild(script);
 
-      gtag("config", "G-VVFQS6FS7G");
+        script.onload = function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag("js", new Date());
+          gtag("config", "G-VVFQS6FS7G");
+        };
+      });
     </script>
   </body>
 </html>

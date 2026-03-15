@@ -103,6 +103,7 @@
         <router-link
           to="/projects#top"
           class="group relative inline-flex items-center justify-center px-8 py-3 font-mono text-bright border border-bright rounded hover:bg-bright/10 transition-all duration-300"
+          aria-label="View Full Project Archive"
         >
           <span>View Full Project Archive</span>
           <div

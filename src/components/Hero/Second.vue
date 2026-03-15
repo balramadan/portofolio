@@ -35,7 +35,7 @@
                 class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10"
               ></div>
               <img
-                src="/Foto-Bandung.jpg"
+                src="/IMG-20260305-WA0199.jpg"
                 alt="Iqbal Ramadan"
                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-700 ease-out"
                 loading="lazy"
@@ -136,7 +136,7 @@ onMounted(() => {
         duration: 0.8,
         ease: "power3.out",
       },
-      "-=0.6"
+      "-=0.6",
     )
     .to(
       "#bio-skills",
@@ -146,7 +146,7 @@ onMounted(() => {
         duration: 0.8,
         ease: "power3.out",
       },
-      "-=0.6"
+      "-=0.6",
     );
 });
 </script>

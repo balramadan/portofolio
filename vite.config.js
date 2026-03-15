@@ -13,15 +13,24 @@ export default defineConfig({
     },
   },
   build: {
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ["vue", "vue-router", "pinia", "@vueuse/core"],
-          gsap: ["gsap"],
+          "vue-vendor": ["vue", "vue-router", "pinia", "@vueuse/core"],
+          gsap: ["gsap", "gsap/ScrollTrigger"],
           supabase: ["@supabase/supabase-js"],
         },
       },
     },
     chunkSizeWarningLimit: 1000,
+    cssCodeSplit: true,
+    reportCompressedSize: false,
   },
 });

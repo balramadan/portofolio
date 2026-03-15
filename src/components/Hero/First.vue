@@ -56,7 +56,7 @@
         <!-- Description -->
         <p
           id="hero-desc"
-          class="text-light/70 text-lg sm:text-xl max-w-2xl leading-relaxed mb-12 font-lato"
+          class="text-light/90 text-lg sm:text-xl max-w-2xl leading-relaxed mb-12 font-lato"
         >
           I’m a software engineer specializing in building (and occasionally
           designing) exceptional digital experiences. Currently, I am focusing
@@ -142,43 +142,43 @@ onMounted(() => {
     y: 20,
     opacity: 0,
     duration: 0.8,
-    delay: 0.5,
+    delay: 0.2,
   })
     .from(
       "#hero-name",
       {
-        y: 50,
+        y: 40,
         opacity: 0,
-        duration: 1,
+        duration: 0.8,
       },
       "-=0.6"
     )
     .from(
       "#hero-tagline",
       {
-        y: 50,
+        y: 40,
         opacity: 0,
-        duration: 1,
+        duration: 0.8,
       },
-      "-=0.8"
+      "-=0.6"
     )
     .from(
       "#hero-desc",
       {
-        y: 30,
+        y: 20,
         opacity: 0,
-        duration: 1,
+        duration: 0.8,
       },
-      "-=0.8"
+      "-=0.6"
     )
     .to(
       "#hero-cta",
       {
         y: 0,
         opacity: 1,
-        duration: 0.8,
+        duration: 0.6,
       },
-      "-=0.6"
+      "-=0.4"
     )
     .to("#scroll-indicator", {
       opacity: 1,
