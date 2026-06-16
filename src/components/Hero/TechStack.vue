@@ -26,7 +26,7 @@
       <!-- Marquee Container -->
       <div class="flex overflow-hidden group">
         <!-- First Loop -->
-        <div class="flex animate-marquee gap-8 lg:gap-12 px-4">
+        <div class="flex animate-marquee gap-8 lg:gap-12 px-4 shrink-0">
           <div
             v-for="skill in skills"
             :key="skill.nama"
@@ -48,7 +48,7 @@
 
         <!-- Second Loop (Duplicate for seamless scroll) -->
         <div
-          class="flex animate-marquee gap-8 lg:gap-12 px-4"
+          class="flex animate-marquee gap-8 lg:gap-12 px-4 shrink-0"
           aria-hidden="true"
         >
           <div
@@ -94,11 +94,13 @@ const skills = ref([
   { nama: "React", icon: "i-devicon:react" },
   { nama: "Nuxt", icon: "i-devicon:nuxt" },
   { nama: "Next", icon: "i-devicon:nextjs" },
+  { nama: "Astro", icon: "i-devicon:astro" },
   { nama: "Prisma", icon: "i-devicon:prisma" },
   { nama: "MySQL", icon: "i-devicon:mysql" },
   { nama: "Postgres", icon: "i-devicon:postgresql" },
   { nama: "MongoDB", icon: "i-devicon:mongodb" },
   { nama: "Supabase", icon: "i-devicon:supabase" },
+  { nama: "Redis", icon: "i-devicon:redis" },
   { nama: "Figma", icon: "i-devicon:figma" },
 ]);
 </script>

@@ -30,7 +30,7 @@
           </p>
           <div class="flex flex-wrap gap-4">
             <a
-              href="mailto:hello@iqbalramadan.my.id"
+              href="mailto:mail@helloiqbal.me"
               class="group relative inline-flex items-center justify-center px-8 py-4 font-mono text-primary bg-light rounded-full hover:bg-bright hover:text-white transition-all duration-300 shadow-lg shadow-light/10 hover:shadow-bright/20"
             >
               <span class="font-bold mr-2">Start a Project</span>
@@ -103,10 +103,10 @@
             <ul class="flex flex-col gap-3">
               <li>
                 <a
-                  href="mailto:hello@iqbalramadan.my.id"
+                  href="mailto:mail@helloiqbal.me"
                   class="text-light/70 hover:text-bright transition-colors duration-300 font-lato"
                 >
-                  hello@iqbalramadan.my.id
+                  mail@helloiqbal.me
                 </a>
               </li>
               <li class="text-light/40 font-lato text-sm">

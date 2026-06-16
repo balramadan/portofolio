@@ -118,14 +118,14 @@
                   </div>
 
                   <!-- Tasks List -->
-                  <div class="space-y-3 py-4 border-y border-white/5">
+                  <div class="space-y-1 py-4 border-y border-white/5">
                     <div
                       v-for="(desc, i) in job.description"
                       :key="i"
                       class="flex items-start gap-3"
                     >
                       <span
-                        class="w-1.5 h-1.5 rounded-full bg-bright/40 mt-1.5 shrink-0 group-hover:bg-bright transition-colors"
+                        class="w-1.5 h-1.5 rounded-full bg-bright/40 mt-1 shrink-0 group-hover:bg-bright transition-colors"
                       ></span>
                       <p
                         class="text-light/60 text-xs sm:text-sm leading-relaxed group-hover:text-light/80"
@@ -167,17 +167,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
-    role: "Assist HPIT in Internal Development",
+    role: "Fullstack Developer",
     company: "PT Kereta Cepat Indonesia China",
     type: "Internship",
-    period: "Dec 2025 - Present",
+    period: "Dec 2025 - Jun 2026",
     icon: "i-carbon-api",
     description: [
-      "Orchestrated a Frequent User System, automating critical internal workflows.",
-      "Architected high-performance backend layers with Elysia JS & Bun.",
-      "Optimized data architectures using Prisma ORM and PostgreSQL clusters.",
+      "Architected and developed backend services for a KPI and 360-degree performance evaluation system tailored for HR, leveraging a microservices architecture with TypeScript, Bun, Elysia.js, and Drizzle ORM.",
+      "Contributed to frontend development using Next.js, collaborating on UI implementation and bridging frontend components with backend endpoints to fulfill business requirements.",
+      "Designed and managed relational databases using PostgreSQL, seamlessly adapting to both Prisma ORM and Drizzle ORM, executed complex, safe migrations in production-like environments.",
     ],
-    skills: ["Elysia JS", "Bun", "PostgreSQL", "System Arch"],
+    skills: ["Elysia JS", "Bun", "PostgreSQL", "Prisma ORM", "Drizzle ORM"],
   },
   {
     role: "Volunteer Staff",
@@ -189,7 +189,7 @@ const experiences = [
       "Precision management of studio audio infrastructures.",
       "Operational control of complex lighting and electrical field systems.",
     ],
-    skills: ["AV Eng", "Hardware", "Live Operations"],
+    skills: ["Hardware", "Live Operations"],
   },
   {
     role: "SEO & CMS Management",
@@ -201,7 +201,7 @@ const experiences = [
       "Deployed strategic SEO frameworks generating measurable rank improvements.",
       "Customized and maintained high-traffic Wordpress ecosystems.",
     ],
-    skills: ["SEO", "Conversion", "CMS Ops"],
+    skills: ["SEO", "Wordpress", "Content Writing"],
   },
   {
     role: "Graphic Designer",

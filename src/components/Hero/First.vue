@@ -96,7 +96,7 @@
       class="fixed hidden lg:flex flex-col items-center gap-6 bottom-0 left-12 z-100 after:content-[''] after:w-[1px] after:h-24 after:bg-light/40 after:mt-6"
     >
       <a
-        href="mailto:hello@iqbalramadan.my.id"
+        href="mailto:mail@helloiqbal.me"
         class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
       >
         <div class="i-carbon-email text-2xl"></div>
@@ -119,13 +119,13 @@
 
     <!-- Email (Fixed Side) -->
     <div
-      class="fixed hidden lg:flex flex-col items-center gap-6 bottom-0 right-12 z-100 after:content-[''] after:w-[1px] after:h-24 after:bg-light/40 after:mt-6"
+      class="fixed z-999 hidden lg:flex flex-col items-center gap-2 bottom-0 right-12 z-100 after:content-[''] after:w-[1px] after:h-24 after:bg-light/40 after:mt-6"
     >
       <a
-        href="mailto:hello@iqbalramadan.my.id"
+        href="mailto:mail@helloiqbal.me"
         class="writing-vertical-rl text-light/60 font-mono text-sm tracking-widest hover:text-bright hover:-translate-y-1 transition-all duration-300"
       >
-        hello@iqbalramadan.my.id
+        mail@helloiqbal.me
       </a>
     </div>
   </div>
@@ -151,7 +151,7 @@ onMounted(() => {
         opacity: 0,
         duration: 0.8,
       },
-      "-=0.6"
+      "-=0.6",
     )
     .from(
       "#hero-tagline",
@@ -160,7 +160,7 @@ onMounted(() => {
         opacity: 0,
         duration: 0.8,
       },
-      "-=0.6"
+      "-=0.6",
     )
     .from(
       "#hero-desc",
@@ -169,7 +169,7 @@ onMounted(() => {
         opacity: 0,
         duration: 0.8,
       },
-      "-=0.6"
+      "-=0.6",
     )
     .to(
       "#hero-cta",
@@ -178,7 +178,7 @@ onMounted(() => {
         opacity: 1,
         duration: 0.6,
       },
-      "-=0.4"
+      "-=0.4",
     )
     .to("#scroll-indicator", {
       opacity: 1,

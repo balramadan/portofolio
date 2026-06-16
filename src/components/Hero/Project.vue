@@ -41,8 +41,12 @@
         <div
           v-for="(item, index) in projects"
           :key="index"
-          class="project-card group relative bg-secondary/20 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-bright/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-bright/10 opacity-0 translate-y-8"
+          class="project-card group relative bg-secondary/20 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-bright/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-bright/10 opacity-0 translate-y-8 cursor-pointer focus:outline-none focus:ring-2 focus:ring-bright/50"
+          role="link"
+          tabindex="0"
           @click="toGithub(item.project_github)"
+          @keydown.enter="toGithub(item.project_github)"
+          @keydown.space.prevent="toGithub(item.project_github)"
         >
           <!-- Thumbnail -->
           <div class="relative h-56 overflow-hidden bg-secondary/30">

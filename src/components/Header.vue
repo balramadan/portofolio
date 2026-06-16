@@ -37,6 +37,8 @@
               src="/logo.webp"
               alt="Iqbal"
               class="w-full h-full object-cover"
+              width="40"
+              height="40"
             />
           </div>
           <span
