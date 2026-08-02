@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <DefaultLayout>
     <template #default>
       <First />
@@ -11,8 +11,9 @@
     </template>
   </DefaultLayout>
 </template>
+
 <script setup lang="js">
-import { onMounted, defineAsyncComponent } from "vue";
+import { onMounted, onUnmounted, defineAsyncComponent } from "vue";
 import { navStore } from "@/stores/nav";
 import { useHead, useSeoMeta } from "@unhead/vue";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
@@ -28,62 +29,61 @@ const Fourth = defineAsyncComponent(() => import("@/components/Hero/Fourth.vue")
 
 useHead({
   link: [
-    {
-      rel: "icon",
-      href: "/favicon.ico",
-    },
-    {
-      rel: "shortcut icon",
-      href: "/favicon.ico",
-    },
-    {
-      rel: "icon",
-      href: "/logo.svg",
-    },
+    { rel: "icon", href: "/favicon.ico" },
+    { rel: "shortcut icon", href: "/favicon.ico" },
+    { rel: "icon", href: "/logo.svg" },
+    { rel: "canonical", href: "https://v2.iqbalramadan.me" },
   ],
 });
 
 useSeoMeta({
-  title: "Iqbal Ramadan - Junior Fullstack Developer",
-  description: "Portofolio Junior Fullstack Developer specializing in modern web applications. Expert in Vue.js, Node.js, and Supabase.",
-  keywords: "Iqbal Ramadan, Junior Fullstack Developer, Iqbal Ramadan UBSI, Web Developer Portfolio, Fullstack Indonesia",
+  title: "Iqbal Ramadan — Fullstack Developer & Software Engineer",
+  description: "Portfolio of Iqbal Ramadan, a Fullstack Developer based in Indonesia specializing in modern web & mobile applications built with Vue 3, Next.js, Bun, Elysia, and PostgreSQL.",
+  keywords: "Iqbal Ramadan, Fullstack Developer, Software Engineer, Portfolio, Vue 3, Bun, Elysia, PostgreSQL, TypeScript, Indonesia",
   author: "Iqbal Ramadan",
   viewport: "width=device-width, initial-scale=1.0",
   robots: "index, follow",
-  ogTitle: "Iqbal Ramadan - Junior Fullstack Developer",
-  ogDescription: "Portofolio Junior Fullstack Developer specializing in modern web applications.",
+  ogTitle: "Iqbal Ramadan — Fullstack Developer & Software Engineer",
+  ogDescription: "Specializing in building exceptional digital experiences.",
   ogSiteName: "Iqbal Ramadan Portfolio",
   ogType: "website",
-  ogUrl: "https://iqbalramadan.my.id",
-  ogImage: "https://iqbalramadan.my.id/logo.png",
-  ogLocale: "id_ID",
+  ogUrl: "https://v2.iqbalramadan.me",
+  ogImage: "https://v2.iqbalramadan.me/IMG-20260305-WA0199.jpg",
+  ogLocale: "en_US",
   twitterCard: "summary_large_image",
-  twitterTitle: "Iqbal Ramadan - Junior Fullstack Developer",
-  twitterDescription: "Portofolio Junior Fullstack Developer specializing in modern web applications.",
-  twitterImage: "https://iqbalramadan.my.id/logo.png",
+  twitterTitle: "Iqbal Ramadan — Fullstack Developer",
+  twitterDescription: "Specializing in building exceptional digital experiences.",
+  twitterImage: "https://v2.iqbalramadan.me/IMG-20260305-WA0199.jpg",
 });
+
+function handleScroll() {
+  const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+  const fourth = document.getElementById("fourth");
+  const third = document.getElementById("third");
+  const experience = document.getElementById("experience");
+  const second = document.getElementById("second");
+
+  if (fourth && scrollPosition >= fourth.offsetTop - 150) {
+    navStore().setActive(5);
+  } else if (third && scrollPosition >= third.offsetTop - 150) {
+    navStore().setActive(4);
+  } else if (experience && scrollPosition >= experience.offsetTop - 150) {
+    navStore().setActive(3);
+  } else if (second && scrollPosition >= second.offsetTop - 150) {
+    navStore().setActive(2);
+  } else {
+    navStore().setActive(1);
+  }
+}
 
 onMounted(() => {
-  window.addEventListener("scroll", () => {
-    const scrollPosition =
-      window.scrollY ||
-      window.scrollTop ||
-      document.getElementsByTagName("html")[0].scrollTop;
+  window.addEventListener("scroll", handleScroll);
+});
 
-    if (scrollPosition >= document.getElementById("fourth").offsetTop) {
-      navStore().setActive(5);
-    } else if (scrollPosition >= document.getElementById("third").offsetTop) {
-      navStore().setActive(4);
-    } else if (
-      scrollPosition >= document.getElementById("experience").offsetTop
-    ) {
-      navStore().setActive(3);
-    } else if (scrollPosition >= document.getElementById("second").offsetTop) {
-      navStore().setActive(2);
-    } else {
-      navStore().setActive(1);
-    }
-  });
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
 });
 </script>
-<style lang=""></style>
+
+<style scoped></style>

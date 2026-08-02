@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-primary">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/logo.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iqbal Ramadan</title>
-    <link rel="preconnect" href="https://rnjqyqiohdhnlcidizdw.supabase.co" />
+    <title>Iqbal Ramadan — Fullstack Developer & Software Engineer</title>
+
+    <!-- Resource Preconnects for Performance -->
+    <link rel="preconnect" href="https://rnjqyqiohdhnlcidizdw.supabase.co" crossorigin />
     <link rel="dns-prefetch" href="https://rnjqyqiohdhnlcidizdw.supabase.co" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
-    <!-- Canonical Tag -->
-    <link rel="canonical" href="https://www.iqbalramadan.my.id/" />
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://codebyiqbal.dev/" />
   </head>
-  <body>
+  <body class="bg-primary text-light antialiased">
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
-    <!-- Google tag (gtag.js) -->
+
+    <!-- Google Analytics (Deferred for Zero Main-Thread Blocking) -->
     <script>
-      // Load GTM later to not block initial render
       window.addEventListener('load', function() {
         var script = document.createElement('script');
         script.async = true;

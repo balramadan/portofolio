@@ -1,9 +1,11 @@
 <template>
   <div
     id="first"
+    ref="sectionRef"
+    :style="spotlightStyle"
     class="relative bg-primary min-h-[calc(100vh-5rem)] md:min-h-screen flex items-center justify-center overflow-hidden z-0"
   >
-    <!-- Background Elements -->
+    <!-- Background Glow Elements -->
     <div
       class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0"
     >
@@ -15,20 +17,40 @@
       ></div>
     </div>
 
-    <!-- Main Content -->
+    <!-- Main Content Container -->
     <div
-      class="container mx-auto px-5 sm:px-12 lg:px-0 relative z-0 flex flex-col lg:flex-row items-center lg:items-start justify-center h-full"
+      class="container mx-auto px-5 sm:px-12 lg:px-0 relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-center h-full"
     >
       <div
-        class="flex flex-col items-start justify-center w-full lg:w-3/4 xl:w-2/3 pt-20 lg:pt-10"
+        class="flex flex-col items-start justify-center w-full lg:w-3/4 xl:w-2/3 pt-28 lg:pt-24 pb-10"
       >
-        <!-- Intro -->
+        <!-- Live Status Badge -->
+        <div
+          id="hero-badge"
+          class="flex items-center gap-2.5 mb-8 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 w-fit opacity-0 translate-y-4"
+        >
+          <span class="relative flex h-2.5 w-2.5">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"
+            ></span>
+          </span>
+          <span
+            class="text-xs font-mono text-emerald-400 font-semibold tracking-wider uppercase"
+          >
+            Open for Opportunities
+          </span>
+        </div>
+
+        <!-- Intro line -->
         <div
           id="hero-intro"
-          class="flex items-center gap-3 mb-6 overflow-hidden"
+          class="flex items-center gap-3 mb-6 overflow-hidden opacity-0 translate-y-4"
         >
           <div class="h-[1px] w-12 bg-bright"></div>
-          <span class="text-bright font-mono text-lg tracking-wide"
+          <span class="text-bright font-mono text-base sm:text-lg tracking-wide"
             >Hi, my name is</span
           >
         </div>
@@ -37,43 +59,94 @@
         <div class="overflow-hidden mb-2">
           <h1
             id="hero-name"
-            class="text-5xl sm:text-7xl lg:text-8xl font-bold text-light font-inter tracking-tight leading-tight"
+            class="text-5xl sm:text-7xl lg:text-8xl font-bold text-light font-jakarta tracking-tight leading-tight opacity-0 translate-y-8"
           >
             Iqbal Ramadan.
           </h1>
         </div>
 
         <!-- Tagline -->
-        <div class="mb-10">
+        <div class="mb-8">
           <h2
             id="hero-tagline"
-            class="text-4xl sm:text-6xl lg:text-7xl font-bold text-secondary font-inter tracking-tight"
+            class="text-3xl sm:text-5xl lg:text-6xl font-bold text-light/40 font-jakarta tracking-tight opacity-0 translate-y-10"
           >
-            I build things for the web.
+            I build things for the
+            <span class="relative text-bright inline-block">
+              web.
+              <span
+                class="absolute bottom-1 left-0 right-0 h-1 bg-bright/80 rounded-full"
+              ></span>
+            </span>
           </h2>
         </div>
 
         <!-- Description -->
         <p
           id="hero-desc"
-          class="text-light/90 text-lg sm:text-xl max-w-2xl leading-relaxed mb-12 font-lato"
+          class="text-light/80 text-base sm:text-lg max-w-2xl leading-relaxed mb-10 font-lato opacity-0 translate-y-6"
         >
-          I’m a software engineer specializing in building (and occasionally
+          I'm a software engineer specializing in building (and occasionally
           designing) exceptional digital experiences. Currently, I am focusing
-          on studying mobile development to expand my knowledge.
+          on expanding my knowledge in fullstack and mobile application
+          development.
         </p>
 
-        <!-- CTA Button -->
-        <div id="hero-cta" class="opacity-0 translate-y-4">
+        <!-- Dual CTA Buttons -->
+        <div
+          id="hero-cta"
+          class="flex flex-wrap items-center gap-4 opacity-0 translate-y-4"
+        >
           <a
             href="#third"
-            class="group relative inline-flex items-center justify-center px-8 py-4 font-mono text-bright border border-bright rounded hover:bg-bright/10 transition-all duration-300"
+            class="group relative inline-flex items-center justify-center px-8 py-3.5 font-jakarta font-bold text-white bg-bright rounded-full hover:bg-bright/90 hover:shadow-[0_0_30px_rgba(249,115,0,0.4)] hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-bright/20"
           >
-            <span>Check what I've done</span>
+            <span>Explore Projects</span>
             <div
-              class="absolute inset-0 border border-bright rounded scale-105 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500"
+              class="i-carbon-arrow-down ml-2 group-hover:translate-y-1 transition-transform duration-300"
             ></div>
           </a>
+
+          <a
+            href="mailto:mail@helloiqbal.me"
+            class="group inline-flex items-center justify-center px-8 py-3.5 font-jakarta font-semibold text-light border border-white/15 rounded-full hover:border-bright/50 hover:text-bright hover:bg-white/5 transition-all duration-300 glass-card"
+          >
+            <span>Let's Connect</span>
+            <div
+              class="i-carbon-email ml-2 text-lg group-hover:scale-110 transition-transform duration-300"
+            ></div>
+          </a>
+        </div>
+
+        <!-- Stat Counters -->
+        <div
+          id="hero-stats"
+          class="grid grid-cols-3 gap-6 sm:gap-10 mt-14 max-w-md border-t border-white/10 pt-8 opacity-0 translate-y-6"
+        >
+          <div class="flex flex-col">
+            <span class="text-2xl sm:text-3xl font-bold text-bright font-mono">
+              {{ stats.years.toFixed(0) }}+
+            </span>
+            <span class="text-xs text-light/50 font-lato mt-1">Years Exp.</span>
+          </div>
+
+          <div class="flex flex-col">
+            <span class="text-2xl sm:text-3xl font-bold text-bright font-mono">
+              {{ stats.projects.toFixed(0) }}+
+            </span>
+            <span class="text-xs text-light/50 font-lato mt-1"
+              >Projects Built</span
+            >
+          </div>
+
+          <div class="flex flex-col">
+            <span class="text-2xl sm:text-3xl font-bold text-bright font-mono">
+              {{ stats.certs.toFixed(0) }}+
+            </span>
+            <span class="text-xs text-light/50 font-lato mt-1"
+              >Certifications</span
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -81,110 +154,110 @@
     <!-- Scroll Indicator -->
     <div
       id="scroll-indicator"
-      class="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0"
+      class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 pointer-events-none"
     >
-      <span class="text-xs font-mono text-light/50 tracking-widest uppercase"
+      <span
+        class="text-[10px] font-mono text-light/40 tracking-[0.25em] uppercase"
         >Scroll</span
       >
       <div
-        class="w-[1px] h-12 bg-gradient-to-b from-bright to-transparent"
+        class="w-[1px] h-10 bg-gradient-to-b from-bright via-bright/50 to-transparent"
       ></div>
     </div>
 
-    <!-- Social Links (Fixed Side) -->
-    <!-- <div
-      class="fixed hidden lg:flex flex-col items-center gap-6 bottom-0 left-12 z-100 after:content-[''] after:w-[1px] after:h-24 after:bg-light/40 after:mt-6"
-    >
-      <a
-        href="mailto:mail@helloiqbal.me"
-        class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
-      >
-        <div class="i-carbon-email text-2xl"></div>
-      </a>
-      <a
-        href="https://github.com/iqbalramadan"
-        target="_blank"
-        class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
-      >
-        <div class="i-carbon-logo-github text-2xl"></div>
-      </a>
-      <a
-        href="https://linkedin.com/in/iqbalramadan"
-        target="_blank"
-        class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
-      >
-        <div class="i-carbon-logo-linkedin text-2xl"></div>
-      </a>
-    </div> -->
-
-    <!-- Email (Fixed Side) -->
+    <!-- Social Links (Fixed Left Side Sidebar) -->
     <div
-      class="fixed z-999 hidden lg:flex flex-col items-center gap-2 bottom-0 right-12 z-100 after:content-[''] after:w-[1px] after:h-24 after:bg-light/40 after:mt-6"
+      class="fixed hidden lg:flex flex-col items-center gap-5 bottom-0 left-8 z-[90] after:content-[''] after:w-[1px] after:h-20 after:bg-bright/30 after:mt-4"
     >
       <a
         href="mailto:mail@helloiqbal.me"
-        class="writing-vertical-rl text-light/60 font-mono text-sm tracking-widest hover:text-bright hover:-translate-y-1 transition-all duration-300"
+        class="p-2 text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
+        aria-label="Email"
+      >
+        <div class="i-carbon-email text-xl"></div>
+      </a>
+      <a
+        href="https://github.com/balramadan"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="p-2 text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
+        aria-label="GitHub"
+      >
+        <div class="i-carbon-logo-github text-xl"></div>
+      </a>
+      <a
+        href="https://linkedin.com/in/balramadan"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="p-2 text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
+        aria-label="LinkedIn"
+      >
+        <div class="i-carbon-logo-linkedin text-xl"></div>
+      </a>
+    </div>
+
+    <!-- Email (Fixed Right Side Sidebar)
+    <div
+      class="fixed hidden lg:flex flex-col items-center gap-2 bottom-0 right-8 z-[90] after:content-[''] after:w-[1px] after:h-20 after:bg-bright/30 after:mt-4"
+    >
+      <a
+        href="mailto:mail@helloiqbal.me"
+        class="writing-vertical-rl text-light/60 font-mono text-xs tracking-widest hover:text-bright hover:-translate-y-1 transition-all duration-300 py-2"
       >
         mail@helloiqbal.me
       </a>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { ref, reactive, onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useCursorSpotlight } from "@/composables/useCursorSpotlight";
+
+const sectionRef = ref(null);
+const { spotlightStyle } = useCursorSpotlight(sectionRef);
+
+const stats = reactive({
+  years: 0,
+  projects: 0,
+  certs: 0,
+});
 
 onMounted(() => {
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-  tl.from("#hero-intro", {
-    y: 20,
-    opacity: 0,
-    duration: 0.8,
-    delay: 0.2,
-  })
-    .from(
-      "#hero-name",
-      {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-      },
-      "-=0.6",
-    )
-    .from(
-      "#hero-tagline",
-      {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-      },
-      "-=0.6",
-    )
-    .from(
-      "#hero-desc",
-      {
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-      },
-      "-=0.6",
-    )
+  tl.to("#hero-badge", { y: 0, opacity: 1, duration: 0.6, delay: 0.1 })
+    .to("#hero-intro", { y: 0, opacity: 1, duration: 0.6 }, "-=0.4")
+    .to("#hero-name", { y: 0, opacity: 1, duration: 0.7 }, "-=0.4")
+    .to("#hero-tagline", { y: 0, opacity: 1, duration: 0.7 }, "-=0.5")
+    .to("#hero-desc", { y: 0, opacity: 1, duration: 0.6 }, "-=0.5")
+    .to("#hero-cta", { y: 0, opacity: 1, duration: 0.6 }, "-=0.4")
     .to(
-      "#hero-cta",
+      "#hero-stats",
       {
         y: 0,
         opacity: 1,
         duration: 0.6,
+        onStart: () => {
+          gsap.to(stats, {
+            years: 1,
+            projects: 10,
+            certs: 5,
+            duration: 1.5,
+            ease: "power2.out",
+          });
+        },
       },
       "-=0.4",
     )
-    .to("#scroll-indicator", {
-      opacity: 1,
-      duration: 1,
-      delay: 0.5,
-    });
+    .to("#scroll-indicator", { opacity: 1, duration: 0.8 }, "-=0.2");
+});
+
+onUnmounted(() => {
+  ScrollTrigger.getAll().forEach((t) => t.kill());
+  gsap.killTweensOf(stats);
 });
 </script>
 

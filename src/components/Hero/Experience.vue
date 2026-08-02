@@ -3,17 +3,13 @@
     id="experience"
     class="relative z-0 bg-primary py-24 px-6 sm:px-12 lg:px-24 overflow-hidden"
   >
-    <!-- Premium Background Effects -->
+    <!-- Background Effects -->
     <div class="absolute inset-0 pointer-events-none z-0">
       <div
         class="absolute top-[30%] -left-[10%] w-[60%] h-[60%] bg-bright/10 blur-[150px] rounded-full mix-blend-screen animate-float"
       ></div>
       <div
         class="absolute bottom-[20%] -right-[5%] w-[50%] h-[50%] bg-grass/5 blur-[120px] rounded-full mix-blend-screen"
-      ></div>
-      <!-- Subtle Grid Overlay -->
-      <div
-        class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay"
       ></div>
     </div>
 
@@ -23,31 +19,22 @@
         id="experience-header"
         class="flex flex-col items-center mb-16 sm:mb-20 opacity-0 translate-y-12"
       >
-        <span
-          class="text-bright text-xs font-mono tracking-[0.3em] uppercase mb-4"
-          >My Journey</span
-        >
+        <span class="section-label mb-3">My Journey</span>
         <h2
-          class="text-3xl sm:text-5xl lg:text-6xl font-black text-light font-inter mb-6 tracking-tight text-center"
+          class="text-3xl sm:text-5xl lg:text-6xl font-bold text-light font-jakarta mb-6 tracking-tight text-center"
         >
           Work Experience
         </h2>
-        <div class="flex items-center gap-3">
-          <div
-            class="h-[2px] w-12 bg-gradient-to-r from-transparent to-bright"
-          ></div>
-          <div
-            class="w-2 h-2 rounded-full bg-bright shadow-[0_0_10px_#00ffff]"
-          ></div>
-          <div
-            class="h-[2px] w-12 bg-gradient-to-l from-transparent to-bright"
-          ></div>
+        <div class="section-divider">
+          <div class="h-[2px] w-12 bg-gradient-to-r from-transparent to-bright"></div>
+          <div class="w-2 h-2 rounded-full bg-bright shadow-[0_0_10px_#F97300]"></div>
+          <div class="h-[2px] w-12 bg-gradient-to-l from-transparent to-bright"></div>
         </div>
       </div>
 
-      <!-- Compact Modern Timeline -->
+      <!-- Timeline Container -->
       <div class="relative">
-        <!-- Connecting Line with Glow -->
+        <!-- Connecting Line -->
         <div
           class="absolute left-6 sm:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-bright/80 via-grass/50 to-transparent sm:transform sm:-translate-x-1/2 opacity-20"
         ></div>
@@ -55,10 +42,10 @@
         <!-- Animated Scroll Line -->
         <div
           id="scroll-line"
-          class="absolute left-6 sm:left-1/2 top-0 w-[2px] bg-bright shadow-[0_0_15px_#00ffff] sm:transform sm:-translate-x-1/2 opacity-40 z-20 origin-top h-0"
+          class="absolute left-6 sm:left-1/2 top-0 w-[2px] bg-bright shadow-[0_0_15px_#F97300] sm:transform sm:-translate-x-1/2 opacity-60 z-20 origin-top h-0"
         ></div>
 
-        <div class="space-y-4 sm:space-y-4">
+        <div class="space-y-6 sm:space-y-8">
           <div
             v-for="(job, index) in experiences"
             :key="index"
@@ -69,34 +56,34 @@
           >
             <!-- Timeline Node Indicator -->
             <div
-              class="absolute left-6 sm:left-1/2 w-3 h-3 rounded-full bg-primary border border-bright/50 z-30 transform -translate-x-1/2 shadow-[0_0_8px_rgba(0,255,255,0.3)] group-hover:bg-bright group-hover:scale-150 group-hover:shadow-[0_0_15px_#00ffff] transition-all duration-500"
+              class="absolute left-6 sm:left-1/2 w-3.5 h-3.5 rounded-full bg-primary border-2 border-bright z-30 transform -translate-x-1/2 shadow-[0_0_10px_rgba(249,115,0,0.4)] group-hover:bg-bright group-hover:scale-150 group-hover:shadow-[0_0_20px_#F97300] transition-all duration-500"
             ></div>
 
-            <!-- Content Card: Ultra Modern Glass -->
+            <!-- Content Card -->
             <div class="w-full sm:w-[46%] pl-12 sm:pl-0">
               <div
-                class="experience-card group relative bg-secondary/10 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 hover:bg-secondary/20 hover:border-bright/40 transition-all duration-500 hover:-translate-y-2"
+                class="experience-card group relative bg-secondary/15 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 hover:bg-secondary/25 hover:border-bright/40 hover:shadow-[0_0_30px_rgba(249,115,0,0.15)] transition-all duration-500 hover:-translate-y-1.5"
               >
-                <!-- Highlight Glow -->
+                <!-- Highlight Top-Left Glow -->
                 <div
-                  class="absolute -top-px -left-px w-20 h-20 bg-gradient-to-br from-bright/20 to-transparent rounded-tl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  class="absolute -top-px -left-px w-24 h-24 bg-gradient-to-br from-bright/20 to-transparent rounded-tl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 ></div>
 
-                <div class="flex flex-col gap-6">
+                <div class="flex flex-col gap-5">
                   <!-- Top Row: Logo & Date -->
                   <div class="flex items-center justify-between gap-4">
                     <div
-                      class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center group-hover:scale-110 group-hover:border-bright/20 transition-all duration-500"
+                      class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-105 group-hover:border-bright/30 transition-all duration-500"
                     >
                       <div
                         :class="[
                           job.icon,
-                          'text-xl sm:text-2xl text-bright/80 group-hover:text-bright',
+                          'text-xl text-bright/90 group-hover:text-bright',
                         ]"
                       ></div>
                     </div>
                     <div
-                      class="text-[10px] sm:text-xs font-mono text-light/40 bg-white/5 px-3 py-1.5 rounded-full border border-white/5 whitespace-nowrap"
+                      class="text-[10px] sm:text-xs font-mono text-bright/80 bg-bright/10 px-3 py-1 rounded-full border border-bright/20 whitespace-nowrap"
                     >
                       {{ job.period }}
                     </div>
@@ -105,42 +92,42 @@
                   <!-- Info Row -->
                   <div>
                     <h3
-                      class="text-xl sm:text-2xl font-bold text-light font-inter tracking-tight mb-2 group-hover:text-white"
+                      class="text-xl sm:text-2xl font-bold text-light font-jakarta tracking-tight mb-1 group-hover:text-white"
                     >
                       {{ job.role }}
                     </h3>
                     <p
-                      class="text-bright font-medium text-xs sm:text-sm tracking-wide"
+                      class="text-bright font-medium text-xs sm:text-sm tracking-wide font-jakarta"
                     >
                       {{ job.company }}
-                      <span class="text-light/20 mx-2">|</span> {{ job.type }}
+                      <span class="text-light/20 mx-1.5">|</span> {{ job.type }}
                     </p>
                   </div>
 
                   <!-- Tasks List -->
-                  <div class="space-y-1 py-4 border-y border-white/5">
+                  <div class="space-y-2 py-3 border-y border-white/5">
                     <div
                       v-for="(desc, i) in job.description"
                       :key="i"
-                      class="flex items-start gap-3"
+                      class="flex items-start gap-2.5"
                     >
                       <span
-                        class="w-1.5 h-1.5 rounded-full bg-bright/40 mt-1 shrink-0 group-hover:bg-bright transition-colors"
+                        class="w-1.5 h-1.5 rounded-full bg-bright/50 mt-1.5 shrink-0 group-hover:bg-bright transition-colors"
                       ></span>
                       <p
-                        class="text-light/60 text-xs sm:text-sm leading-relaxed group-hover:text-light/80"
+                        class="text-light/70 text-xs sm:text-sm leading-relaxed group-hover:text-light/90 font-lato"
                       >
                         {{ desc }}
                       </p>
                     </div>
                   </div>
 
-                  <!-- Tags -->
+                  <!-- Skills Tags -->
                   <div class="flex flex-wrap gap-2">
                     <span
                       v-for="skill in job.skills"
                       :key="skill"
-                      class="text-[8px] sm:text-[9px] uppercase font-bold tracking-widest px-2 py-1 rounded-md bg-black/40 text-light/50 border border-white/5 hover:border-bright/30 hover:text-bright transition-all duration-300"
+                      class="text-[9px] uppercase font-mono font-bold tracking-wider px-2.5 py-1 rounded-md bg-black/40 text-light/60 border border-white/5 hover:border-bright/40 hover:text-bright transition-all duration-300"
                     >
                       {{ skill }}
                     </span>
@@ -149,7 +136,7 @@
               </div>
             </div>
 
-            <!-- Spacer for Desktop -->
+            <!-- Spacer for Desktop Alignment -->
             <div class="hidden sm:block w-[46%]"></div>
           </div>
         </div>
@@ -159,11 +146,9 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
@@ -242,7 +227,7 @@ onMounted(() => {
     },
   });
 
-  // Items Animation
+  // Items Stagger Animation
   experiences.forEach((_, index) => {
     gsap.fromTo(
       `.experience-item:nth-child(${index + 1})`,
@@ -262,9 +247,13 @@ onMounted(() => {
           start: "top 85%",
           toggleActions: "play none none reverse",
         },
-      },
+      }
     );
   });
+});
+
+onUnmounted(() => {
+  ScrollTrigger.getAll().forEach((t) => t.kill());
 });
 </script>
 
@@ -281,12 +270,5 @@ onMounted(() => {
 
 .animate-float {
   animation: float 15s ease-in-out infinite;
-}
-
-.font-inter {
-  font-family: "Inter", sans-serif;
-}
-.font-lato {
-  font-family: "Lato", sans-serif;
 }
 </style>

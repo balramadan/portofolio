@@ -1,7 +1,7 @@
 <template>
   <div
     id="third"
-    class="bg-primary py-20 px-5 sm:px-10 lg:px-30 overflow-hidden z-0"
+    class="bg-primary py-24 px-5 sm:px-10 lg:px-20 overflow-hidden relative z-0"
   >
     <!-- Background Elements -->
     <div
@@ -15,85 +15,157 @@
       ></div>
     </div>
 
-    <div class="container mx-auto relative z-10">
+    <div class="container mx-auto max-w-7xl relative z-10">
       <!-- Section Header -->
       <div
         id="projects-header"
-        class="flex flex-col items-center mb-16 opacity-0 translate-y-8"
+        class="flex flex-col items-center mb-16 opacity-0 translate-y-8 text-center"
       >
-        <h2 class="text-3xl sm:text-4xl font-bold text-light font-inter mb-4">
-          Some Things I’ve Built
+        <span class="section-label mb-3">Portfolio</span>
+        <h2
+          class="text-3xl sm:text-5xl font-bold text-light font-jakarta tracking-tight mb-4"
+        >
+          Some Things I've Built
         </h2>
-        <div
-          class="h-1 w-20 bg-gradient-to-r from-bright to-transparent rounded-full"
-        ></div>
+        <div class="section-divider">
+          <div
+            class="h-[2px] w-12 bg-gradient-to-r from-transparent to-bright"
+          ></div>
+          <div
+            class="w-2 h-2 rounded-full bg-bright shadow-[0_0_10px_#F97300]"
+          ></div>
+          <div
+            class="h-[2px] w-12 bg-gradient-to-l from-transparent to-bright"
+          ></div>
+        </div>
       </div>
 
-      <!-- Loading State -->
-      <div v-if="isLoading" class="flex justify-center items-center h-64">
+      <!-- Skeleton Loading State -->
+      <div
+        v-if="isLoading"
+        class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8"
+      >
         <div
-          class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-bright"
-        ></div>
+          v-for="n in 4"
+          :key="n"
+          class="glass-card overflow-hidden border border-white/5 animate-pulse"
+        >
+          <div class="h-56 bg-white/5"></div>
+          <div class="p-6 space-y-4">
+            <div class="h-6 bg-white/10 rounded w-3/4"></div>
+            <div class="h-3 bg-white/5 rounded w-full"></div>
+            <div class="h-3 bg-white/5 rounded w-5/6"></div>
+            <div class="flex gap-2 pt-2">
+              <div class="h-5 w-16 bg-white/5 rounded-full"></div>
+              <div class="h-5 w-20 bg-white/5 rounded-full"></div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Projects Grid -->
-      <div v-else class="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10">
+      <!-- Projects Showcase Layout -->
+      <div v-else class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         <div
           v-for="(item, index) in projects"
-          :key="index"
-          class="project-card group relative bg-secondary/20 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-bright/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-bright/10 opacity-0 translate-y-8 cursor-pointer focus:outline-none focus:ring-2 focus:ring-bright/50"
-          role="link"
-          tabindex="0"
-          @click="toGithub(item.project_github)"
-          @keydown.enter="toGithub(item.project_github)"
-          @keydown.space.prevent="toGithub(item.project_github)"
+          :key="item.id || index"
+          :class="[
+            'project-card group relative bg-secondary/15 backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden hover:border-bright/40 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_0_30px_rgba(249,115,0,0.15)] opacity-0 translate-y-8 flex flex-col',
+            index === 0 ? 'lg:col-span-2 lg:flex-row' : '',
+          ]"
         >
           <!-- Thumbnail -->
-          <div class="relative h-56 overflow-hidden bg-secondary/30">
+          <div
+            :class="[
+              'relative overflow-hidden bg-secondary/30',
+              index === 0 ? 'lg:w-1/2 h-64 lg:h-auto min-h-[300px]' : 'h-56',
+            ]"
+          >
             <div
-              class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent z-10"
+              class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent z-10"
             ></div>
             <img
-              :src="`https://rnjqyqiohdhnlcidizdw.supabase.co/storage/v1/object/public/project/${item.project_img}?width=600&format=webp`"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              :src="`https://rnjqyqiohdhnlcidizdw.supabase.co/storage/v1/object/public/project/${item.project_img}?width=800&format=webp&quality=80`"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               :alt="item.project_name"
               loading="lazy"
-              width="600"
-              height="400"
+              width="800"
+              height="500"
             />
+
+            <!-- Featured Badge on Index 0 -->
+            <div v-if="index === 0" class="absolute top-4 left-4 z-20">
+              <span
+                class="px-3 py-1 text-xs font-mono font-bold text-bright bg-black/60 backdrop-blur-md border border-bright/30 rounded-full"
+              >
+                Featured Project
+              </span>
+            </div>
           </div>
 
           <!-- Content -->
           <div
-            class="p-6 sm:p-8 relative z-20 bg-gradient-to-t from-primary via-primary/95 to-transparent -mt-20 pt-24"
+            :class="[
+              'p-6 sm:p-8 relative z-20 flex flex-col justify-between flex-1',
+              index === 0
+                ? 'lg:w-1/2 bg-primary/40'
+                : 'bg-gradient-to-t from-primary via-primary/95 to-transparent -mt-12 pt-16',
+            ]"
           >
-            <div class="flex justify-between items-start mb-3">
-              <h3
-                class="text-2xl font-bold text-light font-inter group-hover:text-bright transition-colors duration-300"
-              >
-                {{ item.project_name }}
-              </h3>
-              <div
-                class="p-2 rounded-full bg-white/5 text-light group-hover:bg-bright group-hover:text-white transition-all duration-300"
-              >
-                <div class="i-carbon-arrow-up-right text-lg"></div>
+            <div>
+              <div class="flex justify-between items-start mb-3 gap-4">
+                <h3
+                  class="text-xl sm:text-2xl font-bold text-light font-jakarta group-hover:text-bright transition-colors duration-300"
+                >
+                  {{ item.project_name }}
+                </h3>
               </div>
+
+              <p
+                class="text-light/70 text-sm leading-relaxed font-lato mb-6"
+                :class="index === 0 ? 'line-clamp-4' : 'line-clamp-3'"
+              >
+                {{ item.project_desc }}
+              </p>
             </div>
 
-            <p
-              class="text-light/70 mt-5 mb-6 font-lato leading-relaxed line-clamp-3"
-            >
-              {{ item.project_desc }}
-            </p>
+            <div>
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span
+                  v-for="tech in item.project_tech"
+                  :key="tech"
+                  class="px-3 py-1 text-xs font-mono text-bright bg-bright/10 rounded-full border border-bright/20"
+                >
+                  {{ tech }}
+                </span>
+              </div>
 
-            <div class="flex flex-wrap gap-2">
-              <span
-                v-for="tech in item.project_tech"
-                :key="tech"
-                class="px-3 py-1 text-xs font-mono text-bright bg-bright/10 rounded-full border border-bright/20"
+              <!-- Links Action Buttons -->
+              <div
+                class="flex items-center gap-3 pt-4 border-t border-white/10"
               >
-                {{ tech }}
-              </span>
+                <a
+                  v-if="item.project_github"
+                  :href="item.project_github"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-bright hover:text-white text-xs font-mono text-light transition-all duration-300"
+                >
+                  <span class="i-carbon-logo-github text-sm"></span>
+                  <span>Source Code</span>
+                </a>
+
+                <a
+                  v-if="item.project_url"
+                  :href="item.project_url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-bright/10 hover:bg-bright border border-bright/30 text-bright hover:text-white text-xs font-mono font-bold transition-all duration-300"
+                >
+                  <span class="i-carbon-launch text-sm"></span>
+                  <span>Live Demo</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -106,7 +178,7 @@
       >
         <router-link
           to="/projects#top"
-          class="group relative inline-flex items-center justify-center px-8 py-3 font-mono text-bright border border-bright rounded hover:bg-bright/10 transition-all duration-300"
+          class="group relative inline-flex items-center justify-center px-8 py-3.5 font-jakarta font-bold text-bright border border-bright/50 rounded-full hover:bg-bright/10 hover:border-bright transition-all duration-300"
           aria-label="View Full Project Archive"
         >
           <span>View Full Project Archive</span>
@@ -120,58 +192,43 @@
 </template>
 
 <script setup>
-import { onMounted, ref, nextTick } from "vue";
+import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import supabase from "@/utils/supabase";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const isLoading = ref(false);
 const projects = ref([]);
 
-// Function to fetch projects from Supabase
 async function fetchProjects() {
   try {
     isLoading.value = true;
-
     const { data: project, error } = await supabase
       .from("projects")
       .select("*");
 
-    if (error) {
-      console.error(error);
-      return;
-    }
+    if (error) throw error;
 
     if (project) {
       projects.value = project
-        .sort((a, b) => {
-          return new Date(b.created_at) - new Date(a.created_at);
-        })
-        .slice(0, 4); // Limit to 4 for the preview section
+        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+        .slice(0, 5);
     }
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching projects:", error);
   } finally {
     isLoading.value = false;
-    // Wait for DOM update then animate
     nextTick(() => {
       animateProjects();
     });
   }
 }
 
-// Function to open Github link
-function toGithub(link) {
-  if (link) window.open(link, "_blank");
-}
-
 function animateProjects() {
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: "#projects",
-      start: "top 70%",
+      trigger: "#third",
+      start: "top 75%",
       toggleActions: "play none none reverse",
     },
   });
@@ -188,25 +245,29 @@ function animateProjects() {
         y: 0,
         opacity: 1,
         duration: 0.8,
-        stagger: 0.2,
+        stagger: 0.15,
         ease: "power3.out",
       },
-      "-=0.4"
+      "-=0.4",
     )
     .to(
       "#projects-cta",
       {
         y: 0,
         opacity: 1,
-        duration: 0.8,
+        duration: 0.6,
         ease: "power3.out",
       },
-      "-=0.4"
+      "-=0.4",
     );
 }
 
 onMounted(async () => {
   await fetchProjects();
+});
+
+onUnmounted(() => {
+  ScrollTrigger.getAll().forEach((t) => t.kill());
 });
 </script>
 

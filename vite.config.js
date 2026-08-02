@@ -1,4 +1,4 @@
-import { resolve } from "path";
+import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import UnoCSS from "unocss/vite";
@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [vue(), UnoCSS(), vueDevTools()],
   resolve: {
     alias: {
-      "@": resolve(__dirname, "./src"),
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
   build: {
@@ -22,10 +22,18 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          "vue-vendor": ["vue", "vue-router", "pinia", "@vueuse/core"],
-          gsap: ["gsap", "gsap/ScrollTrigger"],
-          supabase: ["@supabase/supabase-js"],
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("vue") || id.includes("pinia") || id.includes("@vueuse")) {
+              return "vue-vendor";
+            }
+            if (id.includes("gsap")) {
+              return "gsap";
+            }
+            if (id.includes("@supabase")) {
+              return "supabase";
+            }
+          }
         },
       },
     },

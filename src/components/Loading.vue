@@ -1,54 +1,120 @@
 <template>
-  <div class="fixed hidden justify-center items-center inset-0 h-screen z-1000 bg-light overflow-y-hidden">
-    <svg
-      width="500"
-      height="500"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:svg="http://www.w3.org/2000/svg"
-    >
-      <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
-      <g class="layer">
-        <title>Layer 1</title>
-        <path
-          d="m98,103c0,0 0,341 0,341c0,0 294.0017,0 294,0c-0.0017,0 0,-128 0,-128c0,0 -44,-34 -44,-34c0,0 44.04543,0 44,0c-0.04543,0 0,-97.00526 0,-98c0,-0.99474 -228,-135 -228,-135c0,0 0,93 0,93c0,0 -66,-39 -66,-39z"
-          fill="none"
-          id="svg_2"
-          stroke="#000000"
-          stroke-dasharray="1395.24634"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="5"
+  <div
+    id="loader-root"
+    class="fixed inset-0 z-[9999] bg-primary flex flex-col items-center justify-center overflow-hidden"
+  >
+    <!-- Background glow -->
+    <div
+      class="absolute w-96 h-96 bg-bright/10 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"
+    ></div>
+
+    <!-- Center Content -->
+    <div class="relative z-10 flex flex-col items-center gap-6">
+      <!-- Logo -->
+      <div
+        id="loader-logo"
+        class="w-24 h-24 p-6 rounded-full overflow-hidden p-1 shadow-[0_0_20px_rgba(249,115,0,0.3)]"
+      >
+        <img
+          src="/logo.webp"
+          alt="Iqbal Ramadan"
+          class="w-full h-full object-cover rounded-full"
+        />
+      </div>
+
+      <!-- Character Stagger Name -->
+      <h1
+        class="text-2xl sm:text-4xl font-bold font-jakarta text-light tracking-tight flex overflow-hidden"
+      >
+        <span
+          v-for="(char, index) in nameChars"
+          :key="index"
+          class="loader-char inline-block"
+          :class="char === ' ' ? 'w-2 sm:w-3' : ''"
         >
-          <animate
-            attributeName="stroke-dashoffset"
-            begin="0"
-            dur="3"
-            from="1395.24634"
-            repeatCount="1"
-            to="0"
-          />
-          <animate
-            attributeName="stroke-dashoffset"
-            begin="0"
-            dur="3"
-            from="1395.24634"
-            repeatCount="1"
-            to="0"
-          />
-          <animate
-            attributeName="stroke-dashoffset"
-            begin="0"
-            dur="3"
-            from="1395.24634"
-            repeatCount="1"
-            to="0"
-          />
-        </path>
-      </g>
-    </svg>
+          {{ char === " " ? "&nbsp;" : char }}
+        </span>
+      </h1>
+    </div>
+
+    <!-- Bottom Progress Bar -->
+    <div
+      id="loader-progress"
+      class="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-bright via-grass to-bright w-0"
+    ></div>
   </div>
 </template>
-<script>
-export default {};
+
+<script setup>
+import { onMounted } from "vue";
+import gsap from "gsap";
+
+const emit = defineEmits(["done"]);
+
+const nameText = "Iqbal Ramadan";
+const nameChars = nameText.split("");
+
+onMounted(() => {
+  const tl = gsap.timeline({
+    onComplete: () => {
+      emit("done");
+    },
+  });
+
+  // Logo animation
+  tl.from("#loader-logo", {
+    scale: 0.6,
+    opacity: 0,
+    duration: 0.5,
+    ease: "back.out(1.7)",
+  });
+
+  // Characters stagger animation
+  tl.from(
+    ".loader-char",
+    {
+      y: 30,
+      opacity: 0,
+      duration: 0.05,
+      stagger: 0.04,
+      ease: "power2.out",
+    },
+    "-=0.2",
+  );
+
+  // Progress bar fill
+  tl.to(
+    "#loader-progress",
+    {
+      width: "100%",
+      duration: 1.2,
+      ease: "power2.inOut",
+    },
+    "-=0.3",
+  );
+
+  // Root exit fade out
+  tl.to("#loader-root", {
+    opacity: 0,
+    scale: 1.05,
+    duration: 0.5,
+    ease: "power3.inOut",
+  });
+});
 </script>
-<style lang=""></style>
+
+<style scoped>
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+</style>
