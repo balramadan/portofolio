@@ -27,12 +27,14 @@ const Project = defineAsyncComponent(() => import("@/components/Hero/Project.vue
 const Certification = defineAsyncComponent(() => import("@/components/Hero/Certification.vue"));
 const Fourth = defineAsyncComponent(() => import("@/components/Hero/Fourth.vue"));
 
+let sectionObserver = null;
+
 useHead({
   link: [
     { rel: "icon", href: "/favicon.ico" },
     { rel: "shortcut icon", href: "/favicon.ico" },
     { rel: "icon", href: "/logo.svg" },
-    { rel: "canonical", href: "https://v2.iqbalramadan.me" },
+    { rel: "canonical", href: "https://codebyiqbal.dev" },
   ],
 });
 
@@ -47,42 +49,44 @@ useSeoMeta({
   ogDescription: "Specializing in building exceptional digital experiences.",
   ogSiteName: "Iqbal Ramadan Portfolio",
   ogType: "website",
-  ogUrl: "https://v2.iqbalramadan.me",
-  ogImage: "https://v2.iqbalramadan.me/IMG-20260305-WA0199.jpg",
+  ogUrl: "https://codebyiqbal.dev",
+  ogImage: "https://codebyiqbal.dev/IMG-20260305-WA0199.jpg",
   ogLocale: "en_US",
   twitterCard: "summary_large_image",
   twitterTitle: "Iqbal Ramadan — Fullstack Developer",
   twitterDescription: "Specializing in building exceptional digital experiences.",
-  twitterImage: "https://v2.iqbalramadan.me/IMG-20260305-WA0199.jpg",
+  twitterImage: "https://codebyiqbal.dev/IMG-20260305-WA0199.jpg",
 });
 
-function handleScroll() {
-  const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-
-  const fourth = document.getElementById("fourth");
-  const third = document.getElementById("third");
-  const experience = document.getElementById("experience");
-  const second = document.getElementById("second");
-
-  if (fourth && scrollPosition >= fourth.offsetTop - 150) {
-    navStore().setActive(5);
-  } else if (third && scrollPosition >= third.offsetTop - 150) {
-    navStore().setActive(4);
-  } else if (experience && scrollPosition >= experience.offsetTop - 150) {
-    navStore().setActive(3);
-  } else if (second && scrollPosition >= second.offsetTop - 150) {
-    navStore().setActive(2);
-  } else {
-    navStore().setActive(1);
-  }
-}
-
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
+  // Use IntersectionObserver to eliminate synchronous forced reflows on scroll
+  sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          if (id === "fourth") navStore().setActive(5);
+          else if (id === "third") navStore().setActive(4);
+          else if (id === "experience") navStore().setActive(3);
+          else if (id === "second") navStore().setActive(2);
+          else if (id === "first") navStore().setActive(1);
+        }
+      });
+    },
+    { threshold: 0.35 }
+  );
+
+  const sections = ["first", "second", "experience", "third", "fourth"];
+  sections.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) sectionObserver.observe(el);
+  });
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
+  if (sectionObserver) {
+    sectionObserver.disconnect();
+  }
 });
 </script>
 

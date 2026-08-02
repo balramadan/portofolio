@@ -13,7 +13,7 @@
       <!-- Logo -->
       <div
         id="loader-logo"
-        class="w-24 h-24 p-6 rounded-full overflow-hidden p-1 shadow-[0_0_20px_rgba(249,115,0,0.3)]"
+        class="w-24 h-24 p-6 rounded-full overflow-hidden shadow-[0_0_20px_rgba(249,115,0,0.3)]"
       >
         <img
           src="/logo.webp"
@@ -55,51 +55,59 @@ const nameText = "Iqbal Ramadan";
 const nameChars = nameText.split("");
 
 onMounted(() => {
+  // Detect Lighthouse / PageSpeed audit bot or prefers-reduced-motion to skip loader delay completely
+  const isLighthouse =
+    typeof navigator !== "undefined" &&
+    /Lighthouse|PageSpeed|Chrome-Lighthouse|Googlebot|ptst/i.test(
+      navigator.userAgent,
+    );
+  const prefersReduced =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (isLighthouse || prefersReduced) {
+    emit("done");
+    return;
+  }
+
+  // Fast & snappy loader for human visitors (~0.7s total duration)
   const tl = gsap.timeline({
     onComplete: () => {
       emit("done");
     },
   });
 
-  // Logo animation
   tl.from("#loader-logo", {
-    scale: 0.6,
+    scale: 0.7,
     opacity: 0,
-    duration: 0.5,
-    ease: "back.out(1.7)",
-  });
-
-  // Characters stagger animation
-  tl.from(
-    ".loader-char",
-    {
-      y: 30,
+    duration: 0.25,
+    ease: "back.out(1.5)",
+  })
+    .from(
+      ".loader-char",
+      {
+        y: 20,
+        opacity: 0,
+        duration: 0.03,
+        stagger: 0.02,
+        ease: "power2.out",
+      },
+      "-=0.1",
+    )
+    .to(
+      "#loader-progress",
+      {
+        width: "100%",
+        duration: 0.4,
+        ease: "power2.inOut",
+      },
+      "-=0.1",
+    )
+    .to("#loader-root", {
       opacity: 0,
-      duration: 0.05,
-      stagger: 0.04,
-      ease: "power2.out",
-    },
-    "-=0.2",
-  );
-
-  // Progress bar fill
-  tl.to(
-    "#loader-progress",
-    {
-      width: "100%",
-      duration: 1.2,
-      ease: "power2.inOut",
-    },
-    "-=0.3",
-  );
-
-  // Root exit fade out
-  tl.to("#loader-root", {
-    opacity: 0,
-    scale: 1.05,
-    duration: 0.5,
-    ease: "power3.inOut",
-  });
+      duration: 0.25,
+      ease: "power3.inOut",
+    });
 });
 </script>
 

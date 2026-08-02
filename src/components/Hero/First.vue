@@ -49,17 +49,17 @@
           id="hero-intro"
           class="flex items-center gap-3 mb-6 overflow-hidden opacity-0 translate-y-4"
         >
-          <div class="h-[1px] w-12 bg-bright"></div>
-          <span class="text-bright font-mono text-base sm:text-lg tracking-wide"
-            >Hi, my name is</span
-          >
+          <div class="h-[2px] w-8 bg-bright"></div>
+          <span class="text-bright font-mono text-sm sm:text-base font-medium">
+            Hi, my name is
+          </span>
         </div>
 
-        <!-- Name -->
-        <div class="overflow-hidden mb-2">
+        <!-- Name Title -->
+        <div class="mb-4 overflow-hidden">
           <h1
             id="hero-name"
-            class="text-5xl sm:text-7xl lg:text-8xl font-bold text-light font-jakarta tracking-tight leading-tight opacity-0 translate-y-8"
+            class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-light font-jakarta tracking-tight opacity-0 translate-y-8"
           >
             Iqbal Ramadan.
           </h1>
@@ -73,9 +73,9 @@
           >
             I build things for the
             <span class="relative text-bright inline-block">
-              web.
+              web
               <span
-                class="absolute bottom-1 left-0 right-0 h-1 bg-bright/80 rounded-full"
+                class="absolute bottom-1 left-0 w-full h-2 bg-bright/20 rounded-full blur-[2px]"
               ></span>
             </span>
           </h2>
@@ -95,26 +95,23 @@
         <!-- Dual CTA Buttons -->
         <div
           id="hero-cta"
-          class="flex flex-wrap items-center gap-4 opacity-0 translate-y-4"
+          class="flex flex-wrap items-center gap-4 opacity-0 translate-y-6"
         >
           <a
             href="#third"
-            class="group relative inline-flex items-center justify-center px-8 py-3.5 font-jakarta font-bold text-white bg-bright rounded-full hover:bg-bright/90 hover:shadow-[0_0_30px_rgba(249,115,0,0.4)] hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-bright/20"
+            class="group relative inline-flex items-center justify-center px-8 py-3.5 font-jakarta font-bold text-white bg-bright rounded-full hover:bg-bright/90 hover:shadow-[0_0_30px_rgba(249,115,0,0.4)] transition-all duration-300 shadow-lg shadow-bright/20"
           >
-            <span>Explore Projects</span>
+            <span>Check out my work!</span>
             <div
-              class="i-carbon-arrow-down ml-2 group-hover:translate-y-1 transition-transform duration-300"
+              class="i-carbon-arrow-right ml-2 group-hover:translate-x-1 transition-transform"
             ></div>
           </a>
 
           <a
-            href="mailto:mail@helloiqbal.me"
-            class="group inline-flex items-center justify-center px-8 py-3.5 font-jakarta font-semibold text-light border border-white/15 rounded-full hover:border-bright/50 hover:text-bright hover:bg-white/5 transition-all duration-300 glass-card"
+            href="#experience"
+            class="inline-flex items-center justify-center px-6 py-3.5 font-jakarta font-semibold text-light/80 hover:text-bright border border-white/10 hover:border-bright/50 rounded-full bg-surface/50 backdrop-blur-md transition-all duration-300"
           >
-            <span>Let's Connect</span>
-            <div
-              class="i-carbon-email ml-2 text-lg group-hover:scale-110 transition-transform duration-300"
-            ></div>
+            <span>View Experience</span>
           </a>
         </div>
 
@@ -151,7 +148,7 @@
       </div>
     </div>
 
-    <!-- Scroll Indicator -->
+    <!-- Scroll Down Indicator -->
     <div
       id="scroll-indicator"
       class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 pointer-events-none"
@@ -161,52 +158,46 @@
         >Scroll</span
       >
       <div
-        class="w-[1px] h-10 bg-gradient-to-b from-bright via-bright/50 to-transparent"
-      ></div>
+        class="w-5 h-8 rounded-full border-2 border-light/20 flex justify-center p-1"
+      >
+        <div
+          class="w-1 h-2 bg-bright rounded-full animate-pulse-slow mt-0.5"
+        ></div>
+      </div>
     </div>
 
-    <!-- Social Links (Fixed Left Side Sidebar) -->
+    <!-- Social Sidebar (Fixed Left Side Sidebar) -->
     <div
-      class="fixed hidden lg:flex flex-col items-center gap-5 bottom-0 left-8 z-[90] after:content-[''] after:w-[1px] after:h-20 after:bg-bright/30 after:mt-4"
+      class="fixed hidden lg:flex flex-col items-center gap-4 bottom-0 left-8 z-[90] after:content-[''] after:w-[1px] after:h-20 after:bg-bright/30 after:mt-4"
     >
-      <a
-        href="mailto:mail@helloiqbal.me"
-        class="p-2 text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
-        aria-label="Email"
-      >
-        <div class="i-carbon-email text-xl"></div>
-      </a>
       <a
         href="https://github.com/balramadan"
         target="_blank"
         rel="noopener noreferrer"
-        class="p-2 text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
+        class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300 text-xl"
         aria-label="GitHub"
       >
-        <div class="i-carbon-logo-github text-xl"></div>
+        <div class="i-carbon-logo-github"></div>
       </a>
       <a
         href="https://linkedin.com/in/balramadan"
         target="_blank"
         rel="noopener noreferrer"
-        class="p-2 text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300"
+        class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300 text-xl"
         aria-label="LinkedIn"
       >
-        <div class="i-carbon-logo-linkedin text-xl"></div>
+        <div class="i-carbon-logo-linkedin"></div>
+      </a>
+      <a
+        href="https://instagram.com/balramadan"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300 text-xl"
+        aria-label="Instagram"
+      >
+        <div class="i-carbon-logo-instagram"></div>
       </a>
     </div>
-
-    <!-- Email (Fixed Right Side Sidebar)
-    <div
-      class="fixed hidden lg:flex flex-col items-center gap-2 bottom-0 right-8 z-[90] after:content-[''] after:w-[1px] after:h-20 after:bg-bright/30 after:mt-4"
-    >
-      <a
-        href="mailto:mail@helloiqbal.me"
-        class="writing-vertical-rl text-light/60 font-mono text-xs tracking-widest hover:text-bright hover:-translate-y-1 transition-all duration-300 py-2"
-      >
-        mail@helloiqbal.me
-      </a>
-    </div> -->
   </div>
 </template>
 
@@ -228,31 +219,31 @@ const stats = reactive({
 onMounted(() => {
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-  tl.to("#hero-badge", { y: 0, opacity: 1, duration: 0.6, delay: 0.1 })
-    .to("#hero-intro", { y: 0, opacity: 1, duration: 0.6 }, "-=0.4")
-    .to("#hero-name", { y: 0, opacity: 1, duration: 0.7 }, "-=0.4")
-    .to("#hero-tagline", { y: 0, opacity: 1, duration: 0.7 }, "-=0.5")
-    .to("#hero-desc", { y: 0, opacity: 1, duration: 0.6 }, "-=0.5")
-    .to("#hero-cta", { y: 0, opacity: 1, duration: 0.6 }, "-=0.4")
+  tl.to("#hero-badge", { y: 0, opacity: 1, duration: 0.3 })
+    .to("#hero-intro", { y: 0, opacity: 1, duration: 0.3 }, "-=0.2")
+    .to("#hero-name", { y: 0, opacity: 1, duration: 0.35 }, "-=0.2")
+    .to("#hero-tagline", { y: 0, opacity: 1, duration: 0.35 }, "-=0.25")
+    .to("#hero-desc", { y: 0, opacity: 1, duration: 0.3 }, "-=0.25")
+    .to("#hero-cta", { y: 0, opacity: 1, duration: 0.3 }, "-=0.2")
     .to(
       "#hero-stats",
       {
         y: 0,
         opacity: 1,
-        duration: 0.6,
+        duration: 0.3,
         onStart: () => {
           gsap.to(stats, {
             years: 1,
             projects: 10,
             certs: 5,
-            duration: 1.5,
+            duration: 1.0,
             ease: "power2.out",
           });
         },
       },
-      "-=0.4",
+      "-=0.2",
     )
-    .to("#scroll-indicator", { opacity: 1, duration: 0.8 }, "-=0.2");
+    .to("#scroll-indicator", { opacity: 1, duration: 0.4 }, "-=0.1");
 });
 
 onUnmounted(() => {
