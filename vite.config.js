@@ -3,10 +3,20 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import UnoCSS from "unocss/vite";
 import vueDevTools from "vite-plugin-vue-devtools";
+import Sitemap from "vite-plugin-sitemap";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), UnoCSS(), vueDevTools()],
+  plugins: [
+    vue(),
+    UnoCSS(),
+    vueDevTools(),
+    Sitemap({
+      hostname: "https://codebyiqbal.dev",
+      dynamicRoutes: ["/projects", "/comingsoon"],
+      exclude: ["/_addproject", "/_addcertification"],
+    }),
+  ],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
@@ -24,7 +34,11 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (id.includes("vue") || id.includes("pinia") || id.includes("@vueuse")) {
+            if (
+              id.includes("vue") ||
+              id.includes("pinia") ||
+              id.includes("@vueuse")
+            ) {
               return "vue-vendor";
             }
             if (id.includes("gsap")) {
