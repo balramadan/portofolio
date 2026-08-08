@@ -41,8 +41,15 @@ export const navStore = defineStore("nav", () => {
     });
   }
 
+  function clearActive() {
+    navItems.forEach((item) => {
+      item.isActive = false;
+    });
+  }
+
   return {
     navItems,
     setActive,
+    clearActive,
   };
 });

@@ -151,7 +151,8 @@
     <!-- Scroll Down Indicator -->
     <div
       id="scroll-indicator"
-      class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 pointer-events-none"
+      class="hidden lg:flex flex-col items-center gap-2 opacity-0 pointer-events-none"
+      lg="absolute bottom-6 left-1/2 -translate-x-1/2"
     >
       <span
         class="text-[10px] font-mono text-light/40 tracking-[0.25em] uppercase"

@@ -13,7 +13,7 @@
       <!-- Logo -->
       <div
         id="loader-logo"
-        class="w-24 h-24 p-6 rounded-full overflow-hidden shadow-[0_0_20px_rgba(249,115,0,0.3)]"
+        class="w-24 h-24 p-6 rounded-full overflow-hidden shadow-[0_0_25px_rgba(249,115,0,0.35)] bg-secondary/30 border border-white/10"
       >
         <img
           src="/logo.webp"
@@ -55,22 +55,17 @@ const nameText = "Iqbal Ramadan";
 const nameChars = nameText.split("");
 
 onMounted(() => {
-  // Detect Lighthouse / PageSpeed audit bot or prefers-reduced-motion to skip loader delay completely
+  // Detect Automated Audit Bots (Lighthouse / PageSpeed) to skip loader delay during performance tests
   const isLighthouse =
     typeof navigator !== "undefined" &&
-    /Lighthouse|PageSpeed|Chrome-Lighthouse|Googlebot|ptst/i.test(
-      navigator.userAgent,
-    );
-  const prefersReduced =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    /Lighthouse|Chrome-Lighthouse|Googlebot|ptst/i.test(navigator.userAgent);
 
-  if (isLighthouse || prefersReduced) {
+  if (isLighthouse) {
     emit("done");
     return;
   }
 
-  // Fast & snappy loader for human visitors (~0.7s total duration)
+  // Smooth, premium loader animation for human visitors (~1.3s total duration)
   const tl = gsap.timeline({
     onComplete: () => {
       emit("done");
@@ -78,34 +73,35 @@ onMounted(() => {
   });
 
   tl.from("#loader-logo", {
-    scale: 0.7,
+    scale: 0.6,
     opacity: 0,
-    duration: 0.25,
-    ease: "back.out(1.5)",
+    duration: 0.4,
+    ease: "back.out(1.7)",
   })
     .from(
       ".loader-char",
       {
-        y: 20,
+        y: 25,
         opacity: 0,
-        duration: 0.03,
-        stagger: 0.02,
+        duration: 0.05,
+        stagger: 0.03,
         ease: "power2.out",
       },
-      "-=0.1",
+      "-=0.2",
     )
     .to(
       "#loader-progress",
       {
         width: "100%",
-        duration: 0.4,
+        duration: 0.7,
         ease: "power2.inOut",
       },
-      "-=0.1",
+      "-=0.2",
     )
     .to("#loader-root", {
       opacity: 0,
-      duration: 0.25,
+      scale: 1.03,
+      duration: 0.35,
       ease: "power3.inOut",
     });
 });

@@ -57,7 +57,8 @@
           v-for="item in navItems"
           :key="item.id"
           :href="item.href"
-          class="px-5 py-2 rounded-full text-xs font-semibold font-jakarta transition-all duration-300 relative group"
+          @click="handleNavClick($event, item)"
+          class="px-5 py-2 rounded-full text-xs font-semibold font-jakarta transition-all duration-300 relative group cursor-pointer"
           :class="
             item.isActive
               ? 'text-bright bg-bright/10 border border-bright/30 shadow-[0_0_15px_rgba(249,115,0,0.15)]'
@@ -138,13 +139,13 @@
         >
           <a
             :href="item.href"
-            class="block px-4 py-2.5 rounded-xl text-center font-medium font-jakarta text-sm transition-all duration-300"
+            @click="handleNavClick($event, item)"
+            class="block px-4 py-2.5 rounded-xl text-center font-medium font-jakarta text-sm transition-all duration-300 cursor-pointer"
             :class="
               item.isActive
                 ? 'bg-bright text-white font-bold shadow-lg shadow-bright/20'
                 : 'text-light/80 hover:bg-white/5 hover:text-light'
             "
-            @click="closeNavBar"
           >
             {{ item.text }}
           </a>
@@ -180,12 +181,29 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, watch, onMounted, onUnmounted } from "vue";
+import { storeToRefs } from "pinia";
+import { useRoute } from "vue-router";
 import { navStore } from "@/stores/nav";
+import { useSmoothScroll } from "@/composables/useSmoothScroll";
 
 const navIsOpen = ref(false);
 const isScrolled = ref(false);
-const navItems = navStore().navItems;
+
+const nav = navStore();
+const { navItems } = storeToRefs(nav);
+const route = useRoute();
+const smoothScroll = useSmoothScroll();
+
+watch(
+  () => route.path,
+  (newPath) => {
+    if (newPath !== "/") {
+      nav.clearActive();
+    }
+  },
+  { immediate: true }
+);
 
 const sosialMedia = [
   {
@@ -222,6 +240,25 @@ function toggleNavBar() {
 function closeNavBar() {
   navIsOpen.value = false;
   document.body.style.overflow = "";
+}
+
+function handleNavClick(e, item) {
+  closeNavBar();
+  nav.setActive(item.id);
+
+  if (route.path === "/") {
+    const targetHash = item.href.replace("/", ""); // e.g. "#second"
+    const targetEl = document.querySelector(targetHash);
+    if (targetEl) {
+      e.preventDefault();
+      const lenis = smoothScroll.getLenis();
+      if (lenis) {
+        lenis.scrollTo(targetEl, { offset: -60 });
+      } else {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }
 }
 
 function handleScroll() {
