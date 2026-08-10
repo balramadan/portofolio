@@ -13,7 +13,7 @@ export default defineConfig({
     vueDevTools(),
     Sitemap({
       hostname: "https://codebyiqbal.dev",
-      dynamicRoutes: ["/projects", "/comingsoon"],
+      dynamicRoutes: ["/projects", "/certifications", "/comingsoon"],
       exclude: ["/_addproject", "/_addcertification"],
     }),
   ],

@@ -26,6 +26,14 @@ const router = createRouter({
       },
     },
     {
+      name: "certifications",
+      path: "/certifications",
+      component: () => import("@/views/Certifications.vue"),
+      meta: {
+        title: "Certifications",
+      },
+    },
+    {
       name: "addproject",
       path: "/_addproject",
       component: () => import("@/views/AddProject.vue"),

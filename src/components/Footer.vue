@@ -59,7 +59,7 @@
               ></div>
             </a>
             <a
-              href="https://iqbalramadan.link/pay"
+              href="https://github.com/sponsors/balramadan"
               target="_blank"
               rel="noopener noreferrer"
               class="group inline-flex items-center justify-center px-8 py-4 font-mono text-light border border-white/10 rounded-full hover:border-bright/50 hover:text-bright transition-all duration-300"

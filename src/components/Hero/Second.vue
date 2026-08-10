@@ -35,7 +35,7 @@
                 class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10"
               ></div>
               <img
-                src="/IMG-20260305-WA0199.jpg"
+                src="/potrait.jpeg"
                 alt="Iqbal Ramadan"
                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
                 loading="lazy"

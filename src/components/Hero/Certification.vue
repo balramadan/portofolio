@@ -139,9 +139,9 @@
         class="flex justify-center mt-14"
       >
         <router-link
-          to="/projects#top"
+          to="/certifications#top"
           class="group relative inline-flex items-center justify-center px-8 py-3.5 font-jakarta font-bold text-bright border border-bright/50 rounded-full hover:bg-bright/10 hover:border-bright transition-all duration-300"
-          aria-label="See all certifications and projects"
+          aria-label="See all certifications"
         >
           <span>View All Certifications</span>
           <div
