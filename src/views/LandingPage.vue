@@ -13,18 +13,32 @@
 </template>
 
 <script setup lang="js">
-import { onMounted, onUnmounted } from "vue";
+import { defineAsyncComponent, onMounted, onUnmounted } from "vue";
 import { navStore } from "@/stores/nav";
 import { useHead, useSeoMeta } from "@unhead/vue";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import First from "@/components/Hero/First.vue";
-import Second from "@/components/Hero/Second.vue";
-import TechStack from "@/components/Hero/TechStack.vue";
-import Experience from "@/components/Hero/Experience.vue";
-import Project from "@/components/Hero/Project.vue";
-import Certification from "@/components/Hero/Certification.vue";
-import Fourth from "@/components/Hero/Fourth.vue";
 import { useSmoothScroll } from "@/composables/useSmoothScroll";
+
+// Dynamic Import
+const Second = defineAsyncComponent(
+  () => import("@/components/Hero/Second.vue"),
+);
+const TechStack = defineAsyncComponent(
+  () => import("@/components/Hero/TechStack.vue"),
+);
+const Experience = defineAsyncComponent(
+  () => import("@/components/Hero/Experience.vue"),
+);
+const Project = defineAsyncComponent(
+  () => import("@/components/Hero/Project.vue"),
+);
+const Certification = defineAsyncComponent(
+  () => import("@/components/Hero/Certification.vue"),
+);
+const Fourth = defineAsyncComponent(
+  () => import("@/components/Hero/Fourth.vue"),
+);
 
 const smoothScroll = useSmoothScroll();
 
@@ -39,8 +53,10 @@ useHead({
 
 useSeoMeta({
   title: "Iqbal Ramadan — Fullstack Developer & Software Engineer",
-  description: "Portfolio of Iqbal Ramadan, a Fullstack Developer based in Indonesia specializing in modern web & mobile applications built with Vue 3, Next.js, Bun, Elysia, and PostgreSQL.",
-  keywords: "Iqbal Ramadan, Fullstack Developer, Software Engineer, Portfolio, Vue 3, Bun, Elysia, PostgreSQL, TypeScript, Indonesia",
+  description:
+    "Portfolio of Iqbal Ramadan, a Fullstack Developer based in Indonesia specializing in modern web & mobile applications built with Vue 3, Next.js, Bun, Elysia, and PostgreSQL.",
+  keywords:
+    "Iqbal Ramadan, Fullstack Developer, Software Engineer, Portfolio, Vue 3, Bun, Elysia, PostgreSQL, TypeScript, Indonesia",
   author: "Iqbal Ramadan",
   viewport: "width=device-width, initial-scale=1.0",
   robots: "index, follow",
@@ -53,13 +69,23 @@ useSeoMeta({
   ogLocale: "en_US",
   twitterCard: "summary_large_image",
   twitterTitle: "Iqbal Ramadan — Fullstack Developer",
-  twitterDescription: "Specializing in building exceptional digital experiences.",
+  twitterDescription:
+    "Specializing in building exceptional digital experiences.",
   twitterImage: "https://codebyiqbal.dev/IMG-20260305-WA0199.jpg",
 });
 
-function handleScroll() {
-  const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-  const targetOffset = window.innerHeight * 0.35; // Focal point 35% from top of screen
+// Cached section geometric bounds to completely eliminate Forced Reflow (0ms)
+let cachedBounds = {
+  firstTop: 0,
+  secondTop: Infinity,
+  experienceTop: Infinity,
+  thirdTop: Infinity,
+  fourthTop: Infinity,
+  fourthBottom: Infinity,
+};
+
+function calculateSectionBounds() {
+  const targetOffset = window.innerHeight * 0.35;
 
   const first = document.getElementById("first");
   const second = document.getElementById("second");
@@ -69,50 +95,91 @@ function handleScroll() {
 
   if (!first) return;
 
-  const firstTop = first.offsetTop - targetOffset;
-  const secondTop = second ? second.offsetTop - targetOffset : Infinity;
-  const experienceTop = experience ? experience.offsetTop - targetOffset : Infinity;
-  const thirdTop = third ? third.offsetTop - targetOffset : Infinity;
-  const fourthTop = fourth ? fourth.offsetTop - targetOffset : Infinity;
-  const fourthBottom = fourth ? fourth.offsetTop + fourth.offsetHeight - targetOffset : Infinity;
+  cachedBounds = {
+    firstTop: first.offsetTop - targetOffset,
+    secondTop: second ? second.offsetTop - targetOffset : Infinity,
+    experienceTop: experience ? experience.offsetTop - targetOffset : Infinity,
+    thirdTop: third ? third.offsetTop - targetOffset : Infinity,
+    fourthTop: fourth ? fourth.offsetTop - targetOffset : Infinity,
+    fourthBottom: fourth
+      ? fourth.offsetTop + fourth.offsetHeight - targetOffset
+      : Infinity,
+  };
+}
 
-  const nav = navStore();
+let isTicking = false;
 
-  if (scrollPosition < firstTop) {
-    nav.clearActive();
-  } else if (scrollPosition >= firstTop && scrollPosition < secondTop) {
-    nav.setActive(1); // Home
-  } else if (scrollPosition >= secondTop && scrollPosition < experienceTop) {
-    nav.setActive(2); // About
-  } else if (scrollPosition >= experienceTop && scrollPosition < thirdTop) {
-    nav.setActive(3); // Experience
-  } else if (scrollPosition >= thirdTop && scrollPosition < fourthTop) {
-    nav.setActive(4); // Projects
-  } else if (scrollPosition >= fourthTop && scrollPosition < fourthBottom) {
-    nav.setActive(5); // Blog
-  } else {
-    nav.clearActive(); // Below Blog (Certifications / Footer)
+function handleScroll() {
+  if (!isTicking) {
+    window.requestAnimationFrame(() => {
+      const scrollPosition =
+        window.scrollY || document.documentElement.scrollTop;
+      const nav = navStore();
+
+      if (scrollPosition < cachedBounds.firstTop) {
+        nav.clearActive();
+      } else if (
+        scrollPosition >= cachedBounds.firstTop &&
+        scrollPosition < cachedBounds.secondTop
+      ) {
+        nav.setActive(1); // Home
+      } else if (
+        scrollPosition >= cachedBounds.secondTop &&
+        scrollPosition < cachedBounds.experienceTop
+      ) {
+        nav.setActive(2); // About
+      } else if (
+        scrollPosition >= cachedBounds.experienceTop &&
+        scrollPosition < cachedBounds.thirdTop
+      ) {
+        nav.setActive(3); // Experience
+      } else if (
+        scrollPosition >= cachedBounds.thirdTop &&
+        scrollPosition < cachedBounds.fourthTop
+      ) {
+        nav.setActive(4); // Projects
+      } else if (
+        scrollPosition >= cachedBounds.fourthTop &&
+        scrollPosition < cachedBounds.fourthBottom
+      ) {
+        nav.setActive(5); // Blog
+      } else {
+        nav.clearActive(); // Below Blog (Certifications / Footer)
+      }
+
+      isTicking = false;
+    });
+
+    isTicking = true;
   }
+}
+
+function handleResize() {
+  calculateSectionBounds();
+  handleScroll();
 }
 
 let lenisUnsub = null;
 
 onMounted(() => {
-  // Listen to both native scroll and Lenis scroll
+  nextTick(() => {
+    calculateSectionBounds();
+    handleScroll();
+  });
+
   window.addEventListener("scroll", handleScroll, { passive: true });
+  window.addEventListener("resize", handleResize, { passive: true });
 
   const lenis = smoothScroll.getLenis();
   if (lenis) {
     lenis.on("scroll", handleScroll);
     lenisUnsub = lenis;
   }
-
-  // Initial check on mount
-  handleScroll();
 });
 
 onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
+  window.removeEventListener("resize", handleResize);
   if (lenisUnsub) {
     lenisUnsub.off("scroll", handleScroll);
   }

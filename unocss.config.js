@@ -3,7 +3,6 @@ import {
   presetWind4,
   presetAttributify,
   presetIcons,
-  presetWebFonts,
 } from "unocss";
 
 export default defineConfig({
@@ -11,23 +10,15 @@ export default defineConfig({
     presetWind4(),
     presetAttributify(),
     presetIcons(),
-    presetWebFonts({
-      provider: "google",
-      fonts: {
-        jakarta: [
-          {
-            name: "Plus Jakarta Sans",
-            weights: [400, 500, 600, 700, 800],
-          },
-        ],
-        inter: "Inter",
-        lato: "Lato",
-        mono: "Fira Code",
-        fira: "Fira Code",
-      },
-    }),
   ],
   theme: {
+    fontFamily: {
+      jakarta: ['"Plus Jakarta Sans"', "sans-serif"],
+      inter: ["Inter", "sans-serif"],
+      lato: ["Lato", "sans-serif"],
+      mono: ['"Fira Code"', "monospace"],
+      fira: ['"Fira Code"', "monospace"],
+    },
     colors: {
       primary: "#1E201E",
       secondary: "#3C3D37",

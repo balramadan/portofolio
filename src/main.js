@@ -13,6 +13,15 @@ if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
 }
 
+// Support Back/Forward Cache (bfcache) restoration
+if (typeof window !== "undefined") {
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+      ScrollTrigger.refresh();
+    }
+  });
+}
+
 // Register GSAP plugins globally
 gsap.registerPlugin(ScrollTrigger);
 gsap.config({ nullTargetWarn: false });

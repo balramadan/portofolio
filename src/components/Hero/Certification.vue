@@ -1,7 +1,7 @@
 <template>
   <div
     id="certificate"
-    class="bg-primary py-24 px-5 sm:px-10 lg:px-20 overflow-hidden relative z-0"
+    class="bg-primary py-24 px-5 sm:px-10 lg:px-20 overflow-hidden relative z-0 cv-auto"
   >
     <div class="container mx-auto max-w-7xl relative z-10">
       <!-- Section Header -->
@@ -16,11 +16,19 @@
           Certifications
         </h2>
         <div class="section-divider">
-          <div class="h-[2px] w-12 bg-gradient-to-r from-transparent to-bright"></div>
-          <div class="w-2 h-2 rounded-full bg-bright shadow-[0_0_10px_#F97300]"></div>
-          <div class="h-[2px] w-12 bg-gradient-to-l from-transparent to-bright"></div>
+          <div
+            class="h-[2px] w-12 bg-gradient-to-r from-transparent to-bright"
+          ></div>
+          <div
+            class="w-2 h-2 rounded-full bg-bright shadow-[0_0_10px_#F97300]"
+          ></div>
+          <div
+            class="h-[2px] w-12 bg-gradient-to-l from-transparent to-bright"
+          ></div>
         </div>
-        <p class="text-light/60 mt-4 text-center max-w-xl font-lato text-sm sm:text-base">
+        <p
+          class="text-light/60 mt-4 text-center max-w-xl font-lato text-sm sm:text-base"
+        >
           Continuous learning, professional development, and accredited skills.
         </p>
       </div>
@@ -64,6 +72,7 @@
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               :alt="item.title"
               loading="lazy"
+              decoding="async"
               width="600"
               height="400"
             />
@@ -134,10 +143,7 @@
       </div>
 
       <!-- See All Link -->
-      <div
-        id="cert-cta"
-        class="flex justify-center mt-14"
-      >
+      <div id="cert-cta" class="flex justify-center mt-14">
         <router-link
           to="/certifications#top"
           class="group relative inline-flex items-center justify-center px-8 py-3.5 font-jakarta font-bold text-bright border border-bright/50 rounded-full hover:bg-bright/10 hover:border-bright transition-all duration-300"
@@ -154,15 +160,18 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import supabase from "@/utils/supabase";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const isLoading = ref(false);
 const certifications = ref([]);
+let isFetched = false;
+let observer = null;
 
 async function fetchCertifications() {
+  if (isFetched) return;
+  isFetched = true;
+
   try {
     isLoading.value = true;
     const { data: certification, error } = await supabase
@@ -180,61 +189,32 @@ async function fetchCertifications() {
     console.error("Error fetching certifications:", error);
   } finally {
     isLoading.value = false;
-    nextTick(() => {
-      initAnimations();
-    });
   }
 }
 
-function initAnimations() {
-  gsap.set("#cert-header", { opacity: 0, y: 30 });
-  gsap.set(".cert-card", { opacity: 0, y: 30 });
-  gsap.set("#cert-cta", { opacity: 0, y: 20 });
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#certificate",
-      start: "top 85%",
-    },
-  });
-
-  tl.to("#cert-header", {
-    y: 0,
-    opacity: 1,
-    duration: 0.8,
-    ease: "power3.out",
-  })
-    .to(
-      ".cert-card",
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
+onMounted(() => {
+  // Viewport-driven Supabase fetch: Only fetch when user scrolls near #certificate
+  const target = document.getElementById("certificate");
+  if (target) {
+    observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          fetchCertifications();
+          if (observer) observer.disconnect();
+        }
       },
-      "-=0.4"
-    )
-    .to(
-      "#cert-cta",
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power3.out",
-      },
-      "-=0.4"
+      { rootMargin: "300px 0px" },
     );
-
-  ScrollTrigger.refresh();
-}
-
-onMounted(async () => {
-  await fetchCertifications();
+    observer.observe(target);
+  } else {
+    fetchCertifications();
+  }
 });
 
 onUnmounted(() => {
-  ScrollTrigger.getAll().forEach((t) => t.kill());
+  if (observer) {
+    observer.disconnect();
+  }
 });
 </script>
 

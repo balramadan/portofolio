@@ -24,6 +24,7 @@
     "@iconify-json/devicon": "^1.1.51",
     "@iconify-json/iconoir": "^1.2.9",
     "@unocss/preset-icons": "^66.7.5",
+    "@unocss/preset-web-fonts": "^66.7.5",
     "@vitejs/plugin-vue": "^6.0.8",
     "terser": "^5.46.0",
     "unocss": "^66.7.5",

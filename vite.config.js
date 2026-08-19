@@ -9,7 +9,9 @@ import Sitemap from "vite-plugin-sitemap";
 export default defineConfig({
   plugins: [
     vue(),
-    UnoCSS(),
+    UnoCSS({
+      content: ["index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+    }),
     vueDevTools(),
     Sitemap({
       hostname: "https://codebyiqbal.dev",

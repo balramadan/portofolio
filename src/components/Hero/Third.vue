@@ -44,6 +44,8 @@
           h="full sm:25 lg:30"
           class="object-cover rounded-lg brightness-70 transition ease-linear duration-300"
           alt=""
+          width="800"
+          height="400"
         />
         <div class="" w="sm:3/5">
           <div class="flex flex-row gap-2 items-center">

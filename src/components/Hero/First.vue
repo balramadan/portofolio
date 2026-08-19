@@ -27,7 +27,7 @@
         <!-- Live Status Badge -->
         <div
           id="hero-badge"
-          class="flex items-center gap-2.5 mb-8 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 w-fit opacity-0 translate-y-4"
+          class="flex items-center gap-2.5 mb-8 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 w-fit"
         >
           <span class="relative flex h-2.5 w-2.5">
             <span
@@ -47,7 +47,7 @@
         <!-- Intro line -->
         <div
           id="hero-intro"
-          class="flex items-center gap-3 mb-6 overflow-hidden opacity-0 translate-y-4"
+          class="flex items-center gap-3 mb-6 overflow-hidden"
         >
           <div class="h-[2px] w-8 bg-bright"></div>
           <span class="text-bright font-mono text-sm sm:text-base font-medium">
@@ -59,7 +59,7 @@
         <div class="mb-4 overflow-hidden">
           <h1
             id="hero-name"
-            class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-light font-jakarta tracking-tight opacity-0 translate-y-8"
+            class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-light font-jakarta tracking-tight"
           >
             Iqbal Ramadan.
           </h1>
@@ -69,7 +69,7 @@
         <div class="mb-8">
           <h2
             id="hero-tagline"
-            class="text-3xl sm:text-5xl lg:text-6xl font-bold text-light/40 font-jakarta tracking-tight opacity-0 translate-y-10"
+            class="text-3xl sm:text-5xl lg:text-6xl font-bold text-light/40 font-jakarta tracking-tight"
           >
             I build things for the
             <span class="relative text-bright inline-block">
@@ -84,7 +84,7 @@
         <!-- Description -->
         <p
           id="hero-desc"
-          class="text-light/80 text-base sm:text-lg max-w-2xl leading-relaxed mb-10 font-lato opacity-0 translate-y-6"
+          class="text-light/80 text-base sm:text-lg max-w-2xl leading-relaxed mb-10 font-lato"
         >
           I'm a software engineer specializing in building (and occasionally
           designing) exceptional digital experiences. Currently, I am focusing
@@ -95,7 +95,7 @@
         <!-- Dual CTA Buttons -->
         <div
           id="hero-cta"
-          class="flex flex-wrap items-center gap-4 opacity-0 translate-y-6"
+          class="flex flex-wrap items-center gap-4"
         >
           <a
             href="#third"
@@ -118,7 +118,7 @@
         <!-- Stat Counters -->
         <div
           id="hero-stats"
-          class="grid grid-cols-3 gap-6 sm:gap-10 mt-14 max-w-md border-t border-white/10 pt-8 opacity-0 translate-y-6"
+          class="grid grid-cols-3 gap-6 sm:gap-10 mt-14 max-w-md border-t border-white/10 pt-8"
         >
           <div class="flex flex-col">
             <span class="text-2xl sm:text-3xl font-bold text-bright font-mono">
@@ -151,8 +151,7 @@
     <!-- Scroll Down Indicator -->
     <div
       id="scroll-indicator"
-      class="hidden lg:flex flex-col items-center gap-2 opacity-0 pointer-events-none"
-      lg="absolute bottom-6 left-1/2 -translate-x-1/2"
+      class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
     >
       <span
         class="text-[10px] font-mono text-light/40 tracking-[0.25em] uppercase"
@@ -212,39 +211,20 @@ const sectionRef = ref(null);
 const { spotlightStyle } = useCursorSpotlight(sectionRef);
 
 const stats = reactive({
-  years: 0,
-  projects: 0,
-  certs: 0,
+  years: 1,
+  projects: 10,
+  certs: 5,
 });
 
 onMounted(() => {
-  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-  tl.to("#hero-badge", { y: 0, opacity: 1, duration: 0.3 })
-    .to("#hero-intro", { y: 0, opacity: 1, duration: 0.3 }, "-=0.2")
-    .to("#hero-name", { y: 0, opacity: 1, duration: 0.35 }, "-=0.2")
-    .to("#hero-tagline", { y: 0, opacity: 1, duration: 0.35 }, "-=0.25")
-    .to("#hero-desc", { y: 0, opacity: 1, duration: 0.3 }, "-=0.25")
-    .to("#hero-cta", { y: 0, opacity: 1, duration: 0.3 }, "-=0.2")
-    .to(
-      "#hero-stats",
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.3,
-        onStart: () => {
-          gsap.to(stats, {
-            years: 1,
-            projects: 10,
-            certs: 5,
-            duration: 1.0,
-            ease: "power2.out",
-          });
-        },
-      },
-      "-=0.2",
-    )
-    .to("#scroll-indicator", { opacity: 1, duration: 0.4 }, "-=0.1");
+  // Hanya jalankan transisi counter angka ringan tanpa menahan opacity teks Hero
+  gsap.from(stats, {
+    years: 0,
+    projects: 0,
+    certs: 0,
+    duration: 1.2,
+    ease: "power2.out",
+  });
 });
 
 onUnmounted(() => {

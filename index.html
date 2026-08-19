@@ -7,25 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iqbal Ramadan — Fullstack Developer & Software Engineer</title>
 
-    <!-- Resource Preconnects for Performance -->
-    <link rel="preconnect" href="https://rnjqyqiohdhnlcidizdw.supabase.co" crossorigin />
-    <link rel="dns-prefetch" href="https://rnjqyqiohdhnlcidizdw.supabase.co" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-
-    <!-- Non-Blocking Critical Web Fonts -->
+    <!-- Preload Critical Local Web Font for Instant LCP -->
     <link
       rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;600&family=Lato:wght@400;700&family=Fira+Code&display=swap"
+      href="/assets/fonts/plus-jakarta-sans/PlusJakartaSans-VariableFont_wght.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
     />
+
+    <!-- Preload Hero LCP Logo Image -->
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;600&family=Lato:wght@400;700&family=Fira+Code&display=swap"
-      media="print"
-      onload="this.media='all'"
+      rel="preload"
+      href="/logo.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high"
     />
+
+    <!-- Resource Preconnects for Database / Storage CDN -->
+    <link rel="preconnect" href="https://rnjqyqiohdhnlcidizdw.supabase.co" crossorigin />
+    <link rel="dns-prefetch" href="https://rnjqyqiohdhnlcidizdw.supabase.co" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://codebyiqbal.dev/" />
@@ -34,21 +36,48 @@
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
 
-    <!-- Google Analytics (Deferred for Zero Main-Thread Blocking) -->
+    <!-- Google Analytics (Lazy Load on User Interaction / Idle for Zero Unused JS & Main-Thread Blocking) -->
     <script>
-      window.addEventListener('load', function() {
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = "https://www.googletagmanager.com/gtag/js?id=G-VVFQS6FS7G";
-        document.head.appendChild(script);
+      (function() {
+        var gtmLoaded = false;
+        function loadGTM() {
+          if (gtmLoaded) return;
+          gtmLoaded = true;
 
-        script.onload = function() {
-          window.dataLayer = window.dataLayer || [];
-          function gtag() { dataLayer.push(arguments); }
-          gtag("js", new Date());
-          gtag("config", "G-VVFQS6FS7G");
-        };
-      });
+          // Remove listeners
+          window.removeEventListener('scroll', loadGTM, { passive: true });
+          window.removeEventListener('touchstart', loadGTM, { passive: true });
+          window.removeEventListener('mousemove', loadGTM, { passive: true });
+          window.removeEventListener('click', loadGTM, { passive: true });
+
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = "https://www.googletagmanager.com/gtag/js?id=G-VVFQS6FS7G";
+          document.head.appendChild(script);
+
+          script.onload = function() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag("js", new Date());
+            gtag("config", "G-VVFQS6FS7G");
+          };
+        }
+
+        // Trigger on first user interaction
+        window.addEventListener('scroll', loadGTM, { passive: true, once: true });
+        window.addEventListener('touchstart', loadGTM, { passive: true, once: true });
+        window.addEventListener('mousemove', loadGTM, { passive: true, once: true });
+        window.addEventListener('click', loadGTM, { passive: true, once: true });
+
+        // Fallback after 4 seconds idle
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(function() {
+            setTimeout(loadGTM, 4000);
+          });
+        } else {
+          setTimeout(loadGTM, 4000);
+        }
+      })();
     </script>
   </body>
 </html>

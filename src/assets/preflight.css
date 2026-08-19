@@ -1,3 +1,97 @@
+/* ==========================================================================
+   LOCAL SELF-HOSTED WEB FONTS (@font-face)
+   Zero external dependencies to fonts.googleapis.com / fonts.gstatic.com
+   ========================================================================== */
+
+/* 1. Plus Jakarta Sans (Variable Font) */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/assets/fonts/plus-jakarta-sans/PlusJakartaSans-VariableFont_wght.ttf")
+    format("truetype-variations");
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/assets/fonts/plus-jakarta-sans/PlusJakartaSans-Italic-VariableFont_wght.ttf")
+    format("truetype-variations");
+}
+
+/* 2. Inter (Variable Woff2 Font) */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/inter/variable/inter-latin-wght-normal.woff2")
+    format("woff2-variations");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/inter/variable/inter-latin-wght-italic.woff2")
+    format("woff2-variations");
+}
+
+/* 3. Lato (Woff2 Static Fonts) */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/lato/static/lato-latin-400-normal.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/lato/static/lato-latin-400-italic.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/lato/static/lato-latin-700-normal.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/assets/fonts/lato/static/lato-latin-900-normal.woff2")
+    format("woff2");
+}
+
+/* 4. Fira Code (Variable Woff2 Monospace) */
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/assets/fonts/fira-code/variable/fira-code-latin-wght-normal.woff2")
+    format("woff2-variations");
+}
+
+/* ==========================================================================
+   GLOBAL RESET & UTILITIES
+   ========================================================================== */
+
 * {
   box-sizing: border-box;
 }
@@ -77,6 +171,12 @@ html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+/* Below-the-fold content visibility optimization for mobile */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
 
 /* Keyframe Animations */
