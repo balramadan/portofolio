@@ -43,7 +43,7 @@
       <!-- Skeleton Loading State -->
       <div
         v-if="isLoading"
-        class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
+        class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto"
       >
         <div
           v-for="n in 2"
@@ -66,7 +66,7 @@
       <!-- Projects Grid -->
       <div
         v-else
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-7xl mx-auto"
       >
         <div
           v-for="(item, index) in projects"
@@ -193,7 +193,9 @@
               </div>
 
               <!-- Action Links for Featured/Desktop -->
-              <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+              <div
+                class="flex items-center gap-4 pt-4 border-t border-white/10"
+              >
                 <a
                   v-if="item.project_url || item.project_demo"
                   :href="item.project_url || item.project_demo"
@@ -253,14 +255,16 @@ async function fetchProjects() {
     isLoading.value = true;
     const { data: project, error } = await supabase
       .from("projects")
-      .select("*");
+      .select(
+        "id, project_name, project_desc, project_tech, project_img, project_demo, project_github, created_at",
+      )
+      .order("created_at", { ascending: false })
+      .limit(5);
 
     if (error) throw error;
 
     if (project) {
-      projects.value = project
-        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-        .slice(0, 5);
+      projects.value = project;
     }
   } catch (error) {
     console.error("Error fetching projects:", error);

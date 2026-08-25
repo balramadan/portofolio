@@ -1,10 +1,22 @@
 <template>
   <div
     id="techstack"
-    class="bg-primary px-5 sm:px-10 lg:px-20 pt-16 pb-24 overflow-hidden relative"
+    class="bg-primary px-5 sm:px-10 lg:px-20 pt-16 pb-24 overflow-hidden relative z-0 cv-auto"
   >
+    <!-- Background Glow Elements -->
+    <div
+      class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0"
+    >
+      <div
+        class="absolute top-[20%] -right-[10%] w-[40%] h-[40%] bg-bright/5 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow"
+      ></div>
+      <div
+        class="absolute bottom-[10%] -left-[10%] w-[40%] h-[40%] bg-grass/5 blur-[100px] rounded-full mix-blend-screen"
+      ></div>
+    </div>
+
     <!-- Section Header -->
-    <div id="techstack-header" class="flex flex-col items-center mb-10 text-center">
+    <div id="techstack-header" class="flex flex-col items-center mb-10 text-center relative z-10">
       <span class="section-label mb-3">Technologies</span>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-light font-jakarta tracking-tight mb-4">
         My Tech Stack
@@ -17,7 +29,7 @@
     </div>
 
     <!-- Interactive Category Filter Tabs -->
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-7xl mx-auto relative z-10">
       <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
         <button
           v-for="cat in categories"
@@ -51,7 +63,7 @@
           >
             {{ skill.nama }}
           </span>
-          <span class="text-[9px] font-mono text-light/30 uppercase tracking-wider">
+          <span class="text-xs font-mono text-light/40 uppercase tracking-wider">
             {{ skill.category }}
           </span>
         </div>

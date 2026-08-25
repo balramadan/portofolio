@@ -176,14 +176,14 @@ async function fetchCertifications() {
     isLoading.value = true;
     const { data: certification, error } = await supabase
       .from("certifications")
-      .select("*");
+      .select("id, title, issuer, description, thumbnail, pdf, verifyUrl, created_at")
+      .order("created_at", { ascending: false })
+      .limit(6);
 
     if (error) throw error;
 
     if (certification) {
-      certifications.value = certification
-        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-        .slice(0, 6);
+      certifications.value = certification;
     }
   } catch (error) {
     console.error("Error fetching certifications:", error);

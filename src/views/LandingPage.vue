@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="js">
-import { defineAsyncComponent, onMounted, onUnmounted } from "vue";
+import { defineAsyncComponent, onMounted, onUnmounted, nextTick } from "vue";
 import { navStore } from "@/stores/nav";
 import { useHead, useSeoMeta } from "@unhead/vue";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
@@ -52,7 +52,7 @@ useHead({
 });
 
 useSeoMeta({
-  title: "Iqbal Ramadan — Fullstack Developer & Software Engineer",
+  title: "Iqbal Ramadan - Fullstack Developer & Software Engineer",
   description:
     "Portfolio of Iqbal Ramadan, a Fullstack Developer based in Indonesia specializing in modern web & mobile applications built with Vue 3, Next.js, Bun, Elysia, and PostgreSQL.",
   keywords:

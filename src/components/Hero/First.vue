@@ -92,11 +92,8 @@
           development.
         </p>
 
-        <!-- Dual CTA Buttons -->
-        <div
-          id="hero-cta"
-          class="flex flex-wrap items-center gap-4"
-        >
+        <!-- Dual CTA Buttons & Terminal Shortcut Hint -->
+        <div id="hero-cta" class="flex flex-wrap items-center gap-4">
           <a
             href="#third"
             class="group relative inline-flex items-center justify-center px-8 py-3.5 font-jakarta font-bold text-white bg-bright rounded-full hover:bg-bright/90 hover:shadow-[0_0_30px_rgba(249,115,0,0.4)] transition-all duration-300 shadow-lg shadow-bright/20"
@@ -113,6 +110,23 @@
           >
             <span>View Experience</span>
           </a>
+
+          <!-- Interactive CLI Terminal Prompt Hint -->
+          <button
+            @click="terminal.open()"
+            class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/10 hover:border-bright/40 bg-secondary/20 hover:bg-secondary/40 text-light/60 hover:text-bright text-xs font-mono transition-all duration-300 group/term"
+            title="Open Interactive CLI Terminal"
+            aria-label="Open Interactive CLI Terminal"
+          >
+            <span
+              class="i-carbon-terminal text-bright text-sm group-hover/term:rotate-12 transition-transform"
+            ></span>
+            <span>Terminal</span>
+            <kbd
+              class="px-1.5 py-0.5 text-xs font-mono bg-white/10 rounded border border-white/10 text-light/80"
+              >Ctrl + `</kbd
+            >
+          </button>
         </div>
 
         <!-- Stat Counters -->
@@ -151,10 +165,9 @@
     <!-- Scroll Down Indicator -->
     <div
       id="scroll-indicator"
-      class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
+      class="hidden md:absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
     >
-      <span
-        class="text-[10px] font-mono text-light/40 tracking-[0.25em] uppercase"
+      <span class="text-xs font-mono text-light/40 tracking-[0.25em] uppercase"
         >Scroll</span
       >
       <div
@@ -166,7 +179,7 @@
       </div>
     </div>
 
-    <!-- Social Sidebar (Fixed Left Side Sidebar) -->
+    <!-- Social Sidebar (Fixed Left Side Sidebar with Glassmorphic Tooltips) -->
     <div
       class="fixed hidden lg:flex flex-col items-center gap-4 bottom-0 left-8 z-[90] after:content-[''] after:w-[1px] after:h-20 after:bg-bright/30 after:mt-4"
     >
@@ -174,28 +187,43 @@
         href="https://github.com/balramadan"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300 text-xl"
+        class="group relative text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300 text-xl"
         aria-label="GitHub"
       >
         <div class="i-carbon-logo-github"></div>
+        <span
+          class="pointer-events-none absolute left-8 top-1/2 -translate-y-1/2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 px-2.5 py-1 text-xs font-mono font-medium text-bright bg-secondary/90 border border-white/10 backdrop-blur-md rounded-md shadow-lg whitespace-nowrap"
+        >
+          GitHub
+        </span>
       </a>
       <a
         href="https://linkedin.com/in/balramadan"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300 text-xl"
+        class="group relative text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300 text-xl"
         aria-label="LinkedIn"
       >
         <div class="i-carbon-logo-linkedin"></div>
+        <span
+          class="pointer-events-none absolute left-8 top-1/2 -translate-y-1/2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 px-2.5 py-1 text-xs font-mono font-medium text-bright bg-secondary/90 border border-white/10 backdrop-blur-md rounded-md shadow-lg whitespace-nowrap"
+        >
+          LinkedIn
+        </span>
       </a>
       <a
         href="https://instagram.com/balramadan"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300 text-xl"
+        class="group relative text-light/60 hover:text-bright hover:-translate-y-1 transition-all duration-300 text-xl"
         aria-label="Instagram"
       >
         <div class="i-carbon-logo-instagram"></div>
+        <span
+          class="pointer-events-none absolute left-8 top-1/2 -translate-y-1/2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 px-2.5 py-1 text-xs font-mono font-medium text-bright bg-secondary/90 border border-white/10 backdrop-blur-md rounded-md shadow-lg whitespace-nowrap"
+        >
+          Instagram
+        </span>
       </a>
     </div>
   </div>
@@ -206,7 +234,9 @@ import { ref, reactive, onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useCursorSpotlight } from "@/composables/useCursorSpotlight";
+import { useTerminalStore } from "@/stores/terminal";
 
+const terminal = useTerminalStore();
 const sectionRef = ref(null);
 const { spotlightStyle } = useCursorSpotlight(sectionRef);
 

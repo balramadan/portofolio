@@ -1,7 +1,7 @@
 <template>
   <div
     id="second"
-    class="min-h-screen flex items-center justify-center py-20 bg-primary overflow-hidden relative z-0"
+    class="min-h-screen flex items-center justify-center py-24 bg-primary overflow-hidden relative z-0 cv-auto"
   >
     <!-- Background Elements -->
     <div
@@ -15,7 +15,7 @@
       ></div>
     </div>
 
-    <div class="container mx-auto px-6 sm:px-12 lg:px-20 relative z-10">
+    <div class="container mx-auto max-w-7xl px-6 sm:px-12 lg:px-20 relative z-10">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <!-- Image Column (Right on Desktop) -->
         <div
@@ -53,7 +53,7 @@
               </div>
               <div>
                 <div
-                  class="text-[10px] text-light/50 font-mono uppercase tracking-wider"
+                  class="text-xs text-light/50 font-mono uppercase tracking-wider"
                 >
                   Role
                 </div>
@@ -72,7 +72,7 @@
               </div>
               <div>
                 <div
-                  class="text-[10px] text-light/50 font-mono uppercase tracking-wider"
+                  class="text-xs text-light/50 font-mono uppercase tracking-wider"
                 >
                   Projects
                 </div>
@@ -81,19 +81,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Floating Card 3: Graduate (Bottom Right) -->
-            <!-- <div
-              class="absolute -bottom-4 right-6 glass-card px-4 py-3 shadow-xl z-20 hidden sm:flex items-center gap-3 border border-white/15"
-            >
-              <div class="p-2 rounded-xl bg-emerald-500/10 text-emerald-400">
-                <div class="i-carbon-education text-xl"></div>
-              </div>
-              <div>
-                <div class="text-[10px] text-light/50 font-mono uppercase tracking-wider">Education</div>
-                <div class="text-xs text-light font-bold font-jakarta">Class of 2026</div>
-              </div>
-            </div> -->
           </div>
         </div>
 

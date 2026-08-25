@@ -64,7 +64,8 @@ router.afterEach((to, from) => {
     if (to.meta?.title) {
       document.title = `${to.meta.title} | Iqbal Ramadan`;
     } else {
-      document.title = "Iqbal Ramadan";
+      document.title =
+        "Iqbal Ramadan - Fullstack Developer & Software Engineer";
     }
   });
 });

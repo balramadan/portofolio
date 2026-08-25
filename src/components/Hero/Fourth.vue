@@ -81,7 +81,7 @@
               class="absolute top-4 left-4 z-20 px-3 py-1 bg-bright/90 backdrop-blur-md rounded-full shadow-lg shadow-bright/20"
             >
               <span
-                class="text-[10px] font-mono font-bold text-white uppercase tracking-wider"
+                class="text-xs font-mono font-bold text-white uppercase tracking-wider"
               >
                 {{ item.tag || "Article" }}
               </span>
@@ -91,7 +91,7 @@
             <div
               class="absolute top-4 right-4 z-20 px-2.5 py-1 bg-black/60 backdrop-blur-md rounded-full border border-white/10"
             >
-              <span class="text-[10px] font-mono text-light/80">
+              <span class="text-xs font-mono text-light/80">
                 {{ getReadTime(item.content || item.description) }}
               </span>
             </div>
@@ -246,12 +246,16 @@ async function fetchPosts() {
 
   try {
     isLoading.value = true;
-    const { data: postan, error } = await supabase.from("post").select("*");
+    const { data: postan, error } = await supabase
+      .from("post")
+      .select("id, title, permalink, image, tag, description, content, created_at")
+      .order("created_at", { ascending: false })
+      .limit(3);
+
     if (error) throw new Error(error.message);
 
     if (postan) {
-      postan.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-      posts.value = postan.slice(0, 3);
+      posts.value = postan;
       post.setPosts(postan);
     }
   } catch (e) {

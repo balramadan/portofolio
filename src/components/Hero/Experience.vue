@@ -1,7 +1,7 @@
 <template>
   <div
     id="experience"
-    class="relative z-0 bg-primary py-24 px-6 sm:px-12 lg:px-24 overflow-hidden"
+    class="relative z-0 bg-primary py-24 px-6 sm:px-12 lg:px-24 overflow-hidden cv-auto"
   >
     <!-- Background Effects -->
     <div class="absolute inset-0 pointer-events-none z-0">
@@ -13,7 +13,7 @@
       ></div>
     </div>
 
-    <div class="max-w-6xl mx-auto relative z-10">
+    <div class="max-w-7xl mx-auto relative z-10">
       <!-- Section Header -->
       <div
         id="experience-header"
@@ -83,7 +83,7 @@
                       ></div>
                     </div>
                     <div
-                      class="text-[10px] sm:text-xs font-mono text-bright/80 bg-bright/10 px-3 py-1 rounded-full border border-bright/20 whitespace-nowrap"
+                      class="text-xs font-mono text-bright/80 bg-bright/10 px-3 py-1 rounded-full border border-bright/20 whitespace-nowrap"
                     >
                       {{ job.period }}
                     </div>
@@ -127,7 +127,7 @@
                     <span
                       v-for="skill in job.skills"
                       :key="skill"
-                      class="text-[9px] uppercase font-mono font-bold tracking-wider px-2.5 py-1 rounded-md bg-black/40 text-light/60 border border-white/5 hover:border-bright/40 hover:text-bright transition-all duration-300"
+                      class="text-xs uppercase font-mono font-bold tracking-wider px-2.5 py-1 rounded-md bg-black/40 text-light/60 border border-white/5 hover:border-bright/40 hover:text-bright transition-all duration-300"
                     >
                       {{ skill }}
                     </span>
