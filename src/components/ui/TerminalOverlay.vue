@@ -138,7 +138,7 @@
               @keydown="handleKeyDown"
               autofocus
             />
-            <span class="text-[10px] font-mono text-light/30 hidden sm:inline"
+            <span class="text-xs font-mono text-light/40 hidden sm:inline"
               >[Press Esc to exit]</span
             >
           </div>

@@ -148,19 +148,38 @@
         </div>
       </div>
 
+      <!-- Empty State -->
+      <div
+        v-else
+        class="text-center py-16 px-6 glass-card border border-white/10 rounded-3xl max-w-xl mx-auto"
+      >
+        <div class="i-carbon-document-blank text-4xl text-bright mb-3 mx-auto"></div>
+        <h3 class="text-lg font-bold text-light font-jakarta mb-1">
+          Articles Coming Soon
+        </h3>
+        <p class="text-xs text-light/60 font-lato mb-4">
+          Fresh technical stories and deep-dives are currently being drafted.
+        </p>
+        <router-link
+          to="/_addpost"
+          class="inline-flex items-center gap-1.5 px-4 py-2 bg-bright text-white text-xs font-mono font-bold rounded-full"
+        >
+          <span class="i-carbon-add"></span>
+          <span>Draft an Article</span>
+        </router-link>
+      </div>
+
       <!-- View All Blog Button -->
-      <div id="blog-cta" class="flex justify-center mt-16">
-        <a
-          href="https://inspire.codebyiqbal.dev"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div v-if="posts.length > 0" id="blog-cta" class="flex justify-center mt-16">
+        <router-link
+          to="/blog#top"
           class="group relative inline-flex items-center justify-center px-8 py-3.5 font-jakarta font-bold text-bright border border-bright/50 rounded-full hover:bg-bright/10 hover:border-bright transition-all duration-300"
         >
-          <span>Visit Inspire Blog</span>
+          <span>Explore All Articles</span>
           <div
-            class="i-carbon-arrow-up-right ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+            class="i-carbon-arrow-right ml-2 group-hover:translate-x-1 transition-transform"
           ></div>
-        </a>
+        </router-link>
       </div>
     </div>
   </div>
@@ -168,9 +187,11 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import { useRouter } from "vue-router";
 import supabase from "@/utils/supabase";
 import { postStore } from "@/stores/post";
 
+const router = useRouter();
 const post = postStore();
 const isLoading = ref(false);
 const posts = ref([]);
@@ -214,7 +235,7 @@ function getExcerpt(item) {
   if (cleanContent) {
     return cleanContent.slice(0, 140) + "...";
   }
-  return "Click to read the full article on Inspire blog...";
+  return "Click to read the full technical article...";
 }
 
 function formatDate(dateStr) {
@@ -236,7 +257,7 @@ function getReadTime(contentOrDesc) {
 
 function toPost(link) {
   if (link) {
-    window.open(`https://inspire.codebyiqbal.dev/post/${link}`, "_blank");
+    router.push(`/blog/${link}`);
   }
 }
 

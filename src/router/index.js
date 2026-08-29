@@ -34,6 +34,19 @@ const router = createRouter({
       },
     },
     {
+      name: "blog",
+      path: "/blog",
+      component: () => import("@/views/Blog.vue"),
+      meta: {
+        title: "Blog",
+      },
+    },
+    {
+      name: "blog-post",
+      path: "/blog/:permalink",
+      component: () => import("@/views/BlogPost.vue"),
+    },
+    {
       name: "addproject",
       path: "/_addproject",
       component: () => import("@/views/AddProject.vue"),
@@ -43,17 +56,24 @@ const router = createRouter({
       path: "/_addcertification",
       component: () => import("@/views/AddCertification.vue"),
     },
+    {
+      name: "addpost",
+      path: "/_addpost",
+      component: () => import("@/views/AddPost.vue"),
+    },
   ],
 
   scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
     if (to.hash) {
       return {
         el: to.hash,
         behavior: "smooth",
       };
-
-      return { top: 0 };
     }
+    return { top: 0, left: 0 };
   },
 });
 
