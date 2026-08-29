@@ -357,7 +357,7 @@ useHead({
     { rel: "icon", href: "/favicon.ico" },
     { rel: "shortcut icon", href: "/favicon.ico" },
     { rel: "icon", href: "/logo.svg" },
-    { rel: "canonical", href: "https://v2.iqbalramadan.me/projects" },
+    { rel: "canonical", href: "https://codebyiqbal.dev/projects" },
   ],
 });
 
@@ -370,8 +370,8 @@ useSeoMeta({
   ogDescription: "Comprehensive archive of web applications & software projects built by Iqbal Ramadan.",
   ogSiteName: "Iqbal Ramadan Portfolio",
   ogType: "website",
-  ogUrl: "https://v2.iqbalramadan.me/projects",
-  ogImage: "https://v2.iqbalramadan.me/IMG-20260305-WA0199.jpg",
+  ogUrl: "https://codebyiqbal.dev/projects",
+  ogImage: "https://codebyiqbal.dev/IMG-20260305-WA0199.jpg",
 });
 
 onUnmounted(() => {
